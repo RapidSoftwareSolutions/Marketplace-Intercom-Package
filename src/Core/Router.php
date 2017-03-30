@@ -134,12 +134,12 @@ class Router
                 $sendBody = array_merge($blockCustom['default'], $sendBody);
             }
 
-            // Remove $authToken from params
-            if(isset($sendBody['authToken'])&&strlen($sendBody['authToken'])>0){
-                $authToken = $sendBody['authToken'];
-                unset($sendBody['authToken']);
+            // Remove $accessToken from params
+            if(isset($sendBody['accessToken'])&&strlen($sendBody['accessToken'])>0){
+                $accessToken = $sendBody['accessToken'];
+                unset($sendBody['accessToken']);
             }else{
-                $authToken = false;
+                $accessToken = false;
             }
 
             // If need, custom make custom processing for route
@@ -154,7 +154,7 @@ class Router
             }
 
             // Make request
-            $result = $this->httpRequest($vendorUrl, $method, $sendBody, $authToken);
+            $result = $this->httpRequest($vendorUrl, $method, $sendBody, $accessToken);
             echo json_encode($result);
             exit(200);
         });
@@ -280,7 +280,7 @@ class Router
         return $result;
     }
 
-    protected function httpRequest($url, $method, $sendBody, $authToken)
+    protected function httpRequest($url, $method, $sendBody, $accessToken)
     {
         if($sendBody == '[]' || $sendBody == '{}'){
             $sendBody = '';
@@ -292,10 +292,11 @@ class Router
             $clientSetup = [
                 'headers' => [
                     'Content-Type' => 'application/json',
+                    'Accept' => 'application/json',
                 ] ];
 
-            if($authToken){
-                $clientSetup['headers']['Authorization'] = 'Bearer ' . $authToken;
+            if($accessToken){
+                $clientSetup['headers']['Authorization'] = 'Bearer ' . $accessToken;
             }
 
             if($method == 'POST-RAW'){
