@@ -26,7 +26,7 @@ class Router
         $this->custom = $custom;
         $this->klein = new \Klein\Klein();
         $this->http = new \GuzzleHttp\Client(['verify' => false]);
-        $this->supportedMethods = ['GET', 'POST', 'PUT', 'DELETE', 'POST-RAW'];
+        $this->supportedMethods = ['GET', 'GET-RAW', 'POST', 'PUT', 'DELETE-RAW', 'DELETE'];
     }
 
     public function setup()
@@ -127,29 +127,26 @@ class Router
 
             // Prepare param
             $sendParam = $this->prepareParam($inputPram, $blockCustom['dictionary'], $blockName);
-            $sendBody = $sendParam;
-
-            // If need, custom make custom default processing
-            if(isset($blockCustom['default'])&&is_array($blockCustom['default'])&&count($blockCustom['default'])>0){
-                $sendBody = array_merge($blockCustom['default'], $sendBody);
-            }
 
             // Remove $accessToken from params
-            if(isset($sendBody['accessToken'])&&strlen($sendBody['accessToken'])>0){
-                $accessToken = $sendBody['accessToken'];
-                unset($sendBody['accessToken']);
+            if(isset($sendParam['accessToken'])&&strlen($sendParam['accessToken'])>0){
+                $accessToken = $sendParam['accessToken'];
+                unset($sendParam['accessToken']);
             }else{
                 $accessToken = false;
             }
 
+            // If need, custom make custom default processing
+            if(isset($blockCustom['default'])&&is_array($blockCustom['default'])&&count($blockCustom['default'])>0){
+                $sendParam = array_merge($blockCustom['default'], $sendParam);
+            }
+
+            $sendBody = $sendParam;
+
             // If need, custom make custom processing for route
             if(isset($blockCustom['custom'])&&$blockCustom['custom'] == true){
-                $sendBody = CustomModel::$blockName($sendParam, $this->custom[$blockName], $vendorUrl);
+                $sendBody = CustomModel::$blockName($sendParam, $this->custom[$blockName], $vendorUrl, $accessToken);
             }else{
-                unset($sendBody['appClientId']);
-                if(isset($this->custom[$blockName]['showApiType'])&&$this->custom[$blockName]['showApiType']==true){
-                    $sendBody['api_type'] = 'json';
-                }
                 $sendBody = json_encode($sendBody);
             }
 
@@ -205,7 +202,16 @@ class Router
             $param = [];
             // Check input param in param list
             foreach($paramList as $oneParam){
-                $param[$oneParam] = (isset($jsonParam[$oneParam]))?$jsonParam[$oneParam]:null;
+                if(isset($jsonParam[$oneParam])){
+                    $param[$oneParam] = $jsonParam[$oneParam];
+                    if(is_array($param[$oneParam])&&count($param[$oneParam])==0){
+                        $param[$oneParam] = null;
+                    }elseif(!is_array($param[$oneParam])&&strlen($param[$oneParam])==0){
+                        $param[$oneParam] = null;
+                    }
+                }else{
+                    $param[$oneParam] = null;
+                }
             }
 
             return $param;
@@ -299,15 +305,22 @@ class Router
                 $clientSetup['headers']['Authorization'] = 'Bearer ' . $accessToken;
             }
 
-            if($method == 'POST-RAW'){
+            if($method == 'GET-RAW' || $method == 'DELETE-RAW'){
                 $clientSetup = $sendBody;
 
-                $method = 'POST';
+                $method = str_replace('-RAW', '', $method);
             }else{
-                if(!is_string($sendBody)){
-                    $sendBody = json_encode($sendBody, JSON_UNESCAPED_SLASHES);
+                if($method == 'GET'){
+                    if(is_string($sendBody)){
+                        $sendBody = json_decode($sendBody);
+                    }
+                    $clientSetup['query'] = $sendBody;
+                }else{
+                    if(!is_string($sendBody)){
+                        $sendBody = json_encode($sendBody, JSON_UNESCAPED_SLASHES);
+                    }
+                    $clientSetup['body'] = $sendBody;
                 }
-                $clientSetup['body'] = $sendBody;
             }
 
             $vendorResponse = $this->http->request($method, $url, $clientSetup);
