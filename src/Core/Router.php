@@ -312,7 +312,7 @@ class Router
             }else{
                 if($method == 'GET'){
                     if(is_string($sendBody)){
-                        $sendBody = json_decode($sendBody);
+                        $sendBody = json_decode($sendBody, true);
                     }
                     $clientSetup['query'] = $sendBody;
                 }else{
