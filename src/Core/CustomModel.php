@@ -138,6 +138,7 @@ class CustomModel
     public static function convertLeadToUser($param, &$blockCustom, $vendorUrl, $accessToken){
         $result = [];
         if(in_array($param['leadIdType'], ['intercom_id', 'user_id', 'email'])){
+            if($param['leadIdType']=='intercom_id'){ $param['leadIdType'] = 'id'; }
             $result['contact'][$param['leadIdType']] = $param['leadId'];
         }
         if(isset($param['user_id'])){
