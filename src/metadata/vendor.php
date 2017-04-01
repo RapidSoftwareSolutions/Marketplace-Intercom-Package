@@ -749,7 +749,7 @@ return array (
                 array (
                     'name' => 'userIdType',
                     'type' => 'String',
-                    'info' => 'The lead identifier type. One of: intercom_id, user_id, email.',
+                    'info' => 'The lead identifier type. One of: intercom_id, user_id.',
                     'required' => true,
                 ),
             ),

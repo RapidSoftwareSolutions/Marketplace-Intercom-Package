@@ -42,6 +42,7 @@ class CustomModel
     public static function createLead($param, &$blockCustom, $vendorUrl, $accessToken){
         $result = $param;
 
+        $result['type'] = 'contact';
         // 'avatar_image_url'
         if(isset($result['avatar_image_url'])&&strlen($result['avatar_image_url'])>0){
             $result['avatar']['type'] = 'avatar';
@@ -129,7 +130,7 @@ class CustomModel
 
         if($param['userIdType'] == 'intercom_id'){
             $vendorUrl = $vendorUrl . '/' . $param['userId'];
-        }elseif($param['userIdType'] == 'user_id' || $param['userIdType'] == 'email'){
+        }elseif($param['userIdType'] == 'user_id'){
             $clientSetup['query'][$param['userIdType']] = $param['userId'];
         }
 

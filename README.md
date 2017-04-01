@@ -289,7 +289,7 @@ Delete lead.
 |------------|-------|----------
 | accessToken| String| Access token.
 | userId     | String| The lead identifier.
-| userIdType | String| The lead identifier type. One of: intercom_id, user_id, email.
+| userIdType | String| The lead identifier type. One of: intercom_id, user_id.
 
 ## Intercom.convertLeadToUser
 Convert Lead to Users.
