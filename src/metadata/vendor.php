@@ -2699,7 +2699,7 @@ return array (
                 'userIdType' => 'userIdType',
             ),
             'vendorUrl' => 'https://api.intercom.io/notes',
-            'method' => 'GET',
+            'method' => 'GET-RAW',
             'custom' => true,
         ),
         'getSingleNote' => array (
