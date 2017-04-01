@@ -198,8 +198,8 @@ class CustomModel
         $result = [];
 
         if(in_array($param['senderIdType'], ['intercom_id', 'user_id', 'email'])){
-            $result[$param['from']['type']] = 'user';
-            $result[$param['from']['senderIdType']] = $param['senderId'];
+            $result['from']['type'] = 'user';
+            $result['from'][$param['senderIdType']] = $param['senderId'];
         }
         $result['body'] = $param['body'];
 
