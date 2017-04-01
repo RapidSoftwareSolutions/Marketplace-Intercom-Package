@@ -310,7 +310,7 @@ class Router
 
                 $method = str_replace('-RAW', '', $method);
             }else{
-                if($method == 'GET'){
+                if($method == 'GET' || $method == 'DELETE'){
                     if(is_string($sendBody)){
                         $sendBody = json_decode($sendBody, true);
                     }
@@ -322,7 +322,7 @@ class Router
                     $clientSetup['body'] = $sendBody;
                 }
             }
-
+var_dump($clientSetup);
             $vendorResponse = $this->http->request($method, $url, $clientSetup);
 
             $responseBody = $vendorResponse->getBody()->getContents();
