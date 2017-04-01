@@ -198,6 +198,7 @@ class CustomModel
         $result = [];
 
         if(in_array($param['senderIdType'], ['intercom_id', 'user_id', 'email'])){
+            if($param['senderIdType']=='intercom_id'){ $param['senderIdType'] = 'id'; }
             $result['from']['type'] = 'user';
             $result['from'][$param['senderIdType']] = $param['senderId'];
         }
@@ -208,9 +209,10 @@ class CustomModel
     public static function createContactMessage($param, &$blockCustom, $vendorUrl, $accessToken){
         $result = [];
 
-        if(in_array($param['senderIdType'], ['intercom_id', 'user_id', 'email'])){
-            $result[$param['from']['type']] = 'contact';
-            $result[$param['from']['senderIdType']] = $param['senderId'];
+        if(in_array($param['senderIdType'], ['intercom_id', 'user_id'])){
+            if($param['senderIdType']=='intercom_id'){ $param['senderIdType'] = 'id'; }
+            $result['from']['type'] = 'contact';
+            $result['from'][$param['senderIdType']] = $param['senderId'];
         }
         $result['body'] = $param['body'];
 

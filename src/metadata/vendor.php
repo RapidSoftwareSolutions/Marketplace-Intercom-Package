@@ -1409,7 +1409,7 @@ return array (
                 array (
                     'name' => 'type',
                     'type' => 'String',
-                    'info' => 'Type of counts. One of: company, segment, tag, user, lead.',
+                    'info' => 'Type of counts. One of: user, company, conversation.',
                     'required' => false,
                 ),
             ),
@@ -1607,7 +1607,7 @@ return array (
                 array (
                     'name' => 'senderIdType',
                     'type' => 'String',
-                    'info' => 'The sender identifier type. One of: intercom_id, user_id, email.',
+                    'info' => 'The sender identifier type. One of: intercom_id, user_id.',
                     'required' => true,
                 ),
                 array (

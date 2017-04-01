@@ -475,7 +475,7 @@ Fetch app total counts.
 | Field      | Type  | Description
 |------------|-------|----------
 | accessToken| String| Access token.
-| type       | String| Type of counts. One of: company, segment, tag, user, lead.
+| type       | String| Type of counts. One of: user, company, conversation.
 
 ## Intercom.getAppConversationCount
 Fetch app conversation count.
