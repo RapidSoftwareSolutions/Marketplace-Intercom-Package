@@ -31,10 +31,19 @@ Create user by email.
 | lastSeenIp         | String | An ip address.
 | customAttributes   | JSON   | JSON Object, a hash of key - value pairs containing any other data about the user you want Intercom to store.
 | lastSeenUserAgent  | String | The user agent the user last visited your application with.
-| companies          | Array  | Array of JSON objects of companies. Example: [{"company_id" : "366","name" : "Serenity","monthly_spend" : 500}].
+| companies          | Array  | Array of JSON objects of companies.
 | lastRequestAt      | Number | The date the user last visited your application, UNIX timestamp.
 | updateLastRequestAt| Boolean| If true, instructs Intercom to update the user's last_request_at value.
 | newSession         | Boolean| If true, instructs Intercom to register the request as a session.
+
+#### Example of 'companies' field
+```json
+[{
+	"company_id": "366",
+	"name": "Serenity",
+	"monthly_spend": 500
+}]
+```
 
 ## Intercom.createUserById
 Create user by identifier.
@@ -49,10 +58,19 @@ Create user by identifier.
 | lastSeenIp         | String | An ip address.
 | customAttributes   | JSON   | JSON Object, a hash of key - value pairs containing any other data about the user you want Intercom to store.
 | lastSeenUserAgent  | String | The user agent the user last visited your application with.
-| companies          | Array  | Array of JSON objects of companies. Example: [{"company_id" : "366","name" : "Serenity","monthly_spend" : 500}].
+| companies          | Array  | Array of JSON objects of companies.
 | lastRequestAt      | Number | The date the user last visited your application, UNIX timestamp.
 | updateLastRequestAt| Boolean| If true, instructs Intercom to update the user's last_request_at value.
 | newSession         | Boolean| If true, instructs Intercom to register the request as a session.
+
+#### Example of 'companies' field
+```json
+[{
+	"company_id": "366",
+	"name": "Serenity",
+	"monthly_spend": 500
+}]
+```
 
 ## Intercom.updateUserByEmail
 Update user by email.
@@ -67,10 +85,19 @@ Update user by email.
 | lastSeenIp         | String | An ip address.
 | customAttributes   | JSON   | JSON Object, a hash of key - value pairs containing any other data about the user you want Intercom to store.
 | lastSeenUserAgent  | String | The user agent the user last visited your application with.
-| companies          | Array  | Array of JSON objects of companies. Example: [{"company_id" : "366","name" : "Serenity","monthly_spend" : 500}].
+| companies          | Array  | Array of JSON objects of companies.
 | lastRequestAt      | Number | The date the user last visited your application, UNIX timestamp.
 | updateLastRequestAt| Boolean| If true, instructs Intercom to update the user's last_request_at value.
 | newSession         | Boolean| If true, instructs Intercom to register the request as a session.
+
+#### Example of 'companies' field
+```json
+[{
+	"company_id": "366",
+	"name": "Serenity",
+	"monthly_spend": 500
+}]
+```
 
 ## Intercom.updateUserById
 Update user by identifier.
@@ -85,10 +112,19 @@ Update user by identifier.
 | lastSeenIp         | String | An ip address.
 | customAttributes   | JSON   | JSON Object, a hash of key - value pairs containing any other data about the user you want Intercom to store.
 | lastSeenUserAgent  | String | The user agent the user last visited your application with.
-| companies          | Array  | Array of JSON objects of companies. Example: [{"company_id" : "366","name" : "Serenity","monthly_spend" : 500}].
+| companies          | Array  | Array of JSON objects of companies.
 | lastRequestAt      | Number | The date the user last visited your application, UNIX timestamp.
 | updateLastRequestAt| Boolean| If true, instructs Intercom to update the user's last_request_at value.
 | newSession         | Boolean| If true, instructs Intercom to register the request as a session.
+
+#### Example of 'companies' field
+```json
+[{
+	"company_id": "366",
+	"name": "Serenity",
+	"monthly_spend": 500
+}]
+```
 
 ## Intercom.getUsers
 Fetch a list of users.
@@ -157,12 +193,31 @@ Create lead.
 | avatarImageUrl  | String| An avatar URL for the Lead.
 | userAgentData   | String| Data about the last user agent the Lead was seen using.
 | lastSeenIp      | String| An ip address.
-| companies       | Array | Array of JSON objects of companies. Example: [{"company_id" : "366","name" : "Serenity","monthly_spend" : 500}].
-| socialProfiles  | Array | Array of JSON objects, of social profiles associated with the Lead. Example: [{"name": "Twitter","id": "1235d3213","username": "th1sland","url": "http://twitter.com/th1sland"}].
+| companies       | Array | Array of JSON objects of companies.
+| socialProfiles  | Array | Array of JSON objects, of social profiles associated with the Lead.
 | segments        | String| Comma-separated list of segments the Lead.
 | tags            | String| Comma-separated list of tags associated with the Lead.
 | customAttributes| JSON  | JSON Object. The custom attributes you have set on the Lead.
 | locationData    | JSON  | JSON Object, of Location, relating to the Lead.
+
+#### Example of 'companies' field
+```json
+[{
+	"company_id": "366",
+	"name": "Serenity",
+	"monthly_spend": 500
+}]
+```
+
+#### Example of 'socialProfiles' field
+```json
+[{
+	"name": "Twitter",
+	"id": "1235d3213",
+	"username": "th1sland",
+	"url": "http://twitter.com/th1sland"
+}]
+```
 
 ## Intercom.updateLead
 Update lead.
@@ -177,12 +232,31 @@ Update lead.
 | avatarImageUrl  | String| An avatar URL for the Lead.
 | userAgentData   | String| Data about the last user agent the Lead was seen using.
 | lastSeenIp      | String| An ip address.
-| companies       | Array | Array of JSON objects of companies. Example: [{"company_id" : "366","name" : "Serenity","monthly_spend" : 500}].
-| socialProfiles  | Array | Array of JSON objects, of social profiles associated with the Lead. Example: [{"name": "Twitter","id": "1235d3213","username": "th1sland","url": "http://twitter.com/th1sland"}].
+| companies       | Array | Array of JSON objects of companies.
+| socialProfiles  | Array | Array of JSON objects, of social profiles associated with the Lead.
 | segments        | String| Comma-separated list of segments the Lead.
 | tags            | String| Comma-separated list of tags associated with the Lead.
 | customAttributes| JSON  | JSON Object. The custom attributes you have set on the Lead.
 | locationData    | JSON  | JSON Object, of Location, relating to the Lead.
+
+#### Example of 'companies' field
+```json
+[{
+	"company_id": "366",
+	"name": "Serenity",
+	"monthly_spend": 500
+}]
+```
+
+#### Example of 'socialProfiles' field
+```json
+[{
+	"name": "Twitter",
+	"id": "1235d3213",
+	"username": "th1sland",
+	"url": "http://twitter.com/th1sland"
+}]
+```
 
 ## Intercom.getLeads
 Fetch a list of all leads.
@@ -355,7 +429,20 @@ Add tag to User.
 |------------|-------|----------
 | accessToken| String| Access token.
 | name       | String| The name of the tag.
-| users      | Array | Array of JSON objects, of users user_id, intercom identifier or email. Example: [{"id" : "53427b7ecce5722303000003"},{"user_id" : "22"},{"email" : "a@b.com"}].
+| users      | Array | Array of JSON objects, of users user_id, intercom identifier or email.
+
+#### Example of 'users' field
+```json
+[{
+	"id": "53427b7ecce5722303000003"
+},
+{
+	"user_id": "22"
+},
+{
+	"email": "a@b.com"
+}]
+```
 
 ## Intercom.untagUsers
 Remove tag from User.
@@ -364,7 +451,18 @@ Remove tag from User.
 |------------|-------|----------
 | accessToken| String| Access token.
 | name       | String| The name of the tag.
-| users      | Array | Array of JSON objects, of users user_id, intercom identifier or email. Example: [{"id" : "53427b7ecce5722303000003","untag": true},{"user_id" : "22"}].
+| users      | Array | Array of JSON objects, of users user_id, intercom identifier or email.
+
+#### Example of 'users' field
+```json
+[{
+	"id": "53427b7ecce5722303000003",
+	"untag": true
+},
+{
+	"user_id": "22"
+}]
+```
 
 ## Intercom.tagCompany
 Add tag to Company.
@@ -373,7 +471,17 @@ Add tag to Company.
 |------------|-------|----------
 | accessToken| String| Access token.
 | name       | String| The name of the tag.
-| companies  | Array | Array of JSON objects, of companies company_id or intercom identifier. Example: [{"id" : "53427b7ecce5722303000003"},{"company_id" : "22"}].
+| companies  | Array | Array of JSON objects, of companies company_id or intercom identifier.
+
+#### Example of 'companies' field
+```json
+[{
+	"id": "53427b7ecce5722303000003"
+},
+{
+	"company_id": "22"
+}]
+```
 
 ## Intercom.untagCompany
 Remove tag from Company.
@@ -382,7 +490,18 @@ Remove tag from Company.
 |------------|-------|----------
 | accessToken| String| Access token.
 | name       | String| The name of the tag.
-| companies  | Array | Array of JSON objects, of companies company_id or intercom identifier. Example: [{"id" : "53427b7ecce5722303000003", "untag": true},{"company_id" : "22"}].
+| companies  | Array | Array of JSON objects, of companies company_id or intercom identifier.
+
+#### Example of 'companies' field
+```json
+[{
+	"id": "53427b7ecce5722303000003",
+	"untag": true
+},
+{
+	"company_id": "22"
+}]
+```
 
 ## Intercom.deleteTag
 Delete tag.
@@ -666,12 +785,38 @@ Update a Visitor.
 | lastRequestAt         | Number | The date the lead last visited your application, UNIX timestamp.
 | avatarImageUrl        | String | An avatar image URL for the Visitor.
 | unsubscribedFromEmails| Boolean| Whether the Visitor is unsubscribed from emails.
-| locationData          | JSON   | JSON Object. Location relating to the Visitor. Example: {"type": "location_data","city_name": "Dublin","continent_code": "EU","country_code": "IRL","country_name": "Ireland","latitude": 53.159233,"longitude": -6.723,"postal_code": null,"region_name": "Dublin","timezone": "Europe/Dublin"}.
+| locationData          | JSON   | JSON Object. Location relating to the Visitor.
 | userAgentData         | String | Data about the last user agent the Visitor was seen using.
 | lastSeenIp            | String | An ip address.
-| socialProfiles        | Array  | Array of JSON objects, of social profiles associated with the Visitor. Example: [{"name": "Twitter","id": "1235d3213","username": "th1sland","url": "http://twitter.com/th1sland"}].
+| socialProfiles        | Array  | Array of JSON objects, of social profiles associated with the Visitor.
 | segments              | String | Comma-separated list of segments the Visitor.
 | tags                  | String | Comma-separated list of tags associated with the Visitor.
+
+#### Example of 'locationData' field
+```json
+{
+	"type": "location_data",
+	"city_name": "Dublin",
+	"continent_code": "EU",
+	"country_code": "IRL",
+	"country_name": "Ireland",
+	"latitude": 53.159233,
+	"longitude": -6.723,
+	"postal_code": null,
+	"region_name": "Dublin",
+	"timezone": "Europe/Dublin"
+}
+```
+
+#### Example of 'socialProfiles' field
+```json
+[{
+	"name": "Twitter",
+	"id": "1235d3213",
+	"username": "th1sland",
+	"url": "http://twitter.com/th1sland"
+}]
+```
 
 ## Intercom.deleteVisitor
 Delete a visitor.
@@ -767,7 +912,27 @@ Creating bulk jobs for users.
 | Field      | Type  | Description
 |------------|-------|----------
 | accessToken| String| Access token.
-| items      | Array | Array of object, of users tasks. Example: [{"method": "post","data_type": "user","data": {"user_id": "25","email": "wash@serenity.io"}},{"method": "post","data_type": "user","data": {"user_id": "25","email": "zoe@serenity.io"}}].
+| items      | Array | Array of object, of users tasks.
+
+#### Example of 'items' field
+```json
+[{
+	"method": "post",
+	"data_type": "user",
+	"data": {
+		"user_id": "25",
+		"email": "wash@serenity.io"
+	}
+},
+{
+	"method": "post",
+	"data_type": "user",
+	"data": {
+		"user_id": "25",
+		"email": "zoe@serenity.io"
+	}
+}]
+```
 
 ## Intercom.createBulkLeadJob
 Bulk Lead Posting.
@@ -775,7 +940,29 @@ Bulk Lead Posting.
 | Field      | Type  | Description
 |------------|-------|----------
 | accessToken| String| Access token.
-| items      | Array | Array of object, of Leads. Example: [{"method": "post","data_type": "contact","data": {"phone": "123987456","email": "winstonsmith@truth.org","name": "Winston Smith"}},{"method": "post","data_type": "contact","data": {"phone": "654789321","email": "obrien@truth.org","name": "OBrien"}}].
+| items      | Array | Array of object, of Leads.
+
+#### Example of 'items' field
+```json
+[{
+	"method": "post",
+	"data_type": "contact",
+	"data": {
+		"phone": "123987456",
+		"email": "winstonsmith@truth.org",
+		"name": "Winston Smith"
+	}
+},
+{
+	"method": "post",
+	"data_type": "contact",
+	"data": {
+		"phone": "654789321",
+		"email": "obrien@truth.org",
+		"name": "OBrien"
+	}
+}]
+```
 
 ## Intercom.createBulkEventJob
 Bulk Event Posting.
@@ -783,7 +970,37 @@ Bulk Event Posting.
 | Field      | Type  | Description
 |------------|-------|----------
 | accessToken| String| Access token.
-| items      | Array | Array of object, of Events. Example: [{"method": "post","data_type": "event","data": {"event_name": "invited-friend","created_at": 1438944979,"user_id": "314159","metadata": {"invitee_email": "pi@example.org","invite_code": "ADDAFRIEND"}}},{"method": "post","data_type": "event","data": {"event_name": "ordered-item","created_at": 1438944980,"user_id": "314159","metadata": {"order_date": 1438944980,"stripe_invoice": "inv_3434343434"}}}].
+| items      | Array | Array of object, of Events.
+
+#### Example of 'items' field
+```json
+[{
+	"method": "post",
+	"data_type": "event",
+	"data": {
+		"event_name": "invited-friend",
+		"created_at": 1438944979,
+		"user_id": "314159",
+		"metadata": {
+			"invitee_email": "pi@example.org",
+			"invite_code": "ADDAFRIEND"
+		}
+	}
+},
+{
+	"method": "post",
+	"data_type": "event",
+	"data": {
+		"event_name": "ordered-item",
+		"created_at": 1438944980,
+		"user_id": "314159",
+		"metadata": {
+			"order_date": 1438944980,
+			"stripe_invoice": "inv_3434343434"
+		}
+	}
+}]
+```
 
 ## Intercom.getSingleBulkJob
 Fetch single job.

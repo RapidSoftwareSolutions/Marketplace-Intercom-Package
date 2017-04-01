@@ -95,7 +95,7 @@ return array (
                 array (
                     'name' => 'companies',
                     'type' => 'Array',
-                    'info' => 'Array of JSON objects of companies. Example: [{"company_id" : "366","name" : "Serenity","monthly_spend" : 500}].',
+                    'info' => 'Array of JSON objects of companies.',
                     'required' => false,
                 ),
                 array (
@@ -173,7 +173,7 @@ return array (
                 array (
                     'name' => 'companies',
                     'type' => 'Array',
-                    'info' => 'Array of JSON objects of companies. Example: [{"company_id" : "366","name" : "Serenity","monthly_spend" : 500}].',
+                    'info' => 'Array of JSON objects of companies.',
                     'required' => false,
                 ),
                 array (
@@ -251,7 +251,7 @@ return array (
                 array (
                     'name' => 'companies',
                     'type' => 'Array',
-                    'info' => 'Array of JSON objects of companies. Example: [{"company_id" : "366","name" : "Serenity","monthly_spend" : 500}].',
+                    'info' => 'Array of JSON objects of companies.',
                     'required' => false,
                 ),
                 array (
@@ -329,7 +329,7 @@ return array (
                 array (
                     'name' => 'companies',
                     'type' => 'Array',
-                    'info' => 'Array of JSON objects of companies. Example: [{"company_id" : "366","name" : "Serenity","monthly_spend" : 500}].',
+                    'info' => 'Array of JSON objects of companies.',
                     'required' => false,
                 ),
                 array (
@@ -551,13 +551,13 @@ return array (
                 array (
                     'name' => 'companies',
                     'type' => 'Array',
-                    'info' => 'Array of JSON objects of companies. Example: [{"company_id" : "366","name" : "Serenity","monthly_spend" : 500}].',
+                    'info' => 'Array of JSON objects of companies.',
                     'required' => false,
                 ),
                 array (
                     'name' => 'socialProfiles',
                     'type' => 'Array',
-                    'info' => 'Array of JSON objects, of social profiles associated with the Lead. Example: [{"name": "Twitter","id": "1235d3213","username": "th1sland","url": "http://twitter.com/th1sland"}].',
+                    'info' => 'Array of JSON objects, of social profiles associated with the Lead.',
                     'required' => false,
                 ),
                 array (
@@ -641,13 +641,13 @@ return array (
                 array (
                     'name' => 'companies',
                     'type' => 'Array',
-                    'info' => 'Array of JSON objects of companies. Example: [{"company_id" : "366","name" : "Serenity","monthly_spend" : 500}].',
+                    'info' => 'Array of JSON objects of companies.',
                     'required' => false,
                 ),
                 array (
                     'name' => 'socialProfiles',
                     'type' => 'Array',
-                    'info' => 'Array of JSON objects, of social profiles associated with the Lead. Example: [{"name": "Twitter","id": "1235d3213","username": "th1sland","url": "http://twitter.com/th1sland"}].',
+                    'info' => 'Array of JSON objects, of social profiles associated with the Lead.',
                     'required' => false,
                 ),
                 array (
@@ -1109,7 +1109,7 @@ return array (
                 array (
                     'name' => 'users',
                     'type' => 'Array',
-                    'info' => 'Array of JSON objects, of users user_id, intercom identifier or email. Example: [{"id" : "53427b7ecce5722303000003"},{"user_id" : "22"},{"email" : "a@b.com"}].',
+                    'info' => 'Array of JSON objects, of users user_id, intercom identifier or email.',
                     'required' => true,
                 ),
             ),
@@ -1133,7 +1133,7 @@ return array (
                 array (
                     'name' => 'users',
                     'type' => 'Array',
-                    'info' => 'Array of JSON objects, of users user_id, intercom identifier or email. Example: [{"id" : "53427b7ecce5722303000003","untag": true},{"user_id" : "22"}].',
+                    'info' => 'Array of JSON objects, of users user_id, intercom identifier or email.',
                     'required' => true,
                 ),
             ),
@@ -1157,7 +1157,7 @@ return array (
                 array (
                     'name' => 'companies',
                     'type' => 'Array',
-                    'info' => 'Array of JSON objects, of companies company_id or intercom identifier. Example: [{"id" : "53427b7ecce5722303000003"},{"company_id" : "22"}].',
+                    'info' => 'Array of JSON objects, of companies company_id or intercom identifier.',
                     'required' => true,
                 ),
             ),
@@ -1181,7 +1181,7 @@ return array (
                 array (
                     'name' => 'companies',
                     'type' => 'Array',
-                    'info' => 'Array of JSON objects, of companies company_id or intercom identifier. Example: [{"id" : "53427b7ecce5722303000003", "untag": true},{"company_id" : "22"}].',
+                    'info' => 'Array of JSON objects, of companies company_id or intercom identifier.',
                     'required' => true,
                 ),
             ),
@@ -1925,7 +1925,7 @@ return array (
                 array (
                     'name' => 'locationData',
                     'type' => 'JSON',
-                    'info' => 'JSON Object. Location relating to the Visitor. Example: {"type": "location_data","city_name": "Dublin","continent_code": "EU","country_code": "IRL","country_name": "Ireland","latitude": 53.159233,"longitude": -6.723,"postal_code": null,"region_name": "Dublin","timezone": "Europe/Dublin"}.',
+                    'info' => 'JSON Object. Location relating to the Visitor.',
                     'required' => false,
                 ),
                 array (
@@ -1943,7 +1943,7 @@ return array (
                 array (
                     'name' => 'socialProfiles',
                     'type' => 'Array',
-                    'info' => 'Array of JSON objects, of social profiles associated with the Visitor. Example: [{"name": "Twitter","id": "1235d3213","username": "th1sland","url": "http://twitter.com/th1sland"}].',
+                    'info' => 'Array of JSON objects, of social profiles associated with the Visitor.',
                     'required' => false,
                 ),
                 array (
@@ -2201,7 +2201,7 @@ return array (
                 array (
                     'name' => 'items',
                     'type' => 'Array',
-                    'info' => 'Array of object, of users tasks. Example: [{"method": "post","data_type": "user","data": {"user_id": "25","email": "wash@serenity.io"}},{"method": "post","data_type": "user","data": {"user_id": "25","email": "zoe@serenity.io"}}].',
+                    'info' => 'Array of object, of users tasks.',
                     'required' => true,
                 ),
             ),
@@ -2219,7 +2219,7 @@ return array (
                 array (
                     'name' => 'items',
                     'type' => 'Array',
-                    'info' => 'Array of object, of Leads. Example: [{"method": "post","data_type": "contact","data": {"phone": "123987456","email": "winstonsmith@truth.org","name": "Winston Smith"}},{"method": "post","data_type": "contact","data": {"phone": "654789321","email": "obrien@truth.org","name": "OBrien"}}].',
+                    'info' => 'Array of object, of Leads.',
                     'required' => true,
                 ),
             ),
@@ -2237,7 +2237,7 @@ return array (
                 array (
                     'name' => 'items',
                     'type' => 'Array',
-                    'info' => 'Array of object, of Events. Example: [{"method": "post","data_type": "event","data": {"event_name": "invited-friend","created_at": 1438944979,"user_id": "314159","metadata": {"invitee_email": "pi@example.org","invite_code": "ADDAFRIEND"}}},{"method": "post","data_type": "event","data": {"event_name": "ordered-item","created_at": 1438944980,"user_id": "314159","metadata": {"order_date": 1438944980,"stripe_invoice": "inv_3434343434"}}}].',
+                    'info' => 'Array of object, of Events.',
                     'required' => true,
                 ),
             ),
