@@ -322,7 +322,7 @@ class Router
                     $clientSetup['body'] = $sendBody;
                 }
             }
-var_dump($clientSetup);
+
             $vendorResponse = $this->http->request($method, $url, $clientSetup);
 
             $responseBody = $vendorResponse->getBody()->getContents();
