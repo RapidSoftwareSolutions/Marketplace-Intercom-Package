@@ -1009,6 +1009,12 @@
                     "required": true
                 },
                 {
+                    "name": "companyId",
+                    "type": "String",
+                    "info": "The company id you have defined for the company.",
+                    "required": true
+                },
+                {
                     "name": "monthlySpend",
                     "type": "String",
                     "info": "How much revenue the company generates for your business.",
