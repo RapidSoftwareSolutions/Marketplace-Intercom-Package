@@ -242,6 +242,7 @@ Create company.
 |-----------------|-------|----------
 | accessToken     | String| Access token.
 | name            | String| The name of the company.
+| companyId       | String| The company id you have defined for the company.
 | monthlySpend    | String| How much revenue the company generates for your business.
 | plan            | String| The name of the plan you have associated with the company.
 | customAttributes| JSON  | JSON Object, a hash of key - value pairs containing any other data about the company you want Intercom to store.

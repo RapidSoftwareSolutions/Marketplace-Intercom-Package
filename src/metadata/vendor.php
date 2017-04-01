@@ -819,6 +819,12 @@ return array (
                     'required' => true,
                 ),
                 array (
+                    'name' => 'companyId',
+                    'type' => 'String',
+                    'info' => 'The company id you have defined for the company.',
+                    'required' => true,
+                ),
+                array (
                     'name' => 'monthlySpend',
                     'type' => 'String',
                     'info' => 'How much revenue the company generates for your business.',
@@ -2493,6 +2499,7 @@ return array (
             'dictionary' => array (
                 'accessToken' => 'accessToken',
                 'name' => 'name',
+                'companyId' => 'company_id',
                 'monthlySpend' => 'monthly_spend',
                 'plan' => 'plan',
                 'customAttributes' => 'custom_attributes',
