@@ -2,12 +2,12 @@
 
 # Intercom Package
 Connect to the Intercom Customer Service API to access data and build integrations for this chat app. Test an API call and export the code snippet into your app.
-* Domain: intercom.com
+* Domain: [Intercom](http://intercom.com)
 * Credentials: clientId, clientSecret
 
 ## How to get credentials: 
-0. Item one 
-1. Item two 
+0. Go to [Intercom Dashboard](https://app.intercom.com/developers/l9ug0x40/access-token) 
+1. Copy clientId and clientSecret and use them to generate accessToken.
 
 ## Intercom.getAccessToken
 Fetch access token.
