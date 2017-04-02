@@ -14,8 +14,8 @@ Fetch access token.
 
 | Field       | Type  | Description
 |-------------|-------|----------
-| clientId    | String| Client identifier from your credentials.
-| clientSecret| String| Client secret from your credentials.
+| clientId    | credentials| Client identifier from your credentials.
+| clientSecret| credentials| Client secret from your credentials.
 | code        | String| This is automatically passed by the redirect.
 
 ## Intercom.createUserByEmail
