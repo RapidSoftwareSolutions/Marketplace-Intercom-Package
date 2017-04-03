@@ -22,13 +22,13 @@ return array (
             'args' => array (
                 array (
                     'name' => 'clientId',
-                    'type' => 'String',
+                    'type' => 'credentials',
                     'info' => 'Client identifier from your credentials.',
                     'required' => true,
                 ),
                 array (
                     'name' => 'clientSecret',
-                    'type' => 'String',
+                    'type' => 'credentials',
                     'info' => 'Client secret from your credentials.',
                     'required' => true,
                 ),

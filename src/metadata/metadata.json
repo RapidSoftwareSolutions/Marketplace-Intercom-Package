@@ -22,13 +22,13 @@
             "args": [
                 {
                     "name": "clientId",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "Client identifier from your credentials.",
                     "required": true
                 },
                 {
                     "name": "clientSecret",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "Client secret from your credentials.",
                     "required": true
                 },
