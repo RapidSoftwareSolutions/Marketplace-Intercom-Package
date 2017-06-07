@@ -4,56 +4,61 @@ namespace Core;
 
 use SebastianBergmann\Comparator\DateTimeComparator;
 
-if ( ! defined( 'RAPID_IN' ) ) exit( 'No direct script access allowed' );
+if (!defined('RAPID_IN')) exit('No direct script access allowed');
 
 /**
  * Custom Model
  */
 class CustomModel
 {
-    public static function getSingleUser($param, &$blockCustom, &$vendorUrl, $accessToken){
+    public static function getSingleUser($param, &$blockCustom, &$vendorUrl, $accessToken)
+    {
         $clientSetup = [];
         $clientSetup['headers']['Content-Type'] = 'application/json';
         $clientSetup['headers']['Accept'] = 'application/json';
         $clientSetup['headers']['Authorization'] = 'Bearer ' . $accessToken;
 
-        if($param['userIdType'] == 'intercom_id'){
+        if ($param['userIdType'] == 'intercom_id') {
             $vendorUrl = $vendorUrl . '/' . $param['userId'];
-        }elseif($param['userIdType'] == 'user_id' || $param['userIdType'] == 'email'){
+        } elseif ($param['userIdType'] == 'user_id' || $param['userIdType'] == 'email') {
             $clientSetup['query'][$param['userIdType']] = $param['userId'];
         }
 
         return $clientSetup;
     }
-    public static function deleteUser($param, &$blockCustom, &$vendorUrl, $accessToken){
+
+    public static function deleteUser($param, &$blockCustom, &$vendorUrl, $accessToken)
+    {
         $clientSetup = [];
         $clientSetup['headers']['Content-Type'] = 'application/json';
         $clientSetup['headers']['Accept'] = 'application/json';
         $clientSetup['headers']['Authorization'] = 'Bearer ' . $accessToken;
 
-        if($param['userIdType'] == 'intercom_id'){
+        if ($param['userIdType'] == 'intercom_id') {
             $vendorUrl = $vendorUrl . '/' . $param['userId'];
-        }elseif($param['userIdType'] == 'user_id' || $param['userIdType'] == 'email'){
+        } elseif ($param['userIdType'] == 'user_id' || $param['userIdType'] == 'email') {
             $clientSetup['query'][$param['userIdType']] = $param['userId'];
         }
 
         return $clientSetup;
     }
-    public static function createLead($param, &$blockCustom, $vendorUrl, $accessToken){
+
+    public static function createLead($param, &$blockCustom, $vendorUrl, $accessToken)
+    {
         $result = $param;
 
         $result['type'] = 'contact';
         // 'avatar_image_url'
-        if(isset($result['avatar_image_url'])&&strlen($result['avatar_image_url'])>0){
+        if (isset($result['avatar_image_url']) && strlen($result['avatar_image_url']) > 0) {
             $result['avatar']['type'] = 'avatar';
             $result['avatar']['image_url'] = $result['avatar_image_url'];
             unset($result['avatar_image_url']);
         }
         // 'segments'
-        if(isset($param['segments'])&&strlen($param['segments'])>0){
-            $items = explode(',', $param['segments']);
+        if (isset($param['segments']) && strlen($param['segments']) > 0) {
+            $items = is_array($param['segments']) ? $param['segments'] : explode(',', $param['segments']);
             $itemsObj = [];
-            foreach($items as $item){
+            foreach ($items as $item) {
                 $itemsObj[] = ['id' => trim($item)];
             }
             $result['segments'] = '';
@@ -61,10 +66,10 @@ class CustomModel
             $result['segments']['segments'] = $itemsObj;
         }
         // 'tags'
-        if(isset($param['tags'])&&strlen($param['tags'])>0){
-            $items = explode(',', $param['tags']);
+        if (isset($param['tags']) && strlen($param['tags']) > 0) {
+            $items = is_array($param['tags']) ? $param['tags'] : explode(',', $param['tags']);
             $itemsObj = [];
-            foreach($items as $item){
+            foreach ($items as $item) {
                 $itemsObj[] = ['id' => trim($item)];
             }
             $result['tags'] = '';
@@ -72,22 +77,25 @@ class CustomModel
             $result['tags']['tags'] = $itemsObj;
         }
 
+
         return $result;
     }
-    public static function updateLead($param, &$blockCustom, $vendorUrl, $accessToken){
+
+    public static function updateLead($param, &$blockCustom, $vendorUrl, $accessToken)
+    {
         $result = $param;
 
         // 'avatar_image_url'
-        if(isset($result['avatar_image_url'])&&strlen($result['avatar_image_url'])>0){
+        if (isset($result['avatar_image_url']) && strlen($result['avatar_image_url']) > 0) {
             $result['avatar']['type'] = 'avatar';
             $result['avatar']['image_url'] = $result['avatar_image_url'];
             unset($result['avatar_image_url']);
         }
         // 'segments'
-        if(isset($param['segments'])&&strlen($param['segments'])>0){
-            $items = explode(',', $param['segments']);
+        if (isset($param['segments']) && strlen($param['segments']) > 0) {
+            $items = is_array($param['segments']) ? $param['segments'] : explode(',', $param['segments']);
             $itemsObj = [];
-            foreach($items as $item){
+            foreach ($items as $item) {
                 $itemsObj[] = ['id' => trim($item)];
             }
             $result['segments'] = '';
@@ -95,10 +103,10 @@ class CustomModel
             $result['segments']['segments'] = $itemsObj;
         }
         // 'tags'
-        if(isset($param['tags'])&&strlen($param['tags'])>0){
-            $items = explode(',', $param['tags']);
+        if (isset($param['tags']) && strlen($param['tags']) > 0) {
+            $items = is_array($param['tags']) ? $param['tags'] : explode(',', $param['tags']);
             $itemsObj = [];
-            foreach($items as $item){
+            foreach ($items as $item) {
                 $itemsObj[] = ['id' => trim($item)];
             }
             $result['tags'] = '';
@@ -108,76 +116,90 @@ class CustomModel
 
         return $result;
     }
-    public static function getSingleLead($param, &$blockCustom, &$vendorUrl, $accessToken){
+
+    public static function getSingleLead($param, &$blockCustom, &$vendorUrl, $accessToken)
+    {
         $clientSetup = [];
         $clientSetup['headers']['Content-Type'] = 'application/json';
         $clientSetup['headers']['Accept'] = 'application/json';
         $clientSetup['headers']['Authorization'] = 'Bearer ' . $accessToken;
 
-        if($param['userIdType'] == 'intercom_id'){
+        if ($param['userIdType'] == 'intercom_id') {
             $vendorUrl = $vendorUrl . '/' . $param['userId'];
-        }elseif($param['userIdType'] == 'user_id' || $param['userIdType'] == 'email'){
+        } elseif ($param['userIdType'] == 'user_id' || $param['userIdType'] == 'email') {
             $clientSetup['query'][$param['userIdType']] = $param['userId'];
         }
 
         return $clientSetup;
     }
-    public static function deleteLead($param, &$blockCustom, &$vendorUrl, $accessToken){
+
+    public static function deleteLead($param, &$blockCustom, &$vendorUrl, $accessToken)
+    {
         $clientSetup = [];
         $clientSetup['headers']['Content-Type'] = 'application/json';
         $clientSetup['headers']['Accept'] = 'application/json';
         $clientSetup['headers']['Authorization'] = 'Bearer ' . $accessToken;
 
-        if($param['userIdType'] == 'intercom_id'){
+        if ($param['userIdType'] == 'intercom_id') {
             $vendorUrl = $vendorUrl . '/' . $param['userId'];
-        }elseif($param['userIdType'] == 'user_id'){
+        } elseif ($param['userIdType'] == 'user_id') {
             $clientSetup['query'][$param['userIdType']] = $param['userId'];
         }
 
         return $clientSetup;
     }
-    public static function convertLeadToUser($param, &$blockCustom, $vendorUrl, $accessToken){
+
+    public static function convertLeadToUser($param, &$blockCustom, $vendorUrl, $accessToken)
+    {
         $result = [];
-        if(in_array($param['leadIdType'], ['intercom_id', 'user_id', 'email'])){
-            if($param['leadIdType']=='intercom_id'){ $param['leadIdType'] = 'id'; }
+        if (in_array($param['leadIdType'], ['intercom_id', 'user_id', 'email'])) {
+            if ($param['leadIdType'] == 'intercom_id') {
+                $param['leadIdType'] = 'id';
+            }
             $result['contact'][$param['leadIdType']] = $param['leadId'];
         }
-        if(isset($param['user_id'])){
+        if (isset($param['user_id'])) {
             $result['user']['user_id'] = $param['user_id'];
         }
 
         return $result;
     }
-    public static function createNote($param, &$blockCustom, $vendorUrl, $accessToken){
+
+    public static function createNote($param, &$blockCustom, $vendorUrl, $accessToken)
+    {
         $result = [];
-        if(in_array($param['userIdType'], ['intercom_id', 'user_id', 'email'])){
-            if($param['userIdType'] == 'intercom_id'){
+        if (in_array($param['userIdType'], ['intercom_id', 'user_id', 'email'])) {
+            if ($param['userIdType'] == 'intercom_id') {
                 $param['userIdType'] = 'id';
             }
             $result['user'][$param['userIdType']] = $param['userId'];
         }
         $result['body'] = $param['body'];
-        if(isset($param['admin_id'])&&strlen($param['admin_id'])>0){
+        if (isset($param['admin_id']) && strlen($param['admin_id']) > 0) {
             $result['admin_id'] = $param['admin_id'];
         }
 
         return $result;
     }
-    public static function getUserNotes($param, &$blockCustom, &$vendorUrl, $accessToken){
+
+    public static function getUserNotes($param, &$blockCustom, &$vendorUrl, $accessToken)
+    {
         $clientSetup = [];
         $clientSetup['headers']['Content-Type'] = 'application/json';
         $clientSetup['headers']['Accept'] = 'application/json';
         $clientSetup['headers']['Authorization'] = 'Bearer ' . $accessToken;
 
-        if($param['userIdType'] == 'intercom_id'){
+        if ($param['userIdType'] == 'intercom_id') {
             $vendorUrl = $vendorUrl . '/' . $param['userId'];
-        }elseif($param['userIdType'] == 'user_id' || $param['userIdType'] == 'email'){
+        } elseif ($param['userIdType'] == 'user_id' || $param['userIdType'] == 'email') {
             $clientSetup['query'][$param['userIdType']] = $param['userId'];
         }
 
         return $clientSetup;
     }
-    public static function createAdminMessage($param, &$blockCustom, $vendorUrl, $accessToken){
+
+    public static function createAdminMessage($param, &$blockCustom, $vendorUrl, $accessToken)
+    {
         $result = [];
 
         $result['from']['type'] = 'admin';
@@ -189,17 +211,21 @@ class CustomModel
         $result['message_type'] = $param['message_type'];
         $result['subject'] = $param['subject'];
         $result['body'] = $param['body'];
-        if(isset($param['template'])){
+        if (isset($param['template'])) {
             $result['template'] = $param['template'];
         }
 
         return $result;
     }
-    public static function createUserMessage($param, &$blockCustom, $vendorUrl, $accessToken){
+
+    public static function createUserMessage($param, &$blockCustom, $vendorUrl, $accessToken)
+    {
         $result = [];
 
-        if(in_array($param['senderIdType'], ['intercom_id', 'user_id', 'email'])){
-            if($param['senderIdType']=='intercom_id'){ $param['senderIdType'] = 'id'; }
+        if (in_array($param['senderIdType'], ['intercom_id', 'user_id', 'email'])) {
+            if ($param['senderIdType'] == 'intercom_id') {
+                $param['senderIdType'] = 'id';
+            }
             $result['from']['type'] = 'user';
             $result['from'][$param['senderIdType']] = $param['senderId'];
         }
@@ -207,11 +233,15 @@ class CustomModel
 
         return $result;
     }
-    public static function createContactMessage($param, &$blockCustom, $vendorUrl, $accessToken){
+
+    public static function createContactMessage($param, &$blockCustom, $vendorUrl, $accessToken)
+    {
         $result = [];
 
-        if(in_array($param['senderIdType'], ['intercom_id', 'user_id'])){
-            if($param['senderIdType']=='intercom_id'){ $param['senderIdType'] = 'id'; }
+        if (in_array($param['senderIdType'], ['intercom_id', 'user_id'])) {
+            if ($param['senderIdType'] == 'intercom_id') {
+                $param['senderIdType'] = 'id';
+            }
             $result['from']['type'] = 'contact';
             $result['from'][$param['senderIdType']] = $param['senderId'];
         }
@@ -219,59 +249,67 @@ class CustomModel
 
         return $result;
     }
-    public static function getSingleUserConversations($param, &$blockCustom, $vendorUrl, $accessToken){
+
+    public static function getSingleUserConversations($param, &$blockCustom, $vendorUrl, $accessToken)
+    {
         $result = [];
 
-        if(in_array($param['userIdType'], ['intercom_user_id', 'user_id', 'email'])){
+        if (in_array($param['userIdType'], ['intercom_user_id', 'user_id', 'email'])) {
             $result[$param['type']] = 'user';
             $result[$param['userIdType']] = $param['userId'];
         }
 
         return $result;
     }
-    public static function replyToUserComment($param, &$blockCustom, $vendorUrl, $accessToken){
+
+    public static function replyToUserComment($param, &$blockCustom, $vendorUrl, $accessToken)
+    {
         $result = [];
 
         $result['type'] = 'user';
         $result['message_type'] = 'comment';
         $result['body'] = $param['body'];
-        if(in_array($param['userIdType'], ['intercom_user_id', 'user_id', 'email'])){
+        if (in_array($param['userIdType'], ['intercom_user_id', 'user_id', 'email'])) {
             $result[$param['userIdType']] = $param['userId'];
         }
-        if(isset($param['attachment_urls'])&&count($param['attachment_urls'])>0) {
+        if (isset($param['attachment_urls']) && count($param['attachment_urls']) > 0) {
             $result['attachment_urls'] = $param['attachment_urls'];
         }
 
         return $result;
     }
-    public static function getSingleVisitor($param, &$blockCustom, &$vendorUrl, $accessToken){
+
+    public static function getSingleVisitor($param, &$blockCustom, &$vendorUrl, $accessToken)
+    {
         $clientSetup = [];
         $clientSetup['headers']['Content-Type'] = 'application/json';
         $clientSetup['headers']['Accept'] = 'application/json';
         $clientSetup['headers']['Authorization'] = 'Bearer ' . $accessToken;
 
-        if($param['userIdType'] == 'intercom_id'){
+        if ($param['userIdType'] == 'intercom_id') {
             $vendorUrl = $vendorUrl . '/' . $param['userId'];
-        }elseif($param['userIdType'] == 'user_id' || $param['userIdType'] == 'email'){
+        } elseif ($param['userIdType'] == 'user_id' || $param['userIdType'] == 'email') {
             $clientSetup['query'][$param['userIdType']] = $param['userId'];
         }
 
         return $clientSetup;
     }
-    public static function updateVisitor($param, &$blockCustom, $vendorUrl, $accessToken){
+
+    public static function updateVisitor($param, &$blockCustom, $vendorUrl, $accessToken)
+    {
         $result = $param;
 
         // 'avatar_image_url'
-        if(isset($result['avatar_image_url'])&&strlen($result['avatar_image_url'])>0){
+        if (isset($result['avatar_image_url']) && strlen($result['avatar_image_url']) > 0) {
             $result['avatar']['type'] = 'avatar';
             $result['avatar']['image_url'] = $result['avatar_image_url'];
             unset($result['avatar_image_url']);
         }
         // 'segments'
-        if(isset($param['segments'])&&strlen($param['segments'])>0){
-            $items = explode(',', $param['segments']);
+        if (isset($param['segments']) && strlen($param['segments']) > 0) {
+            $items = is_array($param['segments']) ? $param['segments'] : explode(',', $param['segments']);
             $itemsObj = [];
-            foreach($items as $item){
+            foreach ($items as $item) {
                 $itemsObj[] = ['id' => trim($item)];
             }
             $result['segments'] = '';
@@ -279,10 +317,10 @@ class CustomModel
             $result['segments']['segments'] = $itemsObj;
         }
         // 'tags'
-        if(isset($param['tags'])&&strlen($param['tags'])>0){
-            $items = explode(',', $param['tags']);
+        if (isset($param['tags']) && strlen($param['tags']) > 0) {
+            $items = is_array($param['tags']) ? $param['tags'] : explode(',', $param['tags']);
             $itemsObj = [];
-            foreach($items as $item){
+            foreach ($items as $item) {
                 $itemsObj[] = ['id' => trim($item)];
             }
             $result['tags'] = '';
@@ -290,28 +328,41 @@ class CustomModel
             $result['tags']['tags'] = $itemsObj;
         }
 
+        if (isset($param['last_request_at']) && strlen($param['last_request_at']) > 0) {
+            if (is_numeric($param['last_request_at'])) {
+                $result['last_request_at'] = $param['last_request_at'];
+            } else {
+                $dateTime = new \DateTime($param['last_request_at']);
+                $result['last_request_at'] = $dateTime->format('U');
+            }
+        }
+
         return $result;
     }
-    public static function convertVisitorToLead($param, &$blockCustom, $vendorUrl, $accessToken){
+
+    public static function convertVisitorToLead($param, &$blockCustom, $vendorUrl, $accessToken)
+    {
         $result = [];
-        if(in_array($param['visitorUserIdType'], ['intercom_id', 'user_id', 'email'])){
+        if (in_array($param['visitorUserIdType'], ['intercom_id', 'user_id', 'email'])) {
             $result['visitor'][$param['visitorUserIdType']] = $param['visitorUserId'];
         }
-        if(isset($param['lead_id'])){
+        if (isset($param['lead_id'])) {
             $result['contact']['user_id'] = $param['lead_id'];
         }
         $result['type'] = 'lead';
 
         return $result;
     }
-    public static function createSubscription($param, &$blockCustom, $vendorUrl, $accessToken){
+
+    public static function createSubscription($param, &$blockCustom, $vendorUrl, $accessToken)
+    {
         $result = $param;
 
         // 'topics'
-        if(isset($param['topics'])&&strlen($param['topics'])>0){
-            $items = explode(',', $param['topics']);
+        if (isset($param['topics']) && strlen($param['topics']) > 0) {
+            $items = is_array($param['topics']) ? $param['topics'] : explode(',', $param['topics']);
             $itemsObj = [];
-            foreach($items as $item){
+            foreach ($items as $item) {
                 $itemsObj[] = trim($item);
             }
             $result['topics'] = '';
@@ -320,14 +371,16 @@ class CustomModel
 
         return $result;
     }
-    public static function createEventWebhookSubscription($param, &$blockCustom, $vendorUrl, $accessToken){
+
+    public static function createEventWebhookSubscription($param, &$blockCustom, $vendorUrl, $accessToken)
+    {
         $result = $param;
 
         // 'topics'
-        if(isset($param['metadata_event_names'])&&strlen($param['metadata_event_names'])>0){
-            $items = explode(',', $param['metadata_event_names']);
+        if (isset($param['metadata_event_names']) && strlen($param['metadata_event_names']) > 0) {
+            $items =is_array($param['metadata_event_names']) ? $param['metadata_event_names'] : explode(',', $param['metadata_event_names']);
             $itemsObj = [];
-            foreach($items as $item){
+            foreach ($items as $item) {
                 $itemsObj[] = trim($item);
             }
             unset($result['metadata_event_names']);
@@ -337,20 +390,112 @@ class CustomModel
 
         return $result;
     }
-    public static function updateEventWebhookSubscription($param, &$blockCustom, $vendorUrl, $accessToken){
+
+    public static function updateEventWebhookSubscription($param, &$blockCustom, $vendorUrl, $accessToken)
+    {
         $result = $param;
 
         // 'topics'
-        if(isset($param['metadata_event_names'])&&strlen($param['metadata_event_names'])>0){
-            $items = explode(',', $param['metadata_event_names']);
+        if (isset($param['metadata_event_names']) && strlen($param['metadata_event_names']) > 0) {
+            $items =is_array($param['metadata_event_names']) ? $param['metadata_event_names'] : explode(',', $param['metadata_event_names']);
             $itemsObj = [];
-            foreach($items as $item){
+            foreach ($items as $item) {
                 $itemsObj[] = trim($item);
             }
             unset($result['metadata_event_names']);
             $result['metadata']['event_names'] = $itemsObj;
         }
         $result['topics'] = ["event.created"];
+
+        return $result;
+    }
+
+    public static function createUserByEmail($param, &$blockCustom, $vendorUrl, $accessToken)
+    {
+        $result = $param;
+
+
+        // 'topics'
+        if (isset($param['last_request_at']) && strlen($param['last_request_at']) > 0) {
+            if (is_numeric($param['last_request_at'])) {
+                $result['last_request_at'] = $param['last_request_at'];
+            } else {
+                $dateTime = new \DateTime($param['last_request_at']);
+                $result['last_request_at'] = $dateTime->format('U');
+            }
+        }
+
+        return $result;
+    }
+
+    public static function createUserById($param, &$blockCustom, $vendorUrl, $accessToken)
+    {
+        $result = $param;
+
+
+        // 'topics'
+        if (isset($param['last_request_at']) && strlen($param['last_request_at']) > 0) {
+            if (is_numeric($param['last_request_at'])) {
+                $result['last_request_at'] = $param['last_request_at'];
+            } else {
+                $dateTime = new \DateTime($param['last_request_at']);
+                $result['last_request_at'] = $dateTime->format('U');
+            }
+        }
+
+        return $result;
+    }
+
+    public static function updateUserByEmail($param, &$blockCustom, $vendorUrl, $accessToken)
+    {
+        $result = $param;
+
+
+        // 'topics'
+        if (isset($param['last_request_at']) && strlen($param['last_request_at']) > 0) {
+            if (is_numeric($param['last_request_at'])) {
+                $result['last_request_at'] = $param['last_request_at'];
+            } else {
+                $dateTime = new \DateTime($param['last_request_at']);
+                $result['last_request_at'] = $dateTime->format('U');
+            }
+        }
+
+        return $result;
+    }
+
+    public static function updateUserById($param, &$blockCustom, $vendorUrl, $accessToken)
+    {
+        $result = $param;
+
+
+        // 'topics'
+        if (isset($param['last_request_at']) && strlen($param['last_request_at']) > 0) {
+            if (is_numeric($param['last_request_at'])) {
+                $result['last_request_at'] = $param['last_request_at'];
+            } else {
+                $dateTime = new \DateTime($param['last_request_at']);
+                $result['last_request_at'] = $dateTime->format('U');
+            }
+        }
+
+        return $result;
+    }
+
+    public static function submitEvent($param, &$blockCustom, $vendorUrl, $accessToken)
+    {
+        $result = $param;
+
+
+        // 'topics'
+        if (isset($param['created_at']) && strlen($param['created_at']) > 0) {
+            if (is_numeric($param['created_at'])) {
+                $result['created_at'] = $param['created_at'];
+            } else {
+                $dateTime = new \DateTime($param['created_at']);
+                $result['created_at'] = $dateTime->format('U');
+            }
+        }
 
         return $result;
     }

@@ -1,38 +1,38 @@
 <?php
-return array (
+return array(
     'package' => 'Intercom',
     'tagline' => 'Access data and build integrations for this chat app.',
     'description' => 'Connect to the Intercom Customer Service API to access data and build integrations for this chat app. Test an API call and export the code snippet into your app.',
     'image' => 'https://logo.clearbit.com/intercom.com?s=128',
     'repo' => 'https://github.com/RapidSoftwareSolutions/Marketplace-Intercom-Package',
-    'keywords' => array (
+    'keywords' => array(
         'API', 'Intercom',
     ),
-    'accounts' => array (
+    'accounts' => array(
         'domain' => 'intercom.com',
-        'credentials' => array (
+        'credentials' => array(
             'clientId',
             'clientSecret'
         ),
     ),
-    'blocks' => array (
-        array (
+    'blocks' => array(
+        array(
             'name' => 'getAccessToken',
             'description' => 'Fetch access token.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'clientId',
                     'type' => 'credentials',
                     'info' => 'Client identifier from your credentials.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'clientSecret',
                     'type' => 'credentials',
                     'info' => 'Client secret from your credentials.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'code',
                     'type' => 'String',
                     'info' => 'This is automatically passed by the redirect.',
@@ -40,77 +40,77 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'createUserByEmail',
             'description' => 'Create user by email.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'email',
                     'type' => 'String',
                     'info' => 'The user\'s email address.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'userId',
                     'type' => 'String',
                     'info' => 'A unique string identifier for the user.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'phone',
                     'type' => 'String',
                     'info' => 'The user\'s phone number.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'name',
                     'type' => 'String',
                     'info' => 'The user\'s full name.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'lastSeenIp',
                     'type' => 'String',
                     'info' => 'An ip address.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'customAttributes',
                     'type' => 'JSON',
                     'info' => 'JSON Object, a hash of key - value pairs containing any other data about the user you want Intercom to store.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'lastSeenUserAgent',
                     'type' => 'String',
                     'info' => 'The user agent the user last visited your application with.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'companies',
                     'type' => 'Array',
                     'info' => 'Array of JSON objects of companies.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'lastRequestAt',
                     'type' => 'Number',
                     'info' => 'The date the user last visited your application, UNIX timestamp.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'updateLastRequestAt',
                     'type' => 'Boolean',
                     'info' => 'If true, instructs Intercom to update the user\'s last_request_at value.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'newSession',
                     'type' => 'Boolean',
                     'info' => 'If true, instructs Intercom to register the request as a session.',
@@ -118,77 +118,77 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'createUserById',
             'description' => 'Create user by identifier.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'userId',
                     'type' => 'String',
                     'info' => 'A unique string identifier for the user.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'email',
                     'type' => 'String',
                     'info' => 'The user\'s email address.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'phone',
                     'type' => 'String',
                     'info' => 'The user\'s phone number.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'name',
                     'type' => 'String',
                     'info' => 'The user\'s full name.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'lastSeenIp',
                     'type' => 'String',
                     'info' => 'An ip address.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'customAttributes',
                     'type' => 'JSON',
                     'info' => 'JSON Object, a hash of key - value pairs containing any other data about the user you want Intercom to store.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'lastSeenUserAgent',
                     'type' => 'String',
                     'info' => 'The user agent the user last visited your application with.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'companies',
                     'type' => 'Array',
                     'info' => 'Array of JSON objects of companies.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'lastRequestAt',
                     'type' => 'Number',
                     'info' => 'The date the user last visited your application, UNIX timestamp.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'updateLastRequestAt',
                     'type' => 'Boolean',
                     'info' => 'If true, instructs Intercom to update the user\'s last_request_at value.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'newSession',
                     'type' => 'Boolean',
                     'info' => 'If true, instructs Intercom to register the request as a session.',
@@ -196,77 +196,77 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'updateUserByEmail',
             'description' => 'Update user by email.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'email',
                     'type' => 'String',
                     'info' => 'The user\'s email address.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'userId',
                     'type' => 'String',
                     'info' => 'A unique string identifier for the user.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'phone',
                     'type' => 'String',
                     'info' => 'The user\'s phone number.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'name',
                     'type' => 'String',
                     'info' => 'The user\'s full name.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'lastSeenIp',
                     'type' => 'String',
                     'info' => 'An ip address.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'customAttributes',
                     'type' => 'JSON',
                     'info' => 'JSON Object, a hash of key - value pairs containing any other data about the user you want Intercom to store.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'lastSeenUserAgent',
                     'type' => 'String',
                     'info' => 'The user agent the user last visited your application with.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'companies',
                     'type' => 'Array',
                     'info' => 'Array of JSON objects of companies.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'lastRequestAt',
                     'type' => 'Number',
                     'info' => 'The date the user last visited your application, UNIX timestamp.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'updateLastRequestAt',
                     'type' => 'Boolean',
                     'info' => 'If true, instructs Intercom to update the user\'s last_request_at value.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'newSession',
                     'type' => 'Boolean',
                     'info' => 'If true, instructs Intercom to register the request as a session.',
@@ -274,77 +274,77 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'updateUserById',
             'description' => 'Update user by identifier.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'userId',
                     'type' => 'String',
                     'info' => 'A unique string identifier for the user.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'email',
                     'type' => 'String',
                     'info' => 'The user\'s email address.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'phone',
                     'type' => 'String',
                     'info' => 'The user\'s phone number.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'name',
                     'type' => 'String',
                     'info' => 'The user\'s full name.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'lastSeenIp',
                     'type' => 'String',
                     'info' => 'An ip address.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'customAttributes',
                     'type' => 'JSON',
                     'info' => 'JSON Object, a hash of key - value pairs containing any other data about the user you want Intercom to store.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'lastSeenUserAgent',
                     'type' => 'String',
                     'info' => 'The user agent the user last visited your application with.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'companies',
                     'type' => 'Array',
                     'info' => 'Array of JSON objects of companies.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'lastRequestAt',
                     'type' => 'Number',
                     'info' => 'The date the user last visited your application, UNIX timestamp.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'updateLastRequestAt',
                     'type' => 'Boolean',
                     'info' => 'If true, instructs Intercom to update the user\'s last_request_at value.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'newSession',
                     'type' => 'Boolean',
                     'info' => 'If true, instructs Intercom to register the request as a session.',
@@ -352,41 +352,41 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getUsers',
             'description' => 'Fetch a list of users.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'page',
                     'type' => 'String',
                     'info' => 'what page of results to fetch.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'perPage',
                     'type' => 'String',
                     'info' => 'how many results per page.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'order',
                     'type' => 'String',
                     'info' => 'Return the users in ascending or descending order. One of: asc, desc.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'sort',
                     'type' => 'String',
                     'info' => 'what field to sort the results by. One of: created_at, last_request_at, signed_up_at, updated_at.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'createdSince',
                     'type' => 'String',
                     'info' => 'limit results to users that were created in that last number of days.',
@@ -394,17 +394,17 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getUsersByTag',
             'description' => 'Fetch segmented users or leads by tag.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'tagId',
                     'type' => 'String',
                     'info' => 'The identifier of the tag to filter by.',
@@ -412,17 +412,17 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getUsersBySegment',
             'description' => 'Fetch segmented users or leads by segment.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'segmentId',
                     'type' => 'String',
                     'info' => 'The identifier of the segment to filter by.',
@@ -430,23 +430,23 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getSingleUser',
             'description' => 'Retrieve user by identifier.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'userId',
                     'type' => 'String',
                     'info' => 'The user identifier.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'userIdType',
                     'type' => 'String',
                     'info' => 'The user identifier type. One of: intercom_id, user_id, email.',
@@ -454,23 +454,23 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'deleteUser',
             'description' => 'Delete user.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'userId',
                     'type' => 'String',
                     'info' => 'The user identifier.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'userIdType',
                     'type' => 'String',
                     'info' => 'The user identifier type. One of: intercom_id, user_id, email.',
@@ -478,17 +478,17 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'scrollUsers',
             'description' => 'Scroll over all users.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'scrollParam',
                     'type' => 'String',
                     'info' => 'Scroll parameter.',
@@ -496,89 +496,89 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'createLead',
             'description' => 'Create lead.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'name',
                     'type' => 'String',
                     'info' => 'The name of the Lead.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'userId',
                     'type' => 'String',
                     'info' => 'Identifier for the Lead.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'email',
                     'type' => 'String',
                     'info' => 'The email you have defined for the Lead.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'phone',
                     'type' => 'String',
                     'info' => 'The phone number you have defined for the lead.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'avatarImageUrl',
                     'type' => 'String',
                     'info' => 'An avatar URL for the Lead.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'userAgentData',
                     'type' => 'String',
                     'info' => 'Data about the last user agent the Lead was seen using.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'lastSeenIp',
                     'type' => 'String',
                     'info' => 'An ip address.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'companies',
                     'type' => 'Array',
                     'info' => 'Array of JSON objects of companies.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'socialProfiles',
                     'type' => 'Array',
                     'info' => 'Array of JSON objects, of social profiles associated with the Lead.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'segments',
                     'type' => 'String',
                     'info' => 'Comma-separated list of segments the Lead.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'tags',
                     'type' => 'String',
                     'info' => 'Comma-separated list of tags associated with the Lead.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'customAttributes',
                     'type' => 'JSON',
                     'info' => 'JSON Object. The custom attributes you have set on the Lead.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'locationData',
                     'type' => 'JSON',
                     'info' => 'JSON Object, of Location, relating to the Lead.',
@@ -586,89 +586,89 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'updateLead',
             'description' => 'Update lead.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'userId',
                     'type' => 'String',
                     'info' => 'Identifier for the Lead.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'name',
                     'type' => 'String',
                     'info' => 'The name of the Lead.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'email',
                     'type' => 'String',
                     'info' => 'The email you have defined for the Lead.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'phone',
                     'type' => 'String',
                     'info' => 'The phone number you have defined for the lead.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'avatarImageUrl',
                     'type' => 'String',
                     'info' => 'An avatar URL for the Lead.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'userAgentData',
                     'type' => 'String',
                     'info' => 'Data about the last user agent the Lead was seen using.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'lastSeenIp',
                     'type' => 'String',
                     'info' => 'An ip address.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'companies',
                     'type' => 'Array',
                     'info' => 'Array of JSON objects of companies.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'socialProfiles',
                     'type' => 'Array',
                     'info' => 'Array of JSON objects, of social profiles associated with the Lead.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'segments',
                     'type' => 'String',
                     'info' => 'Comma-separated list of segments the Lead.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'tags',
                     'type' => 'String',
                     'info' => 'Comma-separated list of tags associated with the Lead.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'customAttributes',
                     'type' => 'JSON',
                     'info' => 'JSON Object. The custom attributes you have set on the Lead.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'locationData',
                     'type' => 'JSON',
                     'info' => 'JSON Object, of Location, relating to the Lead.',
@@ -676,11 +676,11 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getLeads',
             'description' => 'Fetch a list of all leads.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
@@ -688,17 +688,17 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getLeadsByEmail',
             'description' => 'Fetch all Leads with a given email.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'email',
                     'type' => 'String',
                     'info' => 'Email for fetch.',
@@ -706,23 +706,23 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getSingleLead',
             'description' => 'Fetch single lead.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'userId',
                     'type' => 'String',
                     'info' => 'The lead identifier.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'userIdType',
                     'type' => 'String',
                     'info' => 'The lead identifier type. One of: intercom_id, user_id, email.',
@@ -730,23 +730,23 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'deleteLead',
             'description' => 'Delete lead.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'userId',
                     'type' => 'String',
                     'info' => 'The lead identifier.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'userIdType',
                     'type' => 'String',
                     'info' => 'The lead identifier type. One of: intercom_id, user_id.',
@@ -754,29 +754,29 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'convertLeadToUser',
             'description' => 'Convert Lead to Users.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'leadId',
                     'type' => 'String',
                     'info' => 'The lead identifier.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'leadIdType',
                     'type' => 'String',
                     'info' => 'The user identifier type. One of: intercom_id, user_id, email.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'userId',
                     'type' => 'String',
                     'info' => 'Identifier of existing User.',
@@ -784,17 +784,17 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'scrollLeads',
             'description' => 'Scroll over all Leads.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'scrollParam',
                     'type' => 'String',
                     'info' => 'Scroll parameter.',
@@ -802,41 +802,41 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'createCompany',
             'description' => 'Create company.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'name',
                     'type' => 'String',
                     'info' => 'The name of the company.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'companyId',
                     'type' => 'String',
                     'info' => 'The company id you have defined for the company.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'monthlySpend',
                     'type' => 'String',
                     'info' => 'How much revenue the company generates for your business.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'plan',
                     'type' => 'String',
                     'info' => 'The name of the plan you have associated with the company.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'customAttributes',
                     'type' => 'JSON',
                     'info' => 'JSON Object, a hash of key - value pairs containing any other data about the company you want Intercom to store.',
@@ -844,41 +844,41 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'updateCompany',
             'description' => 'Update company.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'companyId',
                     'type' => 'String',
                     'info' => 'The company identifier.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'name',
                     'type' => 'String',
                     'info' => 'The name of the company.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'monthlySpend',
                     'type' => 'String',
                     'info' => 'How much revenue the company generates for your business.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'plan',
                     'type' => 'String',
                     'info' => 'The name of the plan you have associated with the company.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'customAttributes',
                     'type' => 'JSON',
                     'info' => 'JSON Object, a hash of key - value pairs containing any other data about the company you want Intercom to store.',
@@ -886,29 +886,29 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getCompanies',
             'description' => 'Fetch a list of companies.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'page',
                     'type' => 'Number',
                     'info' => 'What page of results to fetch.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'perPage',
                     'type' => 'Number',
                     'info' => 'How many results per page.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'order',
                     'type' => 'String',
                     'info' => 'Return the companies in ascending or descending order. One of: asc, desc.',
@@ -916,17 +916,17 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getCompaniesByTag',
             'description' => 'Fetch tagged companies by tag.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'tagId',
                     'type' => 'String',
                     'info' => 'The identifier of the tag to filter by.',
@@ -934,17 +934,17 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getCompaniesBySegment',
             'description' => 'Fetch segmented companies by segment.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'segmentId',
                     'type' => 'String',
                     'info' => 'The identifier of the segment to filter by.',
@@ -952,17 +952,17 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getSingleCompany',
             'description' => 'Fetch single company.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'companyId',
                     'type' => 'String',
                     'info' => 'The company identifier, you have given to the company.',
@@ -970,17 +970,17 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getCompanyUsers',
             'description' => 'Fetch users that belong to a company.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'companyId',
                     'type' => 'String',
                     'info' => 'Your company identifier for the company.',
@@ -988,17 +988,17 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'scrollCompanies',
             'description' => 'Scroll over all companies.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'scrollParam',
                     'type' => 'String',
                     'info' => 'Scroll parameter.',
@@ -1006,11 +1006,11 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getAdmins',
             'description' => 'fetching App\'s admins.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
@@ -1018,11 +1018,11 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getCurrentAdmin',
             'description' => 'Fetching current admin of app.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
@@ -1030,17 +1030,17 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getSingleAdmin',
             'description' => 'Fetching one admin of app.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'adminId',
                     'type' => 'String',
                     'info' => 'Admins identifier.',
@@ -1048,17 +1048,17 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'createTag',
             'description' => 'Create tag.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'name',
                     'type' => 'String',
                     'info' => 'The name of the tag.',
@@ -1066,23 +1066,23 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'updateTag',
             'description' => 'Update tag.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'id',
                     'type' => 'String',
                     'info' => 'The identifier of tag to updates.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'name',
                     'type' => 'String',
                     'info' => 'New name of the tag.',
@@ -1090,23 +1090,23 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'tagUser',
             'description' => 'Add tag to User.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'name',
                     'type' => 'String',
                     'info' => 'The name of the tag.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'users',
                     'type' => 'Array',
                     'info' => 'Array of JSON objects, of users user_id, intercom identifier or email.',
@@ -1114,23 +1114,23 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'untagUsers',
             'description' => 'Remove tag from User.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'name',
                     'type' => 'String',
                     'info' => 'The name of the tag.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'users',
                     'type' => 'Array',
                     'info' => 'Array of JSON objects, of users user_id, intercom identifier or email.',
@@ -1138,23 +1138,23 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'tagCompany',
             'description' => 'Add tag to Company.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'name',
                     'type' => 'String',
                     'info' => 'The name of the tag.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'companies',
                     'type' => 'Array',
                     'info' => 'Array of JSON objects, of companies company_id or intercom identifier.',
@@ -1162,23 +1162,23 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'untagCompany',
             'description' => 'Remove tag from Company.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'name',
                     'type' => 'String',
                     'info' => 'The name of the tag.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'companies',
                     'type' => 'Array',
                     'info' => 'Array of JSON objects, of companies company_id or intercom identifier.',
@@ -1186,17 +1186,17 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'deleteTag',
             'description' => 'Delete tag.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'tagId',
                     'type' => 'String',
                     'info' => 'Tag identifier.',
@@ -1204,11 +1204,11 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getAppTags',
             'description' => 'Fetch tags of App.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
@@ -1216,11 +1216,11 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getSegments',
             'description' => 'Fetch list the user segments.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
@@ -1228,17 +1228,17 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getSingleSegment',
             'description' => 'Fetch single segments.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'segmentId',
                     'type' => 'String',
                     'info' => 'Segment identifier.',
@@ -1246,35 +1246,35 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'createNote',
             'description' => 'Create a Note.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'userId',
                     'type' => 'String',
                     'info' => 'User identifier the note is to be created about.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'userIdType',
                     'type' => 'String',
                     'info' => 'The user identifier type. One of: intercom_id, user_id, email.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'body',
                     'type' => 'String',
                     'info' => 'The text of the note.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'adminId',
                     'type' => 'String',
                     'info' => 'The identifier of the admin creating the note.',
@@ -1282,23 +1282,23 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getUserNotes',
             'description' => 'List Notes for a User.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'userId',
                     'type' => 'String',
                     'info' => 'The user identifier.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'userIdType',
                     'type' => 'String',
                     'info' => 'The user identifier type. One of: intercom_id, user_id, email.',
@@ -1306,17 +1306,17 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getSingleNote',
             'description' => 'Fetch single Note.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'noteId',
                     'type' => 'String',
                     'info' => 'The note identifier.',
@@ -1324,35 +1324,35 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'submitEvent',
             'description' => 'Submitting Events.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'eventName',
                     'type' => 'String',
                     'info' => 'The name of the event that occurred.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'userId',
                     'type' => 'String',
                     'info' => 'Your identifier for the the user.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'createdAt',
                     'type' => 'Number',
                     'info' => 'The time the event occurred as a UTC Unix timestamp.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'metadata',
                     'type' => 'JSON',
                     'info' => 'JSON Object, metadata about the event.',
@@ -1360,17 +1360,17 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getUserEvents',
             'description' => 'The events belonging to a user.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'userId',
                     'type' => 'String',
                     'info' => 'The user identifier.',
@@ -1378,17 +1378,17 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getUserEventsSummaries',
             'description' => 'View User Event Summaries.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'userId',
                     'type' => 'String',
                     'info' => 'The user identifier.',
@@ -1396,17 +1396,17 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getAppTotalCounts',
             'description' => 'Fetch app total counts.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'type',
                     'type' => 'String',
                     'info' => 'Type of counts. One of: user, company, conversation.',
@@ -1414,11 +1414,11 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getAppConversationCount',
             'description' => 'Fetch app conversation count.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
@@ -1426,11 +1426,11 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getAdminConversationsCount',
             'description' => 'Fetch admin conversations count.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
@@ -1438,11 +1438,11 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getUserSegmensCount',
             'description' => 'Fetch user segmens count.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
@@ -1450,11 +1450,11 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getUserTagsCount',
             'description' => 'Fetch user tags count.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
@@ -1462,11 +1462,11 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getCompanySegmentsCount',
             'description' => 'Fetch company segments count.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
@@ -1474,11 +1474,11 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getCompanyTagsCount',
             'description' => 'Fetch company tags count.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
@@ -1486,11 +1486,11 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getCompanyUsersCount',
             'description' => 'Fetch company users count.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
@@ -1498,59 +1498,59 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'createAdminMessage',
             'description' => 'Create an admin initiated message to a user.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'fromAdminId',
                     'type' => 'String',
                     'info' => 'Admin identifier from whom send message.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'receiverType',
                     'type' => 'String',
                     'info' => 'Receiver type. One of: user, contact.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'receiverId',
                     'type' => 'String',
                     'info' => 'The receiver identifier.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'receiverIdType',
                     'type' => 'String',
                     'info' => 'The receiver identifier type. One of: intercom_id, user_id, email.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'messageType',
                     'type' => 'String',
                     'info' => 'The kind of message being created. One of: inapp, email.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'subject',
                     'type' => 'String',
                     'info' => 'The title of the email.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'body',
                     'type' => 'String',
                     'info' => 'The content of the message. Plaintext only, HTML is not supported.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'template',
                     'type' => 'String',
                     'info' => 'The style of the outgoing message. Only valid for email messages. One of: plain, personal.',
@@ -1558,29 +1558,29 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'createUserMessage',
             'description' => 'Create user message.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'senderId',
                     'type' => 'String',
                     'info' => 'The sender identifier.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'senderIdType',
                     'type' => 'String',
                     'info' => 'The sender identifier type. One of: intercom_id, user_id, email.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'body',
                     'type' => 'String',
                     'info' => 'The content of the message. Plaintext only, HTML is not supported.',
@@ -1588,29 +1588,29 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'createContactMessage',
             'description' => 'Create contact message.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'senderId',
                     'type' => 'String',
                     'info' => 'The sender identifier.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'senderIdType',
                     'type' => 'String',
                     'info' => 'The sender identifier type. One of: intercom_id, user_id.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'body',
                     'type' => 'String',
                     'info' => 'The content of the message. Plaintext only, HTML is not supported.',
@@ -1618,11 +1618,11 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getConversations',
             'description' => 'Fetch a list of all conversations.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
@@ -1630,23 +1630,23 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getSingleAdminConversations',
             'description' => 'Fetch conversations for single admin.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'adminId',
                     'type' => 'String',
                     'info' => 'Admin identifier.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'open',
                     'type' => 'Boolean',
                     'info' => 'when true fetches just open conversations, when false just closed conversations.',
@@ -1654,23 +1654,23 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getSingleUserConversations',
             'description' => 'Fetch conversations with single user.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'userId',
                     'type' => 'String',
                     'info' => 'The user identifier.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'userIdType',
                     'type' => 'String',
                     'info' => 'The user identifier type. One of: intercom_user_id, user_id, email.',
@@ -1678,17 +1678,17 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getSingleConversation',
             'description' => 'Fetch single conversation.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'conversationId',
                     'type' => 'String',
                     'info' => 'Conversation identifier.',
@@ -1696,41 +1696,41 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'replyToUserComment',
             'description' => 'Replying to a Conversation.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'conversationId',
                     'type' => 'String',
                     'info' => 'Conversation identifier.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'body',
                     'type' => 'String',
                     'info' => 'The text body of the comment.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'userId',
                     'type' => 'String',
                     'info' => 'The user identifier.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'userIdType',
                     'type' => 'String',
                     'info' => 'The user identifier type. One of: intercom_user_id, user_id, email.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'attachmentUrls',
                     'type' => 'Array',
                     'info' => 'Array of Strings of URLs of files that will be added as attachments. You can include up to 5 attachments.',
@@ -1738,35 +1738,35 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'replyToAdminComment',
             'description' => 'Reply to admin comment.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'conversationId',
                     'type' => 'String',
                     'info' => 'Conversation identifier.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'adminId',
                     'type' => 'String',
                     'info' => 'The identifier of the Admin who is authoring the comment.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'body',
                     'type' => 'String',
                     'info' => 'The text body of the comment.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'attachmentUrls',
                     'type' => 'Array',
                     'info' => 'Array of Strings of URLs of files that will be added as attachments. You can include up to 5 attachments.',
@@ -1774,35 +1774,35 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'replyToUsersLastConversation',
             'description' => 'Reply to users last conversation.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'intercomUserId',
                     'type' => 'String',
                     'info' => 'The user identifier.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'adminId',
                     'type' => 'String',
                     'info' => 'The identifier of the Admin who is replying.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'body',
                     'type' => 'String',
                     'info' => 'The text body of the comment.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'attachmentUrls',
                     'type' => 'Array',
                     'info' => 'Array of Strings of URLs of files that will be added as attachments. You can include up to 5 attachments.',
@@ -1810,17 +1810,17 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'markConversationAsRead',
             'description' => 'Marking a Conversation as Read.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'conversationId',
                     'type' => 'String',
                     'info' => 'Conversation identifier.',
@@ -1828,23 +1828,23 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'closeConversation',
             'description' => 'Closing a conversation.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'conversationId',
                     'type' => 'String',
                     'info' => 'Conversation identifier.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'adminId',
                     'type' => 'String',
                     'info' => 'Admin identifier.',
@@ -1852,23 +1852,23 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getSingleVisitor',
             'description' => 'Fetch single visitor.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'userId',
                     'type' => 'String',
                     'info' => 'Visitor user identifier.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'userIdType',
                     'type' => 'String',
                     'info' => 'Visitor user identifier type. One of: intercom_id, user_id.',
@@ -1876,83 +1876,83 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'updateVisitor',
             'description' => 'Update a Visitor.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'userId',
                     'type' => 'String',
                     'info' => 'User identifier for the Visitor.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'name',
                     'type' => 'String',
                     'info' => 'The name of the Visitor.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'customAttributes',
                     'type' => 'JSON',
                     'info' => 'JSON Object, the custom attributes you have set on the Visitor.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'lastRequestAt',
                     'type' => 'Number',
                     'info' => 'The date the lead last visited your application, UNIX timestamp.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'avatarImageUrl',
                     'type' => 'String',
                     'info' => 'An avatar image URL for the Visitor.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'unsubscribedFromEmails',
                     'type' => 'Boolean',
                     'info' => 'Whether the Visitor is unsubscribed from emails.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'locationData',
                     'type' => 'JSON',
                     'info' => 'JSON Object. Location relating to the Visitor.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'userAgentData',
                     'type' => 'String',
                     'info' => 'Data about the last user agent the Visitor was seen using.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'lastSeenIp',
                     'type' => 'String',
                     'info' => 'An ip address.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'socialProfiles',
                     'type' => 'Array',
                     'info' => 'Array of JSON objects, of social profiles associated with the Visitor.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'segments',
                     'type' => 'String',
                     'info' => 'Comma-separated list of segments the Visitor.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'tags',
                     'type' => 'String',
                     'info' => 'Comma-separated list of tags associated with the Visitor.',
@@ -1960,17 +1960,17 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'deleteVisitor',
             'description' => 'Delete a visitor.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'userId',
                     'type' => 'String',
                     'info' => 'User identifier for the Visitor.',
@@ -1978,29 +1978,29 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'convertVisitorToLead',
             'description' => 'Convert Visitor to Leads.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'visitorUserId',
                     'type' => 'String',
                     'info' => 'User identifier for the Visitor.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'visitorUserIdType',
                     'type' => 'String',
                     'info' => 'The Visitor user identifier of type. One of: intercom_id, user_id, email.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'leadId',
                     'type' => 'String',
                     'info' => 'User identifier for the Lead to binding.',
@@ -2008,35 +2008,35 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'createSubscription',
             'description' => 'Create new subscription.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'url',
                     'type' => 'String',
                     'info' => 'The url the event should be sent to.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'topics',
                     'type' => 'String',
                     'info' => 'Comma-separated list of topics to subscribe to.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'serviceType',
                     'type' => 'String',
                     'info' => 'The type of the service being called. Default is web.',
                     'required' => false,
                 ),
-                array (
+                array(
                     'name' => 'hubSecret',
                     'type' => 'String',
                     'info' => 'A key used to sign notifications.',
@@ -2044,17 +2044,17 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getSingleSubscription',
             'description' => 'Fetch single subscription.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'subscriptionId',
                     'type' => 'String',
                     'info' => 'Subscription identifier.',
@@ -2062,11 +2062,11 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getSubscriptions',
             'description' => 'Fetch list of subscriptions.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
@@ -2074,17 +2074,17 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getErrorFeed',
             'description' => 'Fetch feed of errors returned by the webhook.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'subscriptionId',
                     'type' => 'String',
                     'info' => 'Subscription identifier.',
@@ -2092,17 +2092,17 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getSentFeed',
             'description' => 'Fetch feed of notifications sent.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'subscriptionId',
                     'type' => 'String',
                     'info' => 'Subscription identifier.',
@@ -2110,17 +2110,17 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'pingSubscription',
             'description' => 'Ping subscription.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'subscriptionId',
                     'type' => 'String',
                     'info' => 'Subscription identifier.',
@@ -2128,29 +2128,29 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'createEventWebhookSubscription',
             'description' => 'Create an Event Webhook Subscription.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'metadataEventNames',
                     'type' => 'String',
                     'info' => 'Comma-separated list of events name to subscribe to.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'url',
                     'type' => 'String',
                     'info' => 'The url the event should be sent to.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'serviceType',
                     'type' => 'String',
                     'info' => 'The type of the service being called. Default is web.',
@@ -2158,29 +2158,29 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'updateEventWebhookSubscription',
             'description' => 'Update an Event Webhook Subscription.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'metadataEventNames',
                     'type' => 'String',
                     'info' => 'Comma-separated list of events name to subscribe to.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'url',
                     'type' => 'String',
                     'info' => 'The url the event should be sent to.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'serviceType',
                     'type' => 'String',
                     'info' => 'The type of the service being called. Default is web.',
@@ -2188,17 +2188,17 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'createUserBulkJobs',
             'description' => 'Creating bulk jobs for users.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'items',
                     'type' => 'Array',
                     'info' => 'Array of object, of users tasks.',
@@ -2206,17 +2206,17 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'createBulkLeadJob',
             'description' => 'Bulk Lead Posting.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'items',
                     'type' => 'Array',
                     'info' => 'Array of object, of Leads.',
@@ -2224,17 +2224,17 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'createBulkEventJob',
             'description' => 'Bulk Event Posting.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'items',
                     'type' => 'Array',
                     'info' => 'Array of object, of Events.',
@@ -2242,17 +2242,17 @@ return array (
                 ),
             ),
         ),
-        array (
+        array(
             'name' => 'getSingleBulkJob',
             'description' => 'Fetch single job.',
-            'args' => array (
-                array (
+            'args' => array(
+                array(
                     'name' => 'accessToken',
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
                 ),
-                array (
+                array(
                     'name' => 'jobId',
                     'type' => 'String',
                     'info' => 'Bulk job identifier.',
@@ -2261,9 +2261,9 @@ return array (
             ),
         ),
     ),
-    'custom' => array (
-        'getAccessToken' => array (
-            'dictionary' => array (
+    'custom' => array(
+        'getAccessToken' => array(
+            'dictionary' => array(
                 'clientId' => 'client_id',
                 'clientSecret' => 'client_secret',
                 'code' => 'code',
@@ -2271,8 +2271,8 @@ return array (
             'vendorUrl' => 'https://api.intercom.io/auth/eagle/token',
             'method' => 'POST',
         ),
-        'createUserByEmail' => array (
-            'dictionary' => array (
+        'createUserByEmail' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'email' => 'email',
                 'userId' => 'user_id',
@@ -2288,9 +2288,10 @@ return array (
             ),
             'vendorUrl' => 'https://api.intercom.io/users',
             'method' => 'POST',
+            'custom' => true
         ),
-        'createUserById' => array (
-            'dictionary' => array (
+        'createUserById' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'userId' => 'user_id',
                 'email' => 'email',
@@ -2306,9 +2307,10 @@ return array (
             ),
             'vendorUrl' => 'https://api.intercom.io/users',
             'method' => 'POST',
+            'custom' =>true
         ),
-        'updateUserByEmail' => array (
-            'dictionary' => array (
+        'updateUserByEmail' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'email' => 'email',
                 'userId' => 'user_id',
@@ -2324,9 +2326,10 @@ return array (
             ),
             'vendorUrl' => 'https://api.intercom.io/users',
             'method' => 'POST',
+            'custom' => true
         ),
-        'updateUserById' => array (
-            'dictionary' => array (
+        'updateUserById' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'userId' => 'user_id',
                 'email' => 'email',
@@ -2339,12 +2342,13 @@ return array (
                 'lastRequestAt' => 'last_request_at',
                 'updateLastRequestAt' => 'update_last_request_at',
                 'newSession' => 'new_session',
+                'custom' => true
             ),
             'vendorUrl' => 'https://api.intercom.io/users',
             'method' => 'POST',
         ),
-        'getUsers' => array (
-            'dictionary' => array (
+        'getUsers' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'page' => 'page',
                 'perPage' => 'per_page',
@@ -2355,24 +2359,24 @@ return array (
             'vendorUrl' => 'https://api.intercom.io/users',
             'method' => 'GET',
         ),
-        'getUsersByTag' => array (
-            'dictionary' => array (
+        'getUsersByTag' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'tagId' => 'tag_id',
             ),
             'vendorUrl' => 'https://api.intercom.io/users',
             'method' => 'GET',
         ),
-        'getUsersBySegment' => array (
-            'dictionary' => array (
+        'getUsersBySegment' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'segmentId' => 'segment_id',
             ),
             'vendorUrl' => 'https://api.intercom.io/users',
             'method' => 'GET',
         ),
-        'getSingleUser' => array (
-            'dictionary' => array (
+        'getSingleUser' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'userId' => 'userId',
                 'userIdType' => 'userIdType',
@@ -2381,8 +2385,8 @@ return array (
             'method' => 'GET-RAW',
             'custom' => true,
         ),
-        'deleteUser' => array (
-            'dictionary' => array (
+        'deleteUser' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'userId' => 'userId',
                 'userIdType' => 'userIdType',
@@ -2391,16 +2395,16 @@ return array (
             'method' => 'DELETE-RAW',
             'custom' => true,
         ),
-        'scrollUsers' => array (
-            'dictionary' => array (
+        'scrollUsers' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'scrollParam' => 'scroll_param',
             ),
             'vendorUrl' => 'https://api.intercom.io/users/scroll',
             'method' => 'GET',
         ),
-        'createLead' => array (
-            'dictionary' => array (
+        'createLead' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'name' => 'name',
                 'userId' => 'user_id',
@@ -2420,8 +2424,8 @@ return array (
             'method' => 'POST',
             'custom' => true,
         ),
-        'updateLead' => array (
-            'dictionary' => array (
+        'updateLead' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'userId' => 'user_id',
                 'name' => 'name',
@@ -2441,23 +2445,23 @@ return array (
             'method' => 'POST',
             'custom' => true,
         ),
-        'getLeads' => array (
-            'dictionary' => array (
+        'getLeads' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
             ),
             'vendorUrl' => 'https://api.intercom.io/contacts',
             'method' => 'GET',
         ),
-        'getLeadsByEmail' => array (
-            'dictionary' => array (
+        'getLeadsByEmail' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'email' => 'email',
             ),
             'vendorUrl' => 'https://api.intercom.io/contacts',
             'method' => 'GET',
         ),
-        'getSingleLead' => array (
-            'dictionary' => array (
+        'getSingleLead' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'userId' => 'userId',
                 'userIdType' => 'userIdType',
@@ -2466,8 +2470,8 @@ return array (
             'method' => 'GET-RAW',
             'custom' => true,
         ),
-        'deleteLead' => array (
-            'dictionary' => array (
+        'deleteLead' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'userId' => 'userId',
                 'userIdType' => 'userIdType',
@@ -2476,8 +2480,8 @@ return array (
             'method' => 'DELETE-RAW',
             'custom' => true,
         ),
-        'convertLeadToUser' => array (
-            'dictionary' => array (
+        'convertLeadToUser' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'leadId' => 'leadId',
                 'leadIdType' => 'leadIdType',
@@ -2487,16 +2491,16 @@ return array (
             'method' => 'POST',
             'custom' => true,
         ),
-        'scrollLeads' => array (
-            'dictionary' => array (
+        'scrollLeads' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'scrollParam' => 'scroll_param',
             ),
             'vendorUrl' => 'https://api.intercom.io/contacts/scroll',
             'method' => 'GET',
         ),
-        'createCompany' => array (
-            'dictionary' => array (
+        'createCompany' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'name' => 'name',
                 'companyId' => 'company_id',
@@ -2507,8 +2511,8 @@ return array (
             'vendorUrl' => 'https://api.intercom.io/companies',
             'method' => 'POST',
         ),
-        'updateCompany' => array (
-            'dictionary' => array (
+        'updateCompany' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'companyId' => 'company_id',
                 'name' => 'name',
@@ -2519,8 +2523,8 @@ return array (
             'vendorUrl' => 'https://api.intercom.io/companies',
             'method' => 'POST',
         ),
-        'getCompanies' => array (
-            'dictionary' => array (
+        'getCompanies' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'page' => 'page',
                 'perPage' => 'per_page',
@@ -2529,81 +2533,81 @@ return array (
             'vendorUrl' => 'https://api.intercom.io/companies',
             'method' => 'GET',
         ),
-        'getCompaniesByTag' => array (
-            'dictionary' => array (
+        'getCompaniesByTag' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'tagId' => 'tag_id',
             ),
             'vendorUrl' => 'https://api.intercom.io/companies',
             'method' => 'GET',
         ),
-        'getCompaniesBySegment' => array (
-            'dictionary' => array (
+        'getCompaniesBySegment' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'segmentId' => 'segment_id',
             ),
             'vendorUrl' => 'https://api.intercom.io/companies',
             'method' => 'GET',
         ),
-        'getSingleCompany' => array (
-            'dictionary' => array (
+        'getSingleCompany' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'companyId' => 'company_id',
             ),
             'vendorUrl' => 'https://api.intercom.io/companies',
             'method' => 'GET',
         ),
-        'getCompanyUsers' => array (
-            'dictionary' => array (
+        'getCompanyUsers' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'companyId' => 'company_id',
             ),
             'vendorUrl' => 'https://api.intercom.io/companies',
             'method' => 'GET',
-            'default' => array (
+            'default' => array(
                 'type' => 'user',
             ),
         ),
-        'scrollCompanies' => array (
-            'dictionary' => array (
+        'scrollCompanies' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'scrollParam' => 'scroll_param',
             ),
             'vendorUrl' => 'https://api.intercom.io/companies/scroll',
             'method' => 'GET',
         ),
-        'getAdmins' => array (
-            'dictionary' => array (
+        'getAdmins' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
             ),
             'vendorUrl' => 'https://api.intercom.io/admins',
             'method' => 'GET',
         ),
-        'getCurrentAdmin' => array (
-            'dictionary' => array (
+        'getCurrentAdmin' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
             ),
             'vendorUrl' => 'https://api.intercom.io/me',
             'method' => 'GET',
         ),
-        'getSingleAdmin' => array (
-            'dictionary' => array (
+        'getSingleAdmin' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'adminId' => 'adminId',
             ),
             'vendorUrl' => 'https://api.intercom.io/admins/{{adminId}}',
             'method' => 'GET',
         ),
-        'createTag' => array (
-            'dictionary' => array (
+        'createTag' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'name' => 'name',
             ),
             'vendorUrl' => 'https://api.intercom.io/tags',
             'method' => 'POST',
         ),
-        'updateTag' => array (
-            'dictionary' => array (
+        'updateTag' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'id' => 'id',
                 'name' => 'name',
@@ -2611,8 +2615,8 @@ return array (
             'vendorUrl' => 'https://api.intercom.io/tags',
             'method' => 'POST',
         ),
-        'tagUser' => array (
-            'dictionary' => array (
+        'tagUser' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'name' => 'name',
                 'users' => 'users',
@@ -2620,8 +2624,8 @@ return array (
             'vendorUrl' => 'https://api.intercom.io/tags',
             'method' => 'POST',
         ),
-        'untagUsers' => array (
-            'dictionary' => array (
+        'untagUsers' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'name' => 'name',
                 'users' => 'users',
@@ -2629,8 +2633,8 @@ return array (
             'vendorUrl' => 'https://api.intercom.io/tags',
             'method' => 'POST',
         ),
-        'tagCompany' => array (
-            'dictionary' => array (
+        'tagCompany' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'name' => 'name',
                 'companies' => 'companies',
@@ -2638,8 +2642,8 @@ return array (
             'vendorUrl' => 'https://api.intercom.io/tags',
             'method' => 'POST',
         ),
-        'untagCompany' => array (
-            'dictionary' => array (
+        'untagCompany' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'name' => 'name',
                 'companies' => 'companies',
@@ -2647,41 +2651,41 @@ return array (
             'vendorUrl' => 'https://api.intercom.io/tags',
             'method' => 'POST',
         ),
-        'deleteTag' => array (
-            'dictionary' => array (
+        'deleteTag' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'tagId' => 'tagId',
             ),
             'vendorUrl' => 'https//api.intercom.io/tags/{{tagId}}',
             'method' => 'DELETE',
         ),
-        'getAppTags' => array (
-            'dictionary' => array (
+        'getAppTags' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
             ),
             'vendorUrl' => 'https://api.intercom.io/tags',
             'method' => 'GET',
         ),
-        'getSegments' => array (
-            'dictionary' => array (
+        'getSegments' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
             ),
             'vendorUrl' => 'https://api.intercom.io/segments',
             'method' => 'GET',
-            'default' => array (
+            'default' => array(
                 'type' => 'company',
             ),
         ),
-        'getSingleSegment' => array (
-            'dictionary' => array (
+        'getSingleSegment' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'segmentId' => 'segmentId',
             ),
             'vendorUrl' => 'https://api.intercom.io/segments/{{segmentId}}',
             'method' => 'GET',
         ),
-        'createNote' => array (
-            'dictionary' => array (
+        'createNote' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'userId' => 'userId',
                 'userIdType' => 'userIdType',
@@ -2692,8 +2696,8 @@ return array (
             'method' => 'POST',
             'custom' => true,
         ),
-        'getUserNotes' => array (
-            'dictionary' => array (
+        'getUserNotes' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'userId' => 'userId',
                 'userIdType' => 'userIdType',
@@ -2702,16 +2706,16 @@ return array (
             'method' => 'GET-RAW',
             'custom' => true,
         ),
-        'getSingleNote' => array (
-            'dictionary' => array (
+        'getSingleNote' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'noteId' => 'noteId',
             ),
             'vendorUrl' => 'https://api.intercom.io/notes/{{noteId}}',
             'method' => 'GET',
         ),
-        'submitEvent' => array (
-            'dictionary' => array (
+        'submitEvent' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'eventName' => 'event_name',
                 'userId' => 'user_id',
@@ -2720,116 +2724,117 @@ return array (
             ),
             'vendorUrl' => 'https://api.intercom.io/events',
             'method' => 'POST',
+            'custom' => true
         ),
-        'getUserEvents' => array (
-            'dictionary' => array (
+        'getUserEvents' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'userId' => 'user_id',
             ),
             'vendorUrl' => 'https://api.intercom.io/events',
             'method' => 'GET',
-            'default' => array (
+            'default' => array(
                 'type' => 'user',
             ),
         ),
-        'getUserEventsSummaries' => array (
-            'dictionary' => array (
+        'getUserEventsSummaries' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'userId' => 'user_id',
             ),
             'vendorUrl' => 'https://api.intercom.io/events',
             'method' => 'GET',
-            'default' => array (
+            'default' => array(
                 'type' => 'user',
                 'summary' => true,
             ),
         ),
-        'getAppTotalCounts' => array (
-            'dictionary' => array (
+        'getAppTotalCounts' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'type' => 'type',
             ),
             'vendorUrl' => 'https://api.intercom.io/counts',
             'method' => 'GET',
         ),
-        'getAppConversationCount' => array (
-            'dictionary' => array (
+        'getAppConversationCount' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
             ),
             'vendorUrl' => 'https://api.intercom.io/counts',
             'method' => 'GET',
-            'default' => array (
+            'default' => array(
                 'type' => 'conversation',
             ),
         ),
-        'getAdminConversationsCount' => array (
-            'dictionary' => array (
+        'getAdminConversationsCount' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
             ),
             'vendorUrl' => 'https://api.intercom.io/counts',
             'method' => 'GET',
-            'default' => array (
+            'default' => array(
                 'type' => 'conversation',
                 'count' => 'admin',
             ),
         ),
-        'getUserSegmensCount' => array (
-            'dictionary' => array (
+        'getUserSegmensCount' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
             ),
             'vendorUrl' => 'https://api.intercom.io/counts',
             'method' => 'GET',
-            'default' => array (
+            'default' => array(
                 'type' => 'user',
                 'count' => 'segment',
             ),
         ),
-        'getUserTagsCount' => array (
-            'dictionary' => array (
+        'getUserTagsCount' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
             ),
             'vendorUrl' => 'https://api.intercom.io/counts',
             'method' => 'GET',
-            'default' => array (
+            'default' => array(
                 'type' => 'user',
                 'count' => 'tag',
             ),
         ),
-        'getCompanySegmentsCount' => array (
-            'dictionary' => array (
+        'getCompanySegmentsCount' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
             ),
             'vendorUrl' => 'https://api.intercom.io/counts',
             'method' => 'GET',
-            'default' => array (
+            'default' => array(
                 'type' => 'company',
                 'count' => 'segment',
             ),
         ),
-        'getCompanyTagsCount' => array (
-            'dictionary' => array (
+        'getCompanyTagsCount' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
             ),
             'vendorUrl' => 'https://api.intercom.io/counts',
             'method' => 'GET',
-            'default' => array (
+            'default' => array(
                 'type' => 'company',
                 'count' => 'tag',
             ),
         ),
-        'getCompanyUsersCount' => array (
-            'dictionary' => array (
+        'getCompanyUsersCount' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
             ),
             'vendorUrl' => 'https://api.intercom.io/counts',
             'method' => 'GET',
-            'default' => array (
+            'default' => array(
                 'type' => 'company',
                 'count' => 'user',
             ),
         ),
-        'createAdminMessage' => array (
-            'dictionary' => array (
+        'createAdminMessage' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'fromAdminId' => 'fromAdminId',
                 'receiverType' => 'receiverType',
@@ -2844,8 +2849,8 @@ return array (
             'method' => 'POST',
             'custom' => true,
         ),
-        'createUserMessage' => array (
-            'dictionary' => array (
+        'createUserMessage' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'senderId' => 'senderId',
                 'senderIdType' => 'senderIdType',
@@ -2855,8 +2860,8 @@ return array (
             'method' => 'POST',
             'custom' => true,
         ),
-        'createContactMessage' => array (
-            'dictionary' => array (
+        'createContactMessage' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'senderId' => 'senderId',
                 'senderIdType' => 'senderIdType',
@@ -2866,27 +2871,27 @@ return array (
             'method' => 'POST',
             'custom' => true,
         ),
-        'getConversations' => array (
-            'dictionary' => array (
+        'getConversations' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
             ),
             'vendorUrl' => 'https://api.intercom.io/conversations',
             'method' => 'GET',
         ),
-        'getSingleAdminConversations' => array (
-            'dictionary' => array (
+        'getSingleAdminConversations' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'adminId' => 'admin_id',
                 'open' => 'open',
             ),
             'vendorUrl' => 'https://api.intercom.io/conversations',
             'method' => 'GET',
-            'default' => array (
+            'default' => array(
                 'type' => 'admin',
             ),
         ),
-        'getSingleUserConversations' => array (
-            'dictionary' => array (
+        'getSingleUserConversations' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'userId' => 'userId',
                 'userIdType' => 'userIdType',
@@ -2895,16 +2900,16 @@ return array (
             'method' => 'GET',
             'custom' => true,
         ),
-        'getSingleConversation' => array (
-            'dictionary' => array (
+        'getSingleConversation' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'conversationId' => 'conversationId',
             ),
             'vendorUrl' => 'https://api.intercom.io/conversations/{{conversationId}}',
             'method' => 'GET',
         ),
-        'replyToUserComment' => array (
-            'dictionary' => array (
+        'replyToUserComment' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'conversationId' => 'conversationId',
                 'body' => 'body',
@@ -2916,8 +2921,8 @@ return array (
             'method' => 'POST',
             'custom' => true,
         ),
-        'replyToAdminComment' => array (
-            'dictionary' => array (
+        'replyToAdminComment' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'conversationId' => 'conversationId',
                 'adminId' => 'admin_id',
@@ -2926,13 +2931,13 @@ return array (
             ),
             'vendorUrl' => 'https://api.intercom.io/conversations/{{conversationId}}/reply',
             'method' => 'POST',
-            'default' => array (
+            'default' => array(
                 'type' => 'admin',
                 'message_type' => 'comment',
             ),
         ),
-        'replyToUsersLastConversation' => array (
-            'dictionary' => array (
+        'replyToUsersLastConversation' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'intercomUserId' => 'intercom_user_id',
                 'adminId' => 'admin_id',
@@ -2941,37 +2946,37 @@ return array (
             ),
             'vendorUrl' => 'https://api.intercom.io/conversations/last/reply',
             'method' => 'POST',
-            'default' => array (
+            'default' => array(
                 'type' => 'admin',
                 'message_type' => 'comment',
             ),
         ),
-        'markConversationAsRead' => array (
-            'dictionary' => array (
+        'markConversationAsRead' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'conversationId' => 'conversationId',
             ),
             'vendorUrl' => 'https://api.intercom.io/conversations/{{conversationId}}',
             'method' => 'PUT',
-            'default' => array (
+            'default' => array(
                 'read' => true,
             ),
         ),
-        'closeConversation' => array (
-            'dictionary' => array (
+        'closeConversation' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'conversationId' => 'conversationId',
                 'adminId' => 'admin_id',
             ),
             'vendorUrl' => 'https://api.intercom.io/conversations/{{conversationId}}/reply',
             'method' => 'POST',
-            'default' => array (
+            'default' => array(
                 'message_type' => 'close',
                 'type' => 'admin',
             ),
         ),
-        'getSingleVisitor' => array (
-            'dictionary' => array (
+        'getSingleVisitor' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'userId' => 'userId',
                 'userIdType' => 'userIdType',
@@ -2980,8 +2985,8 @@ return array (
             'method' => 'GET-RAW',
             'custom' => true,
         ),
-        'updateVisitor' => array (
-            'dictionary' => array (
+        'updateVisitor' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'userId' => 'user_id',
                 'name' => 'name',
@@ -3000,19 +3005,19 @@ return array (
             'method' => 'PUT',
             'custom' => true,
         ),
-        'deleteVisitor' => array (
-            'dictionary' => array (
+        'deleteVisitor' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'userId' => 'user_id',
             ),
             'vendorUrl' => 'https://api.intercom.io/visitors',
             'method' => 'DELETE',
-            'default' => array (
+            'default' => array(
                 'type' => 'visitor',
             ),
         ),
-        'convertVisitorToLead' => array (
-            'dictionary' => array (
+        'convertVisitorToLead' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'visitorId' => 'visitor_id',
                 'visitorUserId' => 'visitorUserId',
@@ -3023,8 +3028,8 @@ return array (
             'method' => 'POST',
             'custom' => true,
         ),
-        'createSubscription' => array (
-            'dictionary' => array (
+        'createSubscription' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'url' => 'url',
                 'topics' => 'topics',
@@ -3035,47 +3040,47 @@ return array (
             'method' => 'POST',
             'custom' => true,
         ),
-        'getSingleSubscription' => array (
-            'dictionary' => array (
+        'getSingleSubscription' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'subscriptionId' => 'subscriptionId',
             ),
             'vendorUrl' => 'https://api.intercom.io/subscriptions/{{subscriptionId}}',
             'method' => 'GET',
         ),
-        'getSubscriptions' => array (
-            'dictionary' => array (
+        'getSubscriptions' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
             ),
             'vendorUrl' => 'https://api.intercom.io/subscriptions',
             'method' => 'GET',
         ),
-        'getErrorFeed' => array (
-            'dictionary' => array (
+        'getErrorFeed' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'subscriptionId' => 'subscriptionId',
             ),
             'vendorUrl' => 'https://api.intercom.io/subscriptions/{{subscriptionId}}/error',
             'method' => 'GET',
         ),
-        'getSentFeed' => array (
-            'dictionary' => array (
+        'getSentFeed' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'subscriptionId' => 'subscriptionId',
             ),
             'vendorUrl' => 'https://api.intercom.io/subscriptions/{{subscriptionId}}/sent',
             'method' => 'GET',
         ),
-        'pingSubscription' => array (
-            'dictionary' => array (
+        'pingSubscription' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'subscriptionId' => 'subscriptionId',
             ),
             'vendorUrl' => 'https://api.intercom.io/subscriptions/{{subscriptionId}}/ping',
             'method' => 'POST',
         ),
-        'createEventWebhookSubscription' => array (
-            'dictionary' => array (
+        'createEventWebhookSubscription' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'metadataEventNames' => 'metadata_event_names',
                 'url' => 'url',
@@ -3085,8 +3090,8 @@ return array (
             'method' => 'POST',
             'custom' => true,
         ),
-        'updateEventWebhookSubscription' => array (
-            'dictionary' => array (
+        'updateEventWebhookSubscription' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'metadataEventNames' => 'metadata_event_names',
                 'url' => 'url',
@@ -3096,32 +3101,32 @@ return array (
             'method' => 'POST',
             'custom' => true,
         ),
-        'createUserBulkJobs' => array (
-            'dictionary' => array (
+        'createUserBulkJobs' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'items' => 'items',
             ),
             'vendorUrl' => 'https://api.intercom.io/bulk/users',
             'method' => 'POST',
         ),
-        'createBulkLeadJob' => array (
-            'dictionary' => array (
+        'createBulkLeadJob' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'items' => 'items',
             ),
             'vendorUrl' => 'https://api.intercom.io/bulk/contacts',
             'method' => 'POST',
         ),
-        'createBulkEventJob' => array (
-            'dictionary' => array (
+        'createBulkEventJob' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'items' => 'items',
             ),
             'vendorUrl' => 'https://api.intercom.io/bulk/events',
             'method' => 'POST',
         ),
-        'getSingleBulkJob' => array (
-            'dictionary' => array (
+        'getSingleBulkJob' => array(
+            'dictionary' => array(
                 'accessToken' => 'accessToken',
                 'jobId' => 'jobId',
             ),

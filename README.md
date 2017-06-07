@@ -11,122 +11,96 @@ Connect to the Intercom Customer Service API to access data and build integratio
 2. Create "Access token" or "OAuth App".
 3. If you choose "OAuth App", copy clientId and clientSecret and use them to generate Access token.
 
+## Custom datatypes: 
+ |Datatype|Description|Example
+ |--------|-----------|----------
+ |Datepicker|String which includes date and time|```2016-05-28 00:00:00```
+ |Map|String which includes latitude and longitude coma separated|```50.37, 26.56```
+ |List|Simple array|```["123", "sample"]``` 
+ |Select|String with predefined values|```sample```
+ |Array|Array of objects|```[{"Second name":"123","Age":"12","Photo":"sdf","Draft":"sdfsdf"},{"name":"adi","Second name":"bla","Age":"4","Photo":"asfserwe","Draft":"sdfsdf"}] ```
+ 
+
 ## Intercom.getAccessToken
 Fetch access token.
 
-| Field       | Type  | Description
-|-------------|-------|----------
+| Field       | Type       | Description
+|-------------|------------|----------
 | clientId    | credentials| Client identifier from your credentials.
 | clientSecret| credentials| Client secret from your credentials.
-| code        | String| This is automatically passed by the redirect.
+| code        | String     | This is automatically passed by the redirect.
 
 ## Intercom.createUserByEmail
 Create user by email.
 
-| Field              | Type   | Description
-|--------------------|--------|----------
-| accessToken        | String | Access token.
-| email              | String | The user's email address.
-| userId             | String | A unique string identifier for the user.
-| phone              | String | The user's phone number.
-| name               | String | The user's full name.
-| lastSeenIp         | String | An ip address.
-| customAttributes   | JSON   | JSON Object, a hash of key - value pairs containing any other data about the user you want Intercom to store.
-| lastSeenUserAgent  | String | The user agent the user last visited your application with.
-| companies          | Array  | Array of JSON objects of companies.
-| lastRequestAt      | Number | The date the user last visited your application, UNIX timestamp.
-| updateLastRequestAt| Boolean| If true, instructs Intercom to update the user's last_request_at value.
-| newSession         | Boolean| If true, instructs Intercom to register the request as a session.
-
-#### Example of 'companies' field
-```json
-[{
-	"company_id": "366",
-	"name": "Serenity",
-	"monthly_spend": 500
-}]
-```
+| Field              | Type      | Description
+|--------------------|-----------|----------
+| accessToken        | String    | Access token.
+| email              | String    | The user's email address.
+| userId             | String    | A unique string identifier for the user.
+| phone              | String    | The user's phone number.
+| name               | String    | The user's full name.
+| lastSeenIp         | String    | An ip address.
+| customAttributes   | JSON      | JSON Object, a hash of key - value pairs containing any other data about the user you want Intercom to store.
+| lastSeenUserAgent  | String    | The user agent the user last visited your application with.
+| companies          | List      | Array of JSON objects of companies.
+| lastRequestAt      | DatePicker| The date the user last visited your application
+| updateLastRequestAt| Boolean   | If true, instructs Intercom to update the user's last_request_at value.
+| newSession         | Boolean   | If true, instructs Intercom to register the request as a session.
 
 ## Intercom.createUserById
 Create user by identifier.
 
-| Field              | Type   | Description
-|--------------------|--------|----------
-| accessToken        | String | Access token.
-| userId             | String | A unique string identifier for the user.
-| email              | String | The user's email address.
-| phone              | String | The user's phone number.
-| name               | String | The user's full name.
-| lastSeenIp         | String | An ip address.
-| customAttributes   | JSON   | JSON Object, a hash of key - value pairs containing any other data about the user you want Intercom to store.
-| lastSeenUserAgent  | String | The user agent the user last visited your application with.
-| companies          | Array  | Array of JSON objects of companies.
-| lastRequestAt      | Number | The date the user last visited your application, UNIX timestamp.
-| updateLastRequestAt| Boolean| If true, instructs Intercom to update the user's last_request_at value.
-| newSession         | Boolean| If true, instructs Intercom to register the request as a session.
-
-#### Example of 'companies' field
-```json
-[{
-	"company_id": "366",
-	"name": "Serenity",
-	"monthly_spend": 500
-}]
-```
+| Field              | Type      | Description
+|--------------------|-----------|----------
+| accessToken        | String    | Access token.
+| userId             | String    | A unique string identifier for the user.
+| email              | String    | The user's email address.
+| phone              | String    | The user's phone number.
+| name               | String    | The user's full name.
+| lastSeenIp         | String    | An ip address.
+| customAttributes   | JSON      | JSON Object, a hash of key - value pairs containing any other data about the user you want Intercom to store.
+| lastSeenUserAgent  | String    | The user agent the user last visited your application with.
+| companies          | List      | Array of JSON objects of companies.
+| lastRequestAt      | DatePicker| The date the user last visited your application
+| updateLastRequestAt| Boolean   | If true, instructs Intercom to update the user's last_request_at value.
+| newSession         | Boolean   | If true, instructs Intercom to register the request as a session.
 
 ## Intercom.updateUserByEmail
 Update user by email.
 
-| Field              | Type   | Description
-|--------------------|--------|----------
-| accessToken        | String | Access token.
-| email              | String | The user's email address.
-| userId             | String | A unique string identifier for the user.
-| phone              | String | The user's phone number.
-| name               | String | The user's full name.
-| lastSeenIp         | String | An ip address.
-| customAttributes   | JSON   | JSON Object, a hash of key - value pairs containing any other data about the user you want Intercom to store.
-| lastSeenUserAgent  | String | The user agent the user last visited your application with.
-| companies          | Array  | Array of JSON objects of companies.
-| lastRequestAt      | Number | The date the user last visited your application, UNIX timestamp.
-| updateLastRequestAt| Boolean| If true, instructs Intercom to update the user's last_request_at value.
-| newSession         | Boolean| If true, instructs Intercom to register the request as a session.
-
-#### Example of 'companies' field
-```json
-[{
-	"company_id": "366",
-	"name": "Serenity",
-	"monthly_spend": 500
-}]
-```
+| Field              | Type      | Description
+|--------------------|-----------|----------
+| accessToken        | String    | Access token.
+| email              | String    | The user's email address.
+| userId             | String    | A unique string identifier for the user.
+| phone              | String    | The user's phone number.
+| name               | String    | The user's full name.
+| lastSeenIp         | String    | An ip address.
+| customAttributes   | JSON      | JSON Object, a hash of key - value pairs containing any other data about the user you want Intercom to store.
+| lastSeenUserAgent  | String    | The user agent the user last visited your application with.
+| companies          | List      | Array of JSON objects of companies.
+| lastRequestAt      | DatePicker| The date the user last visited your application
+| updateLastRequestAt| Boolean   | If true, instructs Intercom to update the user's last_request_at value.
+| newSession         | Boolean   | If true, instructs Intercom to register the request as a session.
 
 ## Intercom.updateUserById
 Update user by identifier.
 
-| Field              | Type   | Description
-|--------------------|--------|----------
-| accessToken        | String | Access token.
-| userId             | String | A unique string identifier for the user.
-| email              | String | The user's email address.
-| phone              | String | The user's phone number.
-| name               | String | The user's full name.
-| lastSeenIp         | String | An ip address.
-| customAttributes   | JSON   | JSON Object, a hash of key - value pairs containing any other data about the user you want Intercom to store.
-| lastSeenUserAgent  | String | The user agent the user last visited your application with.
-| companies          | Array  | Array of JSON objects of companies.
-| lastRequestAt      | Number | The date the user last visited your application, UNIX timestamp.
-| updateLastRequestAt| Boolean| If true, instructs Intercom to update the user's last_request_at value.
-| newSession         | Boolean| If true, instructs Intercom to register the request as a session.
-
-#### Example of 'companies' field
-```json
-[{
-	"company_id": "366",
-	"name": "Serenity",
-	"monthly_spend": 500
-}]
-```
+| Field              | Type      | Description
+|--------------------|-----------|----------
+| accessToken        | String    | Access token.
+| userId             | String    | A unique string identifier for the user.
+| email              | String    | The user's email address.
+| phone              | String    | The user's phone number.
+| name               | String    | The user's full name.
+| lastSeenIp         | String    | An ip address.
+| customAttributes   | JSON      | JSON Object, a hash of key - value pairs containing any other data about the user you want Intercom to store.
+| lastSeenUserAgent  | String    | The user agent the user last visited your application with.
+| companies          | List      | Array of JSON objects of companies.
+| lastRequestAt      | DateTicker| The date the user last visited your application
+| updateLastRequestAt| Boolean   | If true, instructs Intercom to update the user's last_request_at value.
+| newSession         | Boolean   | If true, instructs Intercom to register the request as a session.
 
 ## Intercom.getUsers
 Fetch a list of users.
@@ -137,7 +111,7 @@ Fetch a list of users.
 | page        | String| what page of results to fetch.
 | perPage     | String| how many results per page.
 | order       | String| Return the users in ascending or descending order. One of: asc, desc.
-| sort        | String| what field to sort the results by. One of: created_at, last_request_at, signed_up_at, updated_at.
+| sort        | Select| what field to sort the results by. One of: created_at, last_request_at, signed_up_at, updated_at.
 | createdSince| String| limit results to users that were created in that last number of days.
 
 ## Intercom.getUsersByTag
@@ -163,7 +137,7 @@ Retrieve user by identifier.
 |------------|-------|----------
 | accessToken| String| Access token.
 | userId     | String| The user identifier.
-| userIdType | String| The user identifier type. One of: intercom_id, user_id, email.
+| userIdType | Select| The user identifier type. One of: intercom_id, user_id, email.
 
 ## Intercom.deleteUser
 Delete user.
@@ -172,7 +146,7 @@ Delete user.
 |------------|-------|----------
 | accessToken| String| Access token.
 | userId     | String| The user identifier.
-| userIdType | String| The user identifier type. One of: intercom_id, user_id, email.
+| userIdType | Select| The user identifier type. One of: intercom_id, user_id, email.
 
 ## Intercom.scrollUsers
 Scroll over all users.
@@ -195,31 +169,12 @@ Create lead.
 | avatarImageUrl  | String| An avatar URL for the Lead.
 | userAgentData   | String| Data about the last user agent the Lead was seen using.
 | lastSeenIp      | String| An ip address.
-| companies       | Array | Array of JSON objects of companies.
-| socialProfiles  | Array | Array of JSON objects, of social profiles associated with the Lead.
-| segments        | String| Comma-separated list of segments the Lead.
-| tags            | String| Comma-separated list of tags associated with the Lead.
+| companies       | List  | Array of JSON objects of companies.
+| socialProfiles  | List  | Array of JSON objects, of social profiles associated with the Lead.
+| segments        | List  | Array of segments the Lead.
+| tags            | String| Array of tags associated with the Lead.
 | customAttributes| JSON  | JSON Object. The custom attributes you have set on the Lead.
 | locationData    | JSON  | JSON Object, of Location, relating to the Lead.
-
-#### Example of 'companies' field
-```json
-[{
-	"company_id": "366",
-	"name": "Serenity",
-	"monthly_spend": 500
-}]
-```
-
-#### Example of 'socialProfiles' field
-```json
-[{
-	"name": "Twitter",
-	"id": "1235d3213",
-	"username": "th1sland",
-	"url": "http://twitter.com/th1sland"
-}]
-```
 
 ## Intercom.updateLead
 Update lead.
@@ -234,31 +189,12 @@ Update lead.
 | avatarImageUrl  | String| An avatar URL for the Lead.
 | userAgentData   | String| Data about the last user agent the Lead was seen using.
 | lastSeenIp      | String| An ip address.
-| companies       | Array | Array of JSON objects of companies.
-| socialProfiles  | Array | Array of JSON objects, of social profiles associated with the Lead.
-| segments        | String| Comma-separated list of segments the Lead.
-| tags            | String| Comma-separated list of tags associated with the Lead.
+| companies       | List  | Array of JSON objects of companies.
+| socialProfiles  | List  | Array of JSON objects, of social profiles associated with the Lead.
+| segments        | List  | Array of segments the Lead.
+| tags            | List  | Array of tags associated with the Lead.
 | customAttributes| JSON  | JSON Object. The custom attributes you have set on the Lead.
 | locationData    | JSON  | JSON Object, of Location, relating to the Lead.
-
-#### Example of 'companies' field
-```json
-[{
-	"company_id": "366",
-	"name": "Serenity",
-	"monthly_spend": 500
-}]
-```
-
-#### Example of 'socialProfiles' field
-```json
-[{
-	"name": "Twitter",
-	"id": "1235d3213",
-	"username": "th1sland",
-	"url": "http://twitter.com/th1sland"
-}]
-```
 
 ## Intercom.getLeads
 Fetch a list of all leads.
@@ -282,7 +218,7 @@ Fetch single lead.
 |------------|-------|----------
 | accessToken| String| Access token.
 | userId     | String| The lead identifier.
-| userIdType | String| The lead identifier type. One of: intercom_id, user_id, email.
+| userIdType | Select| The lead identifier type. One of: intercom_id, user_id, email.
 
 ## Intercom.deleteLead
 Delete lead.
@@ -291,7 +227,7 @@ Delete lead.
 |------------|-------|----------
 | accessToken| String| Access token.
 | userId     | String| The lead identifier.
-| userIdType | String| The lead identifier type. One of: intercom_id, user_id.
+| userIdType | Select| The lead identifier type. One of: intercom_id, user_id, email.
 
 ## Intercom.convertLeadToUser
 Convert Lead to Users.
@@ -300,7 +236,7 @@ Convert Lead to Users.
 |------------|-------|----------
 | accessToken| String| Access token.
 | leadId     | String| The lead identifier.
-| leadIdType | String| The user identifier type. One of: intercom_id, user_id, email.
+| leadIdType | Select| The user identifier type. One of: intercom_id, user_id, email.
 | userId     | String| Identifier of existing User.
 
 ## Intercom.scrollLeads
@@ -431,20 +367,7 @@ Add tag to User.
 |------------|-------|----------
 | accessToken| String| Access token.
 | name       | String| The name of the tag.
-| users      | Array | Array of JSON objects, of users user_id, intercom identifier or email.
-
-#### Example of 'users' field
-```json
-[{
-	"id": "53427b7ecce5722303000003"
-},
-{
-	"user_id": "22"
-},
-{
-	"email": "a@b.com"
-}]
-```
+| users      | List  | Array of JSON objects, of users user_id, intercom identifier or email.
 
 ## Intercom.untagUsers
 Remove tag from User.
@@ -453,18 +376,7 @@ Remove tag from User.
 |------------|-------|----------
 | accessToken| String| Access token.
 | name       | String| The name of the tag.
-| users      | Array | Array of JSON objects, of users user_id, intercom identifier or email.
-
-#### Example of 'users' field
-```json
-[{
-	"id": "53427b7ecce5722303000003",
-	"untag": true
-},
-{
-	"user_id": "22"
-}]
-```
+| users      | List  | Array of JSON objects, of users user_id, intercom identifier or email.
 
 ## Intercom.tagCompany
 Add tag to Company.
@@ -473,17 +385,7 @@ Add tag to Company.
 |------------|-------|----------
 | accessToken| String| Access token.
 | name       | String| The name of the tag.
-| companies  | Array | Array of JSON objects, of companies company_id or intercom identifier.
-
-#### Example of 'companies' field
-```json
-[{
-	"id": "53427b7ecce5722303000003"
-},
-{
-	"company_id": "22"
-}]
-```
+| companies  | List  | Array of JSON objects, of companies company_id or intercom identifier.
 
 ## Intercom.untagCompany
 Remove tag from Company.
@@ -492,18 +394,7 @@ Remove tag from Company.
 |------------|-------|----------
 | accessToken| String| Access token.
 | name       | String| The name of the tag.
-| companies  | Array | Array of JSON objects, of companies company_id or intercom identifier.
-
-#### Example of 'companies' field
-```json
-[{
-	"id": "53427b7ecce5722303000003",
-	"untag": true
-},
-{
-	"company_id": "22"
-}]
-```
+| companies  | List  | Array of JSON objects, of companies company_id or intercom identifier.
 
 ## Intercom.deleteTag
 Delete tag.
@@ -542,7 +433,7 @@ Create a Note.
 |------------|-------|----------
 | accessToken| String| Access token.
 | userId     | String| User identifier the note is to be created about.
-| userIdType | String| The user identifier type. One of: intercom_id, user_id, email.
+| userIdType | Select| The user identifier type. One of: intercom_id, user_id, email.
 | body       | String| The text of the note.
 | adminId    | String| The identifier of the admin creating the note.
 
@@ -553,7 +444,7 @@ List Notes for a User.
 |------------|-------|----------
 | accessToken| String| Access token.
 | userId     | String| The user identifier.
-| userIdType | String| The user identifier type. One of: intercom_id, user_id, email.
+| userIdType | Select| The user identifier type. One of: intercom_id, user_id, email.
 
 ## Intercom.getSingleNote
 Fetch single Note.
@@ -566,13 +457,13 @@ Fetch single Note.
 ## Intercom.submitEvent
 Submitting Events.
 
-| Field      | Type  | Description
-|------------|-------|----------
-| accessToken| String| Access token.
-| eventName  | String| The name of the event that occurred.
-| userId     | String| Your identifier for the the user.
-| createdAt  | Number| The time the event occurred as a UTC Unix timestamp.
-| metadata   | JSON  | JSON Object, metadata about the event.
+| Field      | Type      | Description
+|------------|-----------|----------
+| accessToken| String    | Access token.
+| eventName  | String    | The name of the event that occurred.
+| userId     | String    | Your identifier for the the user.
+| createdAt  | DatePicker| The time the event occurred
+| metadata   | JSON      | JSON Object, metadata about the event.
 
 ## Intercom.getUserEvents
 The events belonging to a user.
@@ -596,7 +487,7 @@ Fetch app total counts.
 | Field      | Type  | Description
 |------------|-------|----------
 | accessToken| String| Access token.
-| type       | String| Type of counts. One of: user, company, conversation.
+| type       | Select| Type of counts. One of: user, company, conversation.
 
 ## Intercom.getAppConversationCount
 Fetch app conversation count.
@@ -654,13 +545,13 @@ Create an admin initiated message to a user.
 |---------------|-------|----------
 | accessToken   | String| Access token.
 | fromAdminId   | String| Admin identifier from whom send message.
-| receiverType  | String| Receiver type. One of: user, contact.
+| receiverType  | Select| Receiver type. One of: user, contact.
 | receiverId    | String| The receiver identifier.
-| receiverIdType| String| The receiver identifier type. One of: intercom_id, user_id, email.
-| messageType   | String| The kind of message being created. One of: inapp, email.
+| receiverIdType| Select| The receiver identifier type. One of: intercom_id, user_id, email.
+| messageType   | Select| The kind of message being created. One of: inapp, email.
 | subject       | String| The title of the email.
 | body          | String| The content of the message. Plaintext only, HTML is not supported.
-| template      | String| The style of the outgoing message. Only valid for email messages. One of: plain, personal.
+| template      | Select| The style of the outgoing message. Only valid for email messages. One of: plain, personal.
 
 ## Intercom.createUserMessage
 Create user message.
@@ -669,7 +560,7 @@ Create user message.
 |-------------|-------|----------
 | accessToken | String| Access token.
 | senderId    | String| The sender identifier.
-| senderIdType| String| The sender identifier type. One of: intercom_id, user_id, email.
+| senderIdType| Select| The sender identifier type. One of: intercom_id, user_id, email.
 | body        | String| The content of the message. Plaintext only, HTML is not supported.
 
 ## Intercom.createContactMessage
@@ -679,7 +570,7 @@ Create contact message.
 |-------------|-------|----------
 | accessToken | String| Access token.
 | senderId    | String| The sender identifier.
-| senderIdType| String| The sender identifier type. One of: intercom_id, user_id, email.
+| senderIdType| Select| The sender identifier type. One of: intercom_id, user_id.
 | body        | String| The content of the message. Plaintext only, HTML is not supported.
 
 ## Intercom.getConversations
@@ -705,7 +596,7 @@ Fetch conversations with single user.
 |------------|-------|----------
 | accessToken| String| Access token.
 | userId     | String| The user identifier.
-| userIdType | String| The user identifier type. One of: intercom_user_id, user_id, email.
+| userIdType | Select| The user identifier type. One of: intercom_user_id, user_id, email.
 
 ## Intercom.getSingleConversation
 Fetch single conversation.
@@ -724,8 +615,8 @@ Replying to a Conversation.
 | conversationId| String| Conversation identifier.
 | body          | String| The text body of the comment.
 | userId        | String| The user identifier.
-| userIdType    | String| The user identifier type. One of: intercom_user_id, user_id, email.
-| attachmentUrls| Array | Array of Strings of URLs of files that will be added as attachments. You can include up to 5 attachments.
+| userIdType    | Select| The user identifier type. One of: intercom_user_id, user_id, email.
+| attachmentUrls| List  | Array of Strings of URLs of files that will be added as attachments. You can include up to 5 attachments.
 
 ## Intercom.replyToAdminComment
 Reply to admin comment.
@@ -736,7 +627,7 @@ Reply to admin comment.
 | conversationId| String| Conversation identifier.
 | adminId       | String| The identifier of the Admin who is authoring the comment.
 | body          | String| The text body of the comment.
-| attachmentUrls| Array | Array of Strings of URLs of files that will be added as attachments. You can include up to 5 attachments.
+| attachmentUrls| List  | Array of Strings of URLs of files that will be added as attachments. You can include up to 5 attachments.
 
 ## Intercom.replyToUsersLastConversation
 Reply to users last conversation.
@@ -747,7 +638,7 @@ Reply to users last conversation.
 | intercomUserId| String| The user identifier.
 | adminId       | String| The identifier of the Admin who is replying.
 | body          | String| The text body of the comment.
-| attachmentUrls| Array | Array of Strings of URLs of files that will be added as attachments. You can include up to 5 attachments.
+| attachmentUrls| List  | Array of Strings of URLs of files that will be added as attachments. You can include up to 5 attachments.
 
 ## Intercom.markConversationAsRead
 Marking a Conversation as Read.
@@ -773,52 +664,26 @@ Fetch single visitor.
 |------------|-------|----------
 | accessToken| String| Access token.
 | userId     | String| Visitor user identifier.
-| userIdType | String| Visitor user identifier type. One of: intercom_id, user_id.
+| userIdType | Select| Visitor user identifier type. One of: intercom_id, user_id.
 
 ## Intercom.updateVisitor
 Update a Visitor.
 
-| Field                 | Type   | Description
-|-----------------------|--------|----------
-| accessToken           | String | Access token.
-| userId                | String | User identifier for the Visitor.
-| name                  | String | The name of the Visitor.
-| customAttributes      | JSON   | JSON Object, the custom attributes you have set on the Visitor.
-| lastRequestAt         | Number | The date the lead last visited your application, UNIX timestamp.
-| avatarImageUrl        | String | An avatar image URL for the Visitor.
-| unsubscribedFromEmails| Boolean| Whether the Visitor is unsubscribed from emails.
-| locationData          | JSON   | JSON Object. Location relating to the Visitor.
-| userAgentData         | String | Data about the last user agent the Visitor was seen using.
-| lastSeenIp            | String | An ip address.
-| socialProfiles        | Array  | Array of JSON objects, of social profiles associated with the Visitor.
-| segments              | String | Comma-separated list of segments the Visitor.
-| tags                  | String | Comma-separated list of tags associated with the Visitor.
-
-#### Example of 'locationData' field
-```json
-{
-	"type": "location_data",
-	"city_name": "Dublin",
-	"continent_code": "EU",
-	"country_code": "IRL",
-	"country_name": "Ireland",
-	"latitude": 53.159233,
-	"longitude": -6.723,
-	"postal_code": null,
-	"region_name": "Dublin",
-	"timezone": "Europe/Dublin"
-}
-```
-
-#### Example of 'socialProfiles' field
-```json
-[{
-	"name": "Twitter",
-	"id": "1235d3213",
-	"username": "th1sland",
-	"url": "http://twitter.com/th1sland"
-}]
-```
+| Field                 | Type      | Description
+|-----------------------|-----------|----------
+| accessToken           | String    | Access token.
+| userId                | String    | User identifier for the Visitor.
+| name                  | String    | The name of the Visitor.
+| customAttributes      | JSON      | JSON Object, the custom attributes you have set on the Visitor.
+| lastRequestAt         | DatePicker| The date the lead last visited your application
+| avatarImageUrl        | String    | An avatar image URL for the Visitor.
+| unsubscribedFromEmails| Boolean   | Whether the Visitor is unsubscribed from emails.
+| locationData          | JSON      | JSON Object. Location relating to the Visitor.
+| userAgentData         | String    | Data about the last user agent the Visitor was seen using.
+| lastSeenIp            | String    | An ip address.
+| socialProfiles        | List      | Array of JSON objects, of social profiles associated with the Visitor.
+| segments              | List      | Array of segments the Visitor.
+| tags                  | List      | Array of tags associated with the Visitor.
 
 ## Intercom.deleteVisitor
 Delete a visitor.
@@ -835,7 +700,7 @@ Convert Visitor to Leads.
 |------------------|-------|----------
 | accessToken      | String| Access token.
 | visitorUserId    | String| User identifier for the Visitor.
-| visitorUserIdType| String| The Visitor user identifier of type. One of: intercom_id, user_id, email.
+| visitorUserIdType| Select| The Visitor user identifier of type. One of: intercom_id, user_id, email.
 | leadId           | String| User identifier for the Lead to binding.
 
 ## Intercom.createSubscription
@@ -845,7 +710,7 @@ Create new subscription.
 |------------|-------|----------
 | accessToken| String| Access token.
 | url        | String| The url the event should be sent to.
-| topics     | String| Comma-separated list of topics to subscribe to.
+| topics     | List  | Comma-separated list of topics to subscribe to.
 | serviceType| String| The type of the service being called. Default is web.
 | hubSecret  | String| A key used to sign notifications.
 
@@ -894,7 +759,7 @@ Create an Event Webhook Subscription.
 | Field             | Type  | Description
 |-------------------|-------|----------
 | accessToken       | String| Access token.
-| metadataEventNames| String| Comma-separated list of events name to subscribe to.
+| metadataEventNames| List  | Array of events name to subscribe to.
 | url               | String| The url the event should be sent to.
 | serviceType       | String| The type of the service being called. Default is web.
 
@@ -904,7 +769,7 @@ Update an Event Webhook Subscription.
 | Field             | Type  | Description
 |-------------------|-------|----------
 | accessToken       | String| Access token.
-| metadataEventNames| String| Comma-separated list of events name to subscribe to.
+| metadataEventNames| List  | Array of events name to subscribe to.
 | url               | String| The url the event should be sent to.
 | serviceType       | String| The type of the service being called. Default is web.
 
@@ -914,27 +779,7 @@ Creating bulk jobs for users.
 | Field      | Type  | Description
 |------------|-------|----------
 | accessToken| String| Access token.
-| items      | Array | Array of object, of users tasks.
-
-#### Example of 'items' field
-```json
-[{
-	"method": "post",
-	"data_type": "user",
-	"data": {
-		"user_id": "25",
-		"email": "wash@serenity.io"
-	}
-},
-{
-	"method": "post",
-	"data_type": "user",
-	"data": {
-		"user_id": "25",
-		"email": "zoe@serenity.io"
-	}
-}]
-```
+| items      | List  | Array of object, of users tasks.
 
 ## Intercom.createBulkLeadJob
 Bulk Lead Posting.
@@ -942,29 +787,7 @@ Bulk Lead Posting.
 | Field      | Type  | Description
 |------------|-------|----------
 | accessToken| String| Access token.
-| items      | Array | Array of object, of Leads.
-
-#### Example of 'items' field
-```json
-[{
-	"method": "post",
-	"data_type": "contact",
-	"data": {
-		"phone": "123987456",
-		"email": "winstonsmith@truth.org",
-		"name": "Winston Smith"
-	}
-},
-{
-	"method": "post",
-	"data_type": "contact",
-	"data": {
-		"phone": "654789321",
-		"email": "obrien@truth.org",
-		"name": "OBrien"
-	}
-}]
-```
+| items      | List  | Array of object, of Leads.
 
 ## Intercom.createBulkEventJob
 Bulk Event Posting.
@@ -972,37 +795,7 @@ Bulk Event Posting.
 | Field      | Type  | Description
 |------------|-------|----------
 | accessToken| String| Access token.
-| items      | Array | Array of object, of Events.
-
-#### Example of 'items' field
-```json
-[{
-	"method": "post",
-	"data_type": "event",
-	"data": {
-		"event_name": "invited-friend",
-		"created_at": 1438944979,
-		"user_id": "314159",
-		"metadata": {
-			"invitee_email": "pi@example.org",
-			"invite_code": "ADDAFRIEND"
-		}
-	}
-},
-{
-	"method": "post",
-	"data_type": "event",
-	"data": {
-		"event_name": "ordered-item",
-		"created_at": 1438944980,
-		"user_id": "314159",
-		"metadata": {
-			"order_date": 1438944980,
-			"stripe_invoice": "inv_3434343434"
-		}
-	}
-}]
-```
+| items      | List  | Array of object, of Events.
 
 ## Intercom.getSingleBulkJob
 Fetch single job.
@@ -1011,3 +804,4 @@ Fetch single job.
 |------------|-------|----------
 | accessToken| String| Access token.
 | jobId      | String| Bulk job identifier.
+
