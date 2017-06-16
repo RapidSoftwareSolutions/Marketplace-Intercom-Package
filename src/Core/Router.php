@@ -87,20 +87,20 @@ class Router
         $blockName = $block['name'];
         $blockCustom = $this->custom[$block['name']];
 
-        if ($blockName == 'webhookEvent') {
-            $requestBody = file_get_contents('php://input');
-            $requestBody = $this->normalizeJson($requestBody);
-            $requestBody = str_replace('\"', '"', $requestBody);
-            $requestBody = json_decode($requestBody, true);
-            $reply = [
-                "http_resp" => '',
-                "client_msg" => $requestBody['body'],
-                "params" => $requestBody['params']
-            ];
-
-            echo json_encode($reply);
-            exit(200);
-        }
+//        if ($block['name'] == 'webhookEvent') {
+//            $requestBody = file_get_contents('php://input');
+//            $requestBody = $this->normalizeJson($requestBody);
+//            $requestBody = str_replace('\"', '"', $requestBody);
+//            $requestBody = json_decode($requestBody, true);
+//            $reply = [
+//                "http_resp" => '',
+//                "client_msg" => $requestBody['body'],
+//                "params" => $requestBody['params']
+//            ];
+//
+//            echo json_encode($reply);
+//            exit(200);
+//        }
 
         // Add route
         $this->klein->respond('POST', $routePath, function () use ($param, $blockName, $blockCustom, $method) {
