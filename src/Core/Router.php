@@ -1,8 +1,10 @@
 <?php
 
 namespace Core;
+
 use \Core\CustomModel;
-if ( ! defined( 'RAPID_IN' ) ) exit( 'No direct script access allowed' );
+
+if (!defined('RAPID_IN')) exit('No direct script access allowed');
 
 /**
  * Base Model
@@ -33,11 +35,11 @@ class Router
     {
         // Metatdata
         // api/<Package_name>/
-        $this->klein->respond('GET', INDEX_PATH . 'api/' . $this->packageName . '/?', function(){
+        $this->klein->respond('GET', INDEX_PATH . 'api/' . $this->packageName . '/?', function () {
             include_once dirname(__DIR__) . '/metadata/metadata.json';
         });
         // Set all routes
-        foreach($this->blocks as $blockSettings){
+        foreach ($this->blocks as $blockSettings) {
             $this->setRoute($blockSettings);
         }
     }
@@ -45,9 +47,9 @@ class Router
     public function run($dispatchSettings = [])
     {
         // Run router
-        if(count($dispatchSettings)>0){
+        if (count($dispatchSettings) > 0) {
             $this->klein->dispatch($dispatchSettings);
-        }else{
+        } else {
             $this->klein->dispatch();
         }
         // Set status 200
@@ -63,12 +65,14 @@ class Router
     private function setRoute($block)
     {
         // Get method for vendor route
-        if(
-            isset($this->custom[$block['name']]['method'])&&
+
+
+        if (
+            isset($this->custom[$block['name']]['method']) &&
             in_array($this->custom[$block['name']]['method'], $this->supportedMethods)
-        ){
+        ) {
             $method = $this->custom[$block['name']]['method'];
-        }else{
+        } else {
             $result['callback'] = 'error';
             $result['contextWrites']['to']['status_code'] = 'INTERNAL_PACKAGE_ERROR';
             $result['contextWrites']['to']['status_msg'] = 'Declared unsupported method for block: ' . $block['name'] . '.';
@@ -76,24 +80,41 @@ class Router
             exit(200);
         }
 
+
         // Prepare vars need for route processing
         $param = $this->getParam($block);
         $routePath = INDEX_PATH . 'api/' . $this->packageName . '/' . $block['name'] . '/?';
         $blockName = $block['name'];
         $blockCustom = $this->custom[$block['name']];
 
+        if ($blockName == 'webhookEvent') {
+            $requestBody = file_get_contents('php://input');
+            $requestBody = $this->normalizeJson($requestBody);
+            $requestBody = str_replace('\"', '"', $requestBody);
+            $requestBody = json_decode($requestBody, true);
+            $reply = [
+                "http_resp" => '',
+                "client_msg" => $requestBody['body'],
+                "params" => $requestBody['params']
+            ];
+
+            echo json_encode($reply);
+            exit(200);
+        }
+
         // Add route
-        $this->klein->respond('POST', $routePath, function()use($param, $blockName, $blockCustom, $method){
+        $this->klein->respond('POST', $routePath, function () use ($param, $blockName, $blockCustom, $method) {
+
+
             // Get input param
             $inputPram = $this->getInputPram($param['param']);
-            if(is_string($inputPram)){
+            if (is_string($inputPram)) {
                 echo $inputPram;
                 exit(200);
             }
-
             // Validate param as reqiured and/or json
             $validateResult = $this->validateParam($inputPram, $param['required'], $param['json']);
-            if($validateResult){
+            if ($validateResult) {
                 echo $validateResult;
                 exit(200);
             }
@@ -102,14 +123,14 @@ class Router
             $vendorUrl = $blockCustom['vendorUrl'];
             $urlPart = [];
             preg_match_all('/\{\{[0-9a-z_]+\}\}/ui', $vendorUrl, $urlPart);
-            if(count($urlPart[0])>0){
+            if (count($urlPart[0]) > 0) {
                 foreach ($urlPart[0] as $onePart) {
                     $oneUrlPart = str_replace('}}', '', str_replace('{{', '', $onePart));
-                    if (isset($inputPram[$oneUrlPart])&&strlen($inputPram[$oneUrlPart])>0) {
+                    if (isset($inputPram[$oneUrlPart]) && strlen($inputPram[$oneUrlPart]) > 0) {
                         $paramVal = $inputPram[$oneUrlPart];
-                        if($oneUrlPart=='expression'&&$paramVal!='0'){
-                            $paramVal=str_replace(' ', '', $paramVal);
-                            $paramVal=urlencode($paramVal);
+                        if ($oneUrlPart == 'expression' && $paramVal != '0') {
+                            $paramVal = str_replace(' ', '', $paramVal);
+                            $paramVal = urlencode($paramVal);
                         }
                         $vendorUrl = str_replace('{{' . $oneUrlPart . '}}', $paramVal, $vendorUrl);
                     } else {
@@ -129,28 +150,29 @@ class Router
             $sendParam = $this->prepareParam($inputPram, $blockCustom['dictionary'], $blockName);
 
             // Remove $accessToken from params
-            if(isset($sendParam['accessToken'])&&strlen($sendParam['accessToken'])>0){
+            if (isset($sendParam['accessToken']) && strlen($sendParam['accessToken']) > 0) {
                 $accessToken = $sendParam['accessToken'];
                 unset($sendParam['accessToken']);
-            }else{
+            } else {
                 $accessToken = false;
             }
 
             // If need, custom make custom default processing
-            if(isset($blockCustom['default'])&&is_array($blockCustom['default'])&&count($blockCustom['default'])>0){
+            if (isset($blockCustom['default']) && is_array($blockCustom['default']) && count($blockCustom['default']) > 0) {
                 $sendParam = array_merge($blockCustom['default'], $sendParam);
             }
 
             $sendBody = $sendParam;
 
             // If need, custom make custom processing for route
-            if(isset($blockCustom['custom'])&&$blockCustom['custom'] == true){
+            if (isset($blockCustom['custom']) && $blockCustom['custom'] == true) {
                 $sendBody = CustomModel::$blockName($sendParam, $this->custom[$blockName], $vendorUrl, $accessToken);
-            }else{
+            } else {
                 $sendBody = json_encode($sendBody);
             }
 
             // Make request
+
             $result = $this->httpRequest($vendorUrl, $method, $sendBody, $accessToken);
             echo json_encode($result);
             exit(200);
@@ -165,11 +187,11 @@ class Router
         $param = [];
         $required = [];
         $json = [];
-        foreach($block['args'] as $oneParam){
-            if($oneParam['required']){
+        foreach ($block['args'] as $oneParam) {
+            if ($oneParam['required']) {
                 array_push($required, $oneParam['name']);
             }
-            if($oneParam['type'] == 'JSON'){
+            if ($oneParam['type'] == 'JSON') {
                 array_push($json, $oneParam['name']);
             }
             array_push($param, $oneParam['name']);
@@ -186,11 +208,11 @@ class Router
     {
         // Retrieve data params from input body
         $requestBody = file_get_contents('php://input');
-        if(strlen($requestBody)>0){
+        if (strlen($requestBody) > 0) {
             $requestBody = $this->normalizeJson($requestBody);
             $requestBody = str_replace('\"', '"', $requestBody);
             $requestBody = json_decode($requestBody, true);
-            if(json_last_error() != 0) {
+            if (json_last_error() != 0) {
                 $response = [];
                 $response['callback'] = 'error';
                 $response['contextWrites']['to']['status_code'] = 'JSON_VALIDATION';
@@ -201,21 +223,21 @@ class Router
             $jsonParam = $requestBody['args'];
             $param = [];
             // Check input param in param list
-            foreach($paramList as $oneParam){
-                if(isset($jsonParam[$oneParam])){
+            foreach ($paramList as $oneParam) {
+                if (isset($jsonParam[$oneParam])) {
                     $param[$oneParam] = $jsonParam[$oneParam];
-                    if(is_array($param[$oneParam])&&count($param[$oneParam])==0){
+                    if (is_array($param[$oneParam]) && count($param[$oneParam]) == 0) {
                         $param[$oneParam] = null;
-                    }elseif(!is_array($param[$oneParam])&&strlen($param[$oneParam])==0){
+                    } elseif (!is_array($param[$oneParam]) && strlen($param[$oneParam]) == 0) {
                         $param[$oneParam] = null;
                     }
-                }else{
+                } else {
                     $param[$oneParam] = null;
                 }
             }
 
             return $param;
-        }else{
+        } else {
             return [];
         }
     }
@@ -223,14 +245,14 @@ class Router
     protected function validateParam($inputParam, $requiredPram = [], $jsonParams = [])
     {
         // Check Required params
-        if(count($requiredPram)>0){
+        if (count($requiredPram) > 0) {
             $requiredPramCheck = [];
-            foreach($requiredPram as $oneParam){
-                if(!isset($inputParam[$oneParam]) || $inputParam[$oneParam] === null || $inputParam[$oneParam] === ''){
+            foreach ($requiredPram as $oneParam) {
+                if (!isset($inputParam[$oneParam]) || $inputParam[$oneParam] === null || $inputParam[$oneParam] === '') {
                     array_push($requiredPramCheck, $oneParam);
                 }
             }
-            if(count($requiredPramCheck)>0){
+            if (count($requiredPramCheck) > 0) {
                 $response = [];
                 $response['callback'] = 'error';
                 $response['contextWrites']['to']['status_code'] = "REQUIRED_FIELDS";
@@ -241,16 +263,16 @@ class Router
             }
         }
         // Check JSON params
-        if(count($jsonParams)>0){
+        if (count($jsonParams) > 0) {
             $jsonParamsCheck = [];
-            foreach($jsonParams as $oneParam){
-                if(isset($inputParam[$oneParam]) && $inputParam[$oneParam] != null){
-                    if(!is_array($inputParam[$oneParam])) {
+            foreach ($jsonParams as $oneParam) {
+                if (isset($inputParam[$oneParam]) && $inputParam[$oneParam] != null) {
+                    if (!is_array($inputParam[$oneParam])) {
                         array_push($jsonParamsCheck, $oneParam);
                     }
                 }
             }
-            if(count($jsonParamsCheck)>0){
+            if (count($jsonParamsCheck) > 0) {
                 $response = [];
                 $response['callback'] = 'error';
                 $response['contextWrites']['to']['status_code'] = 'JSON_VALIDATION';
@@ -267,17 +289,17 @@ class Router
     private function prepareParam($inputParam, $dictionary, $blockName)
     {
         $result = [];
-        foreach($inputParam as $paramName => $paramVal){
-            if($paramVal === null){
+        foreach ($inputParam as $paramName => $paramVal) {
+            if ($paramVal === null) {
                 continue;
             }
             // Convert numeric in Numeric type
-            if(is_numeric($paramVal)){
+            if (is_numeric($paramVal)) {
                 $paramVal = intval($paramVal);
             }
             // Substitution using dictionary
             $finalParamName = $paramName;
-            if(count($dictionary)>0 && isset($dictionary[$paramName])) {
+            if (count($dictionary) > 0 && isset($dictionary[$paramName])) {
                 $finalParamName = $dictionary[$paramName];
             }
             $result[$finalParamName] = $paramVal;
@@ -288,7 +310,7 @@ class Router
 
     protected function httpRequest($url, $method, $sendBody, $accessToken)
     {
-        if($sendBody == '[]' || $sendBody == '{}'){
+        if ($sendBody == '[]' || $sendBody == '{}') {
             $sendBody = '';
         }
 
@@ -299,24 +321,24 @@ class Router
                 'headers' => [
                     'Content-Type' => 'application/json',
                     'Accept' => 'application/json',
-                ] ];
+                ]];
 
-            if($accessToken){
+            if ($accessToken) {
                 $clientSetup['headers']['Authorization'] = 'Bearer ' . $accessToken;
             }
 
-            if($method == 'GET-RAW' || $method == 'DELETE-RAW'){
+            if ($method == 'GET-RAW' || $method == 'DELETE-RAW') {
                 $clientSetup = $sendBody;
 
                 $method = str_replace('-RAW', '', $method);
-            }else{
-                if($method == 'GET' || $method == 'DELETE'){
-                    if(is_string($sendBody)){
+            } else {
+                if ($method == 'GET' || $method == 'DELETE') {
+                    if (is_string($sendBody)) {
                         $sendBody = json_decode($sendBody, true);
                     }
                     $clientSetup['query'] = $sendBody;
-                }else{
-                    if(!is_string($sendBody)){
+                } else {
+                    if (!is_string($sendBody)) {
                         $sendBody = json_encode($sendBody, JSON_UNESCAPED_SLASHES);
                     }
                     $clientSetup['body'] = $sendBody;
@@ -327,23 +349,23 @@ class Router
 
             $responseBody = $vendorResponse->getBody()->getContents();
 
-            if($responseBody === 'true'||$responseBody==='false'){
+            if ($responseBody === 'true' || $responseBody === 'false') {
                 $responseBody = json_encode($responseBody);
             }
 
-            if($responseBody === '{"json": {"errors": []}}'){
+            if ($responseBody === '{"json": {"errors": []}}') {
                 $responseBody = json_encode('success');
             }
 
             $result['callback'] = 'success';
-            if(empty(json_decode($responseBody))&&strlen($responseBody)==0) {
+            if (empty(json_decode($responseBody)) && strlen($responseBody) == 0) {
                 $result['contextWrites']['to'] = 'success' . $responseBody;
             } else {
                 $result['contextWrites']['to'] = json_decode($responseBody, true);
             }
         } catch (\GuzzleHttp\Exception\ClientException $exception) {
             $responseBody = $exception->getResponse()->getBody()->getContents();
-            if(empty(json_decode($responseBody))) {
+            if (empty(json_decode($responseBody))) {
                 $out = $responseBody;
             } else {
                 $out = json_decode($responseBody, true);
@@ -353,7 +375,7 @@ class Router
             $result['contextWrites']['to']['status_msg'] = $out;
         } catch (\GuzzleHttp\Exception\UnhandledException $exception) {
             $responseBody = $exception->getResponse()->getBody()->getContents();
-            if(empty(json_decode($responseBody))) {
+            if (empty(json_decode($responseBody))) {
                 $out = 'API_ERROR' . $responseBody;
             } else {
                 $out = json_decode($responseBody, true);
@@ -363,7 +385,7 @@ class Router
             $result['contextWrites']['to']['status_msg'] = $out;
         } catch (\GuzzleHttp\Exception\ServerException $exception) {
             $responseBody = $exception->getResponse()->getBody()->getContents();
-            if(empty(json_decode($responseBody))) {
+            if (empty(json_decode($responseBody))) {
                 $out = 'API_ERROR' . $responseBody;
             } else {
                 $out = json_decode($responseBody, true);
@@ -382,7 +404,7 @@ class Router
 
     private function normalizeJson($jsonObject)
     {
-        return preg_replace_callback('~"([\[{].*?[}\]])"~s', function($match){
+        return preg_replace_callback('~"([\[{].*?[}\]])"~s', function ($match) {
             return preg_replace('~\s*"\s*~', "\"", $match[1]);
         }, $jsonObject);
     }

@@ -486,7 +486,6 @@ class CustomModel
     {
         $result = $param;
 
-
         // 'topics'
         if (isset($param['created_at']) && strlen($param['created_at']) > 0) {
             if (is_numeric($param['created_at'])) {
@@ -499,4 +498,6 @@ class CustomModel
 
         return $result;
     }
+
+
 }

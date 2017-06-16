@@ -41,6 +41,13 @@ return array(
             ),
         ),
         array(
+            'name' => 'webhookEvent',
+            'description' => 'Fetch access token.',
+            'args' => array(
+
+            ),
+        ),
+        array(
             'name' => 'createUserByEmail',
             'description' => 'Create user by email.',
             'args' => array(
@@ -2271,6 +2278,13 @@ return array(
             'vendorUrl' => 'https://api.intercom.io/auth/eagle/token',
             'method' => 'POST',
         ),
+        'webhookEvent' => array(
+            'dictionary' => array(
+
+            ),
+            'vendorUrl' => '',
+            'method' => 'POST'
+        ),
         'createUserByEmail' => array(
             'dictionary' => array(
                 'accessToken' => 'accessToken',
@@ -2307,7 +2321,7 @@ return array(
             ),
             'vendorUrl' => 'https://api.intercom.io/users',
             'method' => 'POST',
-            'custom' =>true
+            'custom' => true
         ),
         'updateUserByEmail' => array(
             'dictionary' => array(
