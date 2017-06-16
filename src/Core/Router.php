@@ -39,6 +39,24 @@ class Router
             include_once dirname(__DIR__) . '/metadata/metadata.json';
         });
         // Set all routes
+        $this->klein->respond('POST', INDEX_PATH.'api/Intercom/webhookEvent', function ($request, $response){
+
+                $requestBody = file_get_contents('php://input');
+                $requestBody = $this->normalizeJson($requestBody);
+                $requestBody = str_replace('\"', '"', $requestBody);
+                $requestBody = json_decode($requestBody, true);
+                $reply = [
+                    "http_resp" => '',
+                    "client_msg" => $requestBody['body'],
+                    "params" => $requestBody['params']
+                ];
+
+                echo json_encode($reply);
+                exit(200);
+
+        });
+
+
         foreach ($this->blocks as $blockSettings) {
             $this->setRoute($blockSettings);
         }
@@ -65,14 +83,12 @@ class Router
     private function setRoute($block)
     {
         // Get method for vendor route
-
-
         if (
             isset($this->custom[$block['name']]['method']) &&
             in_array($this->custom[$block['name']]['method'], $this->supportedMethods)
         ) {
             $method = $this->custom[$block['name']]['method'];
-        } else {
+        }  else {
             $result['callback'] = 'error';
             $result['contextWrites']['to']['status_code'] = 'INTERNAL_PACKAGE_ERROR';
             $result['contextWrites']['to']['status_msg'] = 'Declared unsupported method for block: ' . $block['name'] . '.';
@@ -87,20 +103,8 @@ class Router
         $blockName = $block['name'];
         $blockCustom = $this->custom[$block['name']];
 
-//        if ($block['name'] == 'webhookEvent') {
-//            $requestBody = file_get_contents('php://input');
-//            $requestBody = $this->normalizeJson($requestBody);
-//            $requestBody = str_replace('\"', '"', $requestBody);
-//            $requestBody = json_decode($requestBody, true);
-//            $reply = [
-//                "http_resp" => '',
-//                "client_msg" => $requestBody['body'],
-//                "params" => $requestBody['params']
-//            ];
-//
-//            echo json_encode($reply);
-//            exit(200);
-//        }
+
+
 
         // Add route
         $this->klein->respond('POST', $routePath, function () use ($param, $blockName, $blockCustom, $method) {
