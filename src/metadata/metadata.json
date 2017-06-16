@@ -15,7 +15,37 @@
       "clientSecret"
     ]
   },
-
+  "events": [
+    {
+      "name": "webhookEvent",
+      "description": "This method is called every time when webhook event happens",
+      "payload": {
+        "list_folder": {
+          "accounts": [
+            "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+          ]
+        },
+        "delta": {
+          "users": [
+            12345678,
+            23456789
+          ]
+        }
+      },
+      "steps": [
+        "Go to add addWebhook block",
+        "Set webhookUrl to __WEBHOOK_URL__"
+      ],
+      "args": [
+        {
+          "name": "token",
+          "type": "string",
+          "info": "Token sent on each message",
+          "required": true
+        }
+      ]
+    }
+  ],
   "blocks": [
 
     {
