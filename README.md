@@ -20,6 +20,17 @@ Connect to the Intercom Customer Service API to access data and build integratio
  |Select|String with predefined values|```sample```
  |Array|Array of objects|```[{"Second name":"123","Age":"12","Photo":"sdf","Draft":"sdfsdf"},{"name":"adi","Second name":"bla","Age":"4","Photo":"asfserwe","Draft":"sdfsdf"}] ```
  
+ ## Webhook credentials
+ Please use SDK to test this feature.
+ 0. Go to [RapidAPI](http://rapidapi.com)
+ 1. Log in or create an account
+ 2. Go to [My apps](https://dashboard.rapidapi.com/projects)
+ 3. Add new project with projectName to get your project Key
+ 
+ | Field      | Type       | Description
+ |------------|------------|----------
+ | projectName     | credentials| Your RapidAPI project name
+ | projectKey | credentials     | Your RapidAPI project key
 
 ## Intercom.getAccessToken
 Fetch access token.
@@ -755,6 +766,10 @@ Ping subscription.
 
 ## Intercom.createEventWebhookSubscription
 Create an Event Webhook Subscription.
+You can use our service as url: 
+```
+https://webhooks.rapidapi.com/api/message/Mandrill/webhookEvent/{projectName}/{projectKey} * see credentials description above
+```
 
 | Field             | Type  | Description
 |-------------------|-------|----------
@@ -765,6 +780,10 @@ Create an Event Webhook Subscription.
 
 ## Intercom.updateEventWebhookSubscription
 Update an Event Webhook Subscription.
+You can use our service as url: 
+```
+https://webhooks.rapidapi.com/api/message/Mandrill/webhookEvent/{projectName}/{projectKey} * see credentials description above
+```
 
 | Field             | Type  | Description
 |-------------------|-------|----------
