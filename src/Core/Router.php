@@ -47,8 +47,8 @@ class Router
                 $requestBody = json_decode($requestBody, true);
                 $reply = [
                     "http_resp" => '',
-                    "client_msg" => $requestBody['body'],
-                    "params" => $requestBody['params']
+                    "client_msg" => $requestBody['args']['body'],
+                    "params" => $requestBody['args']['params']
                 ];
 
                 $result['callback'] = 'success';
