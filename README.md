@@ -768,7 +768,7 @@ Ping subscription.
 Create an Event Webhook Subscription.
 You can use our service as url: 
 ```
-https://webhooks.rapidapi.com/api/message/Mandrill/webhookEvent/{projectName}/{projectKey} * see credentials description above
+https://webhooks.rapidapi.com/api/message/Intercom/webhookEvent/{projectName}/{projectKey} * see credentials description above
 ```
 
 | Field             | Type  | Description
