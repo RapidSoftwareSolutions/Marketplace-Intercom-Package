@@ -51,7 +51,9 @@ class Router
                     "params" => $requestBody['params']
                 ];
 
-                echo json_encode($reply);
+                $result['callback'] = 'success';
+                $result['contextWrites']['to'] = $reply;
+                echo json_encode($result);
                 exit(200);
 
         });
