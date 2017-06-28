@@ -33,7 +33,8 @@
         }
       },
       "steps": [
-        "Navigate to https://app.intercom.com/developers/_ and select the webhooks tools",
+        "Navigate to https://app.intercom.com/developers/_",
+        "Select 'webhooks' under tools on the left side of the screen",
         "Create a new webhook and enter the following URL: __WEBHOOK_URL__",
         "Select which notifications you want to receive and create the webhook"
       ],
