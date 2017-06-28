@@ -18,7 +18,7 @@
   "events": [
     {
       "name": "webhookEvent",
-      "description": "This method is called every time when webhook event happens",
+      "description": "This method is called when an event happens in your intercom app",
       "payload": {
         "list_folder": {
           "accounts": [
@@ -33,8 +33,9 @@
         }
       },
       "steps": [
-        "Go to add addWebhook block",
-        "Set webhookUrl to __WEBHOOK_URL__"
+        "Navigate to https://app.intercom.com/developers/_ and select the webhooks tools",
+        "Create a new webhook and enter the following URL: __WEBHOOK_URL__",
+        "Select which notifications you want to receive and create the webhook"
       ],
       "args": [
         {
