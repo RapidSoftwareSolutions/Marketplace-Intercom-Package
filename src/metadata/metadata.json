@@ -49,7 +49,7 @@
     }
   ],
   "steps": [
-    "Sign up in Intercom",
+    "Sign up for an Intercom account (https://app.intercom.io/a/start)",
     "Navigate to Settings / App settings / Developer tools",
     "Create 'Access token' or 'OAuth App'",
     "If you choose 'OAuth App', copy clientId and clientSecret and use them to generate Access token"
