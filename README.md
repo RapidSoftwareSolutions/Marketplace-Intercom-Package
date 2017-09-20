@@ -7,7 +7,7 @@ Connect to the Intercom Customer Service API to access data and build integratio
 
 ## How to get credentials: 
 0. [Sign up](https://app.intercom.io/a/start) in Intercom. 
-1. Navigate to Settings / App settings / Developer tools.
+1. Navigate to Settings -> App settings(on the top left) -> Developer tools.
 2. Create "Access token" or "OAuth App".
 3. If you choose "OAuth App", copy clientId and clientSecret and use them to generate Access token.
 
