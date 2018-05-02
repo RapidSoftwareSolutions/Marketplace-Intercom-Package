@@ -365,7 +365,7 @@ class Router
 
             $result['callback'] = 'success';
             if (empty(json_decode($responseBody)) && strlen($responseBody) == 0) {
-                $result['contextWrites']['to'] = 'success' . $responseBody;
+                $result['contextWrites']['to'] = '{"result": "success"}' . $responseBody;
             } else {
                 $result['contextWrites']['to'] = json_decode($responseBody, true);
             }

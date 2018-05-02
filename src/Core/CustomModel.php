@@ -75,7 +75,11 @@ class CustomModel
             $result['tags'] = '';
             $result['tags']['type'] = 'tag.list';
             $result['tags']['tags'] = $itemsObj;
-        }
+				}
+				// 'User agent'
+				if (isset($param['userAgentData']) && strlen($param['userAgentData']) > 0) {
+					$result['user_agent_data'] = $result['userAgentData'];
+				}
 
 
         return $result;
@@ -368,7 +372,6 @@ class CustomModel
             $result['topics'] = '';
             $result['topics'] = $itemsObj;
         }
-
         return $result;
     }
 
@@ -377,18 +380,18 @@ class CustomModel
         $result = $param;
 
         // 'topics'
-        if (isset($param['metadata_event_names']) && strlen($param['metadata_event_names']) > 0) {
-            $items =is_array($param['metadata_event_names']) ? $param['metadata_event_names'] : explode(',', $param['metadata_event_names']);
+        if (isset($param['event_names']) && strlen($param['event_names']) > 0) {
+            $items =is_array($param['event_names']) ? $param['event_names'] : explode(',', $param['event_names']);
             $itemsObj = [];
             foreach ($items as $item) {
                 $itemsObj[] = trim($item);
             }
-            unset($result['metadata_event_names']);
-            $result['metadata']['event_names'] = $itemsObj;
+            unset($result['event_names']);
+						$result['metadata']['event_names'] = $itemsObj;
         }
-        $result['topics'] = ["event.created"];
+				$result['topics'] = ["event.created"];
 
-        return $result;
+				return $result;
     }
 
     public static function updateEventWebhookSubscription($param, &$blockCustom, $vendorUrl, $accessToken)
@@ -406,7 +409,6 @@ class CustomModel
             $result['metadata']['event_names'] = $itemsObj;
         }
         $result['topics'] = ["event.created"];
-
         return $result;
     }
 

@@ -110,7 +110,13 @@ return array(
                     'type' => 'Number',
                     'info' => 'The date the user last visited your application, UNIX timestamp.',
                     'required' => false,
-                ),
+								),
+								array(
+									'name' => 'signedUpAt',
+									'type' => 'Number',
+									'info' => 'The time the user signed up',
+									'required' => false,
+								),
                 array(
                     'name' => 'updateLastRequestAt',
                     'type' => 'Boolean',
@@ -188,7 +194,13 @@ return array(
                     'type' => 'Number',
                     'info' => 'The date the user last visited your application, UNIX timestamp.',
                     'required' => false,
-                ),
+								),
+								array(
+									'name' => 'signedUpAt',
+									'type' => 'Number',
+									'info' => 'The time the user signed up',
+									'required' => false,
+								),
                 array(
                     'name' => 'updateLastRequestAt',
                     'type' => 'Boolean',
@@ -266,7 +278,13 @@ return array(
                     'type' => 'Number',
                     'info' => 'The date the user last visited your application, UNIX timestamp.',
                     'required' => false,
-                ),
+								),
+								array(
+									'name' => 'signedUpAt',
+									'type' => 'Number',
+									'info' => 'The time the user signed up',
+									'required' => false,
+								),
                 array(
                     'name' => 'updateLastRequestAt',
                     'type' => 'Boolean',
@@ -344,7 +362,13 @@ return array(
                     'type' => 'Number',
                     'info' => 'The date the user last visited your application, UNIX timestamp.',
                     'required' => false,
-                ),
+								),
+								array(
+									'name' => 'signedUpAt',
+									'type' => 'Number',
+									'info' => 'The time the user signed up',
+									'required' => false,
+								),
                 array(
                     'name' => 'updateLastRequestAt',
                     'type' => 'Boolean',
@@ -692,7 +716,37 @@ return array(
                     'type' => 'String',
                     'info' => 'Access token.',
                     'required' => true,
-                ),
+								),
+								array(
+										'name' => 'page',
+										'type' => 'String',
+										'info' => 'what page of results to fetch.',
+										'required' => false,
+								),
+								array(
+										'name' => 'perPage',
+										'type' => 'String',
+										'info' => 'how many results per page.',
+										'required' => false,
+								),
+								array(
+										'name' => 'order',
+										'type' => 'String',
+										'info' => 'Return the users in ascending or descending order. One of: asc, desc.',
+										'required' => false,
+								),
+								array(
+										'name' => 'sort',
+										'type' => 'String',
+										'info' => 'what field to sort the results by. One of: created_at, last_request_at, signed_up_at, updated_at.',
+										'required' => false,
+								),
+								array(
+										'name' => 'createdSince',
+										'type' => 'String',
+										'info' => 'limit results to users that were created in that last number of days.',
+										'required' => false,
+								),
             ),
         ),
         array(
@@ -1205,7 +1259,7 @@ return array(
                 ),
                 array(
                     'name' => 'tagId',
-                    'type' => 'String',
+                    'type' => 'Number',
                     'info' => 'Tag identifier.',
                     'required' => true,
                 ),
@@ -2068,7 +2122,25 @@ return array(
                     'required' => true,
                 ),
             ),
-        ),
+				),
+				array(
+					'name' => 'deleteSubscription',
+					'description' => 'Fetch single subscription.',
+					'args' => array(
+							array(
+									'name' => 'accessToken',
+									'type' => 'String',
+									'info' => 'Access token.',
+									'required' => true,
+							),
+							array(
+									'name' => 'subscriptionId',
+									'type' => 'String',
+									'info' => 'Subscription identifier.',
+									'required' => true,
+							),
+					),
+			),
         array(
             'name' => 'getSubscriptions',
             'description' => 'Fetch list of subscriptions.',
@@ -2150,13 +2222,14 @@ return array(
                     'type' => 'String',
                     'info' => 'Comma-separated list of events name to subscribe to.',
                     'required' => true,
-                ),
+								),
                 array(
                     'name' => 'url',
                     'type' => 'String',
                     'info' => 'The url the event should be sent to.',
                     'required' => true,
-                ),
+								),
+								
                 array(
                     'name' => 'serviceType',
                     'type' => 'String',
@@ -2298,7 +2371,8 @@ return array(
                 'companies' => 'companies',
                 'lastRequestAt' => 'last_request_at',
                 'updateLastRequestAt' => 'update_last_request_at',
-                'newSession' => 'new_session',
+								'newSession' => 'new_session',
+								'signedUpAt'=> 'signed_up_at'
             ),
             'vendorUrl' => 'https://api.intercom.io/users',
             'method' => 'POST',
@@ -2317,7 +2391,8 @@ return array(
                 'companies' => 'companies',
                 'lastRequestAt' => 'last_request_at',
                 'updateLastRequestAt' => 'update_last_request_at',
-                'newSession' => 'new_session',
+								'newSession' => 'new_session',
+								'signedUpAt'=> 'signed_up_at',
             ),
             'vendorUrl' => 'https://api.intercom.io/users',
             'method' => 'POST',
@@ -2336,7 +2411,8 @@ return array(
                 'companies' => 'companies',
                 'lastRequestAt' => 'last_request_at',
                 'updateLastRequestAt' => 'update_last_request_at',
-                'newSession' => 'new_session',
+								'newSession' => 'new_session',
+								'signedUpAt'=> 'signed_up_at'
             ),
             'vendorUrl' => 'https://api.intercom.io/users',
             'method' => 'POST',
@@ -2355,7 +2431,8 @@ return array(
                 'companies' => 'companies',
                 'lastRequestAt' => 'last_request_at',
                 'updateLastRequestAt' => 'update_last_request_at',
-                'newSession' => 'new_session',
+								'newSession' => 'new_session',
+								'signedUpAt'=> 'signed_up_at',
                 'custom' => true
             ),
             'vendorUrl' => 'https://api.intercom.io/users',
@@ -2461,7 +2538,12 @@ return array(
         ),
         'getLeads' => array(
             'dictionary' => array(
-                'accessToken' => 'accessToken',
+								'accessToken' => 'accessToken',
+                'page' => 'page',
+                'perPage' => 'per_page',
+                'order' => 'order',
+                'sort' => 'sort',
+                'createdSince' => 'created_since',
             ),
             'vendorUrl' => 'https://api.intercom.io/contacts',
             'method' => 'GET',
@@ -2670,7 +2752,7 @@ return array(
                 'accessToken' => 'accessToken',
                 'tagId' => 'tagId',
             ),
-            'vendorUrl' => 'https//api.intercom.io/tags/{{tagId}}',
+            'vendorUrl' => 'https://api.intercom.io/tags/{{tagId}}',
             'method' => 'DELETE',
         ),
         'getAppTags' => array(
@@ -3061,7 +3143,15 @@ return array(
             ),
             'vendorUrl' => 'https://api.intercom.io/subscriptions/{{subscriptionId}}',
             'method' => 'GET',
-        ),
+				),
+				'deleteSubscription' => array(
+					'dictionary' => array(
+							'accessToken' => 'accessToken',
+							'subscriptionId' => 'subscriptionId',
+					),
+					'vendorUrl' => 'https://api.intercom.io/subscriptions/{{subscriptionId}}',
+					'method' => 'DELETE',
+					),
         'getSubscriptions' => array(
             'dictionary' => array(
                 'accessToken' => 'accessToken',
@@ -3096,9 +3186,10 @@ return array(
         'createEventWebhookSubscription' => array(
             'dictionary' => array(
                 'accessToken' => 'accessToken',
-                'metadataEventNames' => 'metadata_event_names',
+                'metadataEventNames' => 'event_names',
                 'url' => 'url',
-                'serviceType' => 'service_type',
+								'serviceType' => 'service_type',
+								'topics' => 'topics'
             ),
             'vendorUrl' => 'https://api.intercom.io/subscriptions',
             'method' => 'POST',

@@ -733,6 +733,14 @@ Fetch single subscription.
 | accessToken   | String| Access token.
 | subscriptionId| String| Subscription identifier.
 
+## Intercom.deleteSubscription
+Delete subscription.
+
+| Field         | Type  | Description
+|---------------|-------|----------
+| accessToken   | String| Access token.
+| subscriptionId| String| Subscription identifier.
+
 ## Intercom.getSubscriptions
 Fetch list of subscriptions.
 
