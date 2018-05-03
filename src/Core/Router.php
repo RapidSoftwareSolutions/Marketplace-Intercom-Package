@@ -4,9 +4,8 @@ namespace Core;
 
 use \Core\CustomModel;
 
-if (!defined('RAPID_IN')) {
-    exit('No direct script access allowed');
-}
+if (!defined('RAPID_IN')) exit('No direct script access allowed');
+
 
 /**
  * Base Model

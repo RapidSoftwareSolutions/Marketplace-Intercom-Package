@@ -2,9 +2,9 @@
 
 namespace Core;
 
-if (!defined('RAPID_IN')) {
-    exit('No direct script access allowed');
-}
+use SebastianBergmann\Comparator\DateTimeComparator;
+
+if (!defined('RAPID_IN')) exit('No direct script access allowed');
 
 /**
  * Custom Model
