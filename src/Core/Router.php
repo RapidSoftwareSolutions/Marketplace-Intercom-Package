@@ -4,7 +4,9 @@ namespace Core;
 
 use \Core\CustomModel;
 
-if (!defined('RAPID_IN')) exit('No direct script access allowed');
+if (!defined('RAPID_IN')) {
+    exit('No direct script access allowed');
+}
 
 /**
  * Base Model
@@ -21,8 +23,7 @@ class Router
         $packageName,
         $blocks,
         $custom
-    )
-    {
+    ) {
         $this->packageName = $packageName;
         $this->blocks = $blocks;
         $this->custom = $custom;
@@ -39,25 +40,24 @@ class Router
             include_once dirname(__DIR__) . '/metadata/metadata.json';
         });
         // Set all routes
-        $this->klein->respond('POST', INDEX_PATH.'api/Intercom/webhookEvent', function ($request, $response){
+        $this->klein->respond('POST', INDEX_PATH . 'api/Intercom/webhookEvent', function ($request, $response) {
 
-                $requestBody = file_get_contents('php://input');
-                $requestBody = $this->normalizeJson($requestBody);
-                $requestBody = str_replace('\"', '"', $requestBody);
-                $requestBody = json_decode($requestBody, true);
-                $reply = [
-                    "http_resp" => '',
-                    "client_msg" => $requestBody['args']['body'],
-                    "params" => $requestBody['args']['params']
-                ];
+            $requestBody = file_get_contents('php://input');
+            $requestBody = $this->normalizeJson($requestBody);
+            $requestBody = str_replace('\"', '"', $requestBody);
+            $requestBody = json_decode($requestBody, true);
+            $reply = [
+                "http_resp" => '',
+                "client_msg" => $requestBody['args']['body'],
+                "params" => $requestBody['args']['params'],
+            ];
 
-                $result['callback'] = 'success';
-                $result['contextWrites']['to'] = $reply;
-                echo json_encode($result);
-                exit(200);
+            $result['callback'] = 'success';
+            $result['contextWrites']['to'] = $reply;
+            echo json_encode($result);
+            exit(200);
 
         });
-
 
         foreach ($this->blocks as $blockSettings) {
             $this->setRoute($blockSettings);
@@ -90,7 +90,7 @@ class Router
             in_array($this->custom[$block['name']]['method'], $this->supportedMethods)
         ) {
             $method = $this->custom[$block['name']]['method'];
-        }  else {
+        } else {
             $result['callback'] = 'error';
             $result['contextWrites']['to']['status_code'] = 'INTERNAL_PACKAGE_ERROR';
             $result['contextWrites']['to']['status_msg'] = 'Declared unsupported method for block: ' . $block['name'] . '.';
@@ -98,19 +98,14 @@ class Router
             exit(200);
         }
 
-
         // Prepare vars need for route processing
         $param = $this->getParam($block);
         $routePath = INDEX_PATH . 'api/' . $this->packageName . '/' . $block['name'] . '/?';
         $blockName = $block['name'];
         $blockCustom = $this->custom[$block['name']];
 
-
-
-
         // Add route
         $this->klein->respond('POST', $routePath, function () use ($param, $blockName, $blockCustom, $method) {
-
 
             // Get input param
             $inputPram = $this->getInputPram($param['param']);

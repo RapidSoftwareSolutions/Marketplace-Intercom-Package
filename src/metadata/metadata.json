@@ -1,1254 +1,1265 @@
 {
-  "package": "Intercom",
-  "tagline": "Access data and build integrations for this chat app.",
-  "description": "Connect to the Intercom Customer Service API to access data and build integrations for this chat app. Test an API call and export the code snippet into your app.",
-  "image": "https://logo.clearbit.com/intercom.com?s=128",
-  "repo": "https://github.com/RapidSoftwareSolutions/Marketplace-Intercom-Package",
-  "keywords": [
-    "API",
-    "Intercom"
-  ],
-  "accounts": {
-    "domain": "intercom.com",
-    "credentials": [
-      "clientId",
-      "clientSecret"
-    ]
-  },
-  "events": [
-    {
-      "name": "webhookEvent",
-      "description": "This method is called when an event happens in your intercom app",
-      "payload": {
-        "list_folder": {
-          "accounts": [
-            "dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
-          ]
-        },
-        "delta": {
-          "users": [
-            12345678,
-            23456789
-          ]
-        }
-      },
-      "steps": [
-        "Navigate to https://app.intercom.com/developers/_",
-        "Select 'webhooks' under tools on the left side of the screen",
-        "Create a new webhook and enter the following URL: __WEBHOOK_URL__",
-        "Select which notifications you want to receive and create the webhook"
-      ],
-      "args": [
-        {
-          "name": "token",
-          "type": "string",
-          "info": "Token sent on each message",
-          "required": true
-        }
-      ]
-    }
-  ],
-  "steps": [
-    "Sign up for an Intercom account (https://app.intercom.io/a/start)",
-    "Navigate to Settings / App settings / Developer tools",
-    "Create 'Access token' or 'OAuth App'",
-    "If you choose 'OAuth App', copy clientId and clientSecret and use them to generate Access token"
-  ],
-  "blocks": [
-
-    {
-      "name": "getAccessToken",
-      "description": "Fetch access token.",
-      "args": [
-        {
-          "name": "clientId",
-          "type": "credentials",
-          "info": "Client identifier from your credentials.",
-          "required": true
-        },
-        {
-          "name": "clientSecret",
-          "type": "credentials",
-          "info": "Client secret from your credentials.",
-          "required": true
-        },
-        {
-          "name": "code",
-          "type": "String",
-          "info": "This is automatically passed by the redirect.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "createUserByEmail",
-      "description": "Create user by email.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "email",
-          "type": "String",
-          "info": "The user's email address.",
-          "required": true
-        },
-        {
-          "name": "userId",
-          "type": "String",
-          "info": "A unique string identifier for the user.",
-          "required": false
-        },
-        {
-          "name": "phone",
-          "type": "String",
-          "info": "The user's phone number.",
-          "required": false
-        },
-        {
-          "name": "name",
-          "type": "String",
-          "info": "The user's full name.",
-          "required": false
-        },
-        {
-          "name": "lastSeenIp",
-          "type": "String",
-          "info": "An ip address.",
-          "required": false
-        },
-        {
-          "name": "customAttributes",
-          "type": "JSON",
-          "info": "JSON Object, a hash of key - value pairs containing any other data about the user you want Intercom to store.",
-          "required": false
-        },
-        {
-          "name": "lastSeenUserAgent",
-          "type": "String",
-          "info": "The user agent the user last visited your application with.",
-          "required": false
-        },
-        {
-          "name": "companies",
-          "type": "List",
-          "info": "Array of JSON objects of companies.",
-          "required": false,
-          "structure": {
-            "name": "company",
-            "type": "JSON",
-            "info": "Single company"
-          }
-        },
-        {
-          "name": "lastRequestAt",
-          "type": "DatePicker",
-          "info": "The date the user last visited your application",
-          "required": false
+	"package": "Intercom",
+	"tagline": "Access data and build integrations for this chat app.",
+	"description": "Connect to the Intercom Customer Service API to access data and build integrations for this chat app. Test an API call and export the code snippet into your app.",
+	"image": "https://logo.clearbit.com/intercom.com?s=128",
+	"repo": "https://github.com/RapidSoftwareSolutions/Marketplace-Intercom-Package",
+	"keywords": [
+		"API",
+		"Intercom"
+	],
+	"accounts": {
+		"domain": "intercom.com",
+		"credentials": [
+			"clientId",
+			"clientSecret"
+		]
+	},
+	"events": [
+		{
+			"name": "webhookEvent",
+			"description": "This method is called when an event happens in your intercom app",
+			"payload": {
+				"list_folder": {
+					"accounts": [
+						"dbid:AAH4f99T0taONIb-OurWxbNQ6ywGRopQngc"
+					]
+				},
+				"delta": {
+					"users": [
+						12345678,
+						23456789
+					]
+				}
+			},
+			"steps": [
+				"Navigate to https://app.intercom.com/developers/_",
+				"Select 'webhooks' under tools on the left side of the screen",
+				"Create a new webhook and enter the following URL: __WEBHOOK_URL__",
+				"Select which notifications you want to receive and create the webhook"
+			],
+			"args": [
+				{
+					"name": "token",
+					"type": "string",
+					"info": "Token sent on each message",
+					"required": true
+				}
+			]
+		}
+	],
+	"steps": [
+		"Sign up for an Intercom account (https://app.intercom.io/a/start)",
+		"Navigate to Settings / App settings / Developer tools",
+		"Create 'Access token' or 'OAuth App'",
+		"If you choose 'OAuth App', copy clientId and clientSecret and use them to generate Access token"
+	],
+	"blocks": [
+		{
+			"name": "getAccessToken",
+			"description": "Fetch access token.",
+			"args": [
+				{
+					"name": "clientId",
+					"type": "credentials",
+					"info": "Client identifier from your credentials.",
+					"required": true
 				},
 				{
-          "name": "signedUpAt",
-          "type": "DatePicker",
-          "info": "The time the user signed up",
-          "required": false
-        },
-        {
-          "name": "updateLastRequestAt",
-          "type": "Select",
-          "options": [
-            "true",
-            "false"
-          ],
-          "info": "If true, instructs Intercom to update the user's last_request_at value.",
-          "required": false
-        },
-        {
-          "name": "newSession",
-					"type": "Select",
-          "options": ["true", "false"],
-          "info": "If true, instructs Intercom to register the request as a session.",
-          "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "createUserById",
-      "description": "Create user by identifier.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "userId",
-          "type": "String",
-          "info": "A unique string identifier for the user.",
-          "required": true
-        },
-        {
-          "name": "email",
-          "type": "String",
-          "info": "The user's email address.",
-          "required": false
-        },
-        {
-          "name": "phone",
-          "type": "String",
-          "info": "The user's phone number.",
-          "required": false
-        },
-        {
-          "name": "name",
-          "type": "String",
-          "info": "The user's full name.",
-          "required": false
-        },
-        {
-          "name": "lastSeenIp",
-          "type": "String",
-          "info": "An ip address.",
-          "required": false
-        },
-        {
-          "name": "customAttributes",
-          "type": "JSON",
-          "info": "JSON Object, a hash of key - value pairs containing any other data about the user you want Intercom to store.",
-          "required": false
-        },
-        {
-          "name": "lastSeenUserAgent",
-          "type": "String",
-          "info": "The user agent the user last visited your application with.",
-          "required": false
-        },
-        {
-          "name": "companies",
-          "type": "List",
-          "info": "Array of JSON objects of companies.",
-          "required": false,
-          "structure": {
-            "name": "company",
-            "type": "JSON",
-            "info": "Single company"
-          }
-        },
-        {
-          "name": "lastRequestAt",
-          "type": "DatePicker",
-          "info": "The date the user last visited your application",
-          "required": false
+					"name": "clientSecret",
+					"type": "credentials",
+					"info": "Client secret from your credentials.",
+					"required": true
 				},
 				{
-          "name": "signedUpAt",
-          "type": "DatePicker",
-          "info": "The time the user signed up",
-          "required": false
-        },
-        {
-          "name": "updateLastRequestAt",
-					"type": "Select",
-          "options": [
-            "true",
-            "false"
-          ],
-          "info": "If true, instructs Intercom to update the user's last_request_at value.",
-          "required": false
-        },
-        {
-          "name": "newSession",
-					"type": "Select",
-          "options": ["true", "false"],
-          "info": "If true, instructs Intercom to register the request as a session.",
-          "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "updateUserByEmail",
-      "description": "Update user by email.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "email",
-          "type": "String",
-          "info": "The user's email address.",
-          "required": true
-        },
-        {
-          "name": "userId",
-          "type": "String",
-          "info": "A unique string identifier for the user.",
-          "required": false
-        },
-        {
-          "name": "phone",
-          "type": "String",
-          "info": "The user's phone number.",
-          "required": false
-        },
-        {
-          "name": "name",
-          "type": "String",
-          "info": "The user's full name.",
-          "required": false
-        },
-        {
-          "name": "lastSeenIp",
-          "type": "String",
-          "info": "An ip address.",
-          "required": false
-        },
-        {
-          "name": "customAttributes",
-          "type": "JSON",
-          "info": "JSON Object, a hash of key - value pairs containing any other data about the user you want Intercom to store.",
-          "required": false
-        },
-        {
-          "name": "lastSeenUserAgent",
-          "type": "String",
-          "info": "The user agent the user last visited your application with.",
-          "required": false
-        },
-        {
-          "name": "companies",
-          "type": "List",
-          "info": "Array of JSON objects of companies.",
-          "required": false,
-          "structure": {
-            "name": "company",
-            "type": "JSON",
-            "info": "Single company"
-          }
-        },
-        {
-          "name": "lastRequestAt",
-          "type": "DatePicker",
-          "info": "The date the user last visited your application",
-          "required": false
+					"name": "code",
+					"type": "String",
+					"info": "This is automatically passed by the redirect.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
 				},
 				{
-          "name": "signedUpAt",
-          "type": "DatePicker",
-          "info": "The time the user signed up",
-          "required": false
-        },
-        {
-          "name": "updateLastRequestAt",
-					"type": "Select",
-          "options": [
-            "true",
-            "false"
-          ],
-          "info": "If true, instructs Intercom to update the user's last_request_at value.",
-          "required": false
-        },
-        {
-          "name": "newSession",
-					"type": "Select",
-          "options": ["true", "false"],
-          "info": "If true, instructs Intercom to register the request as a session.",
-          "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "updateUserById",
-      "description": "Update user by identifier.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "userId",
-          "type": "String",
-          "info": "A unique string identifier for the user.",
-          "required": true
-        },
-        {
-          "name": "email",
-          "type": "String",
-          "info": "The user's email address.",
-          "required": false
-        },
-        {
-          "name": "phone",
-          "type": "String",
-          "info": "The user's phone number.",
-          "required": false
-        },
-        {
-          "name": "name",
-          "type": "String",
-          "info": "The user's full name.",
-          "required": false
-        },
-        {
-          "name": "lastSeenIp",
-          "type": "String",
-          "info": "An ip address.",
-          "required": false
-        },
-        {
-          "name": "customAttributes",
-          "type": "JSON",
-          "info": "JSON Object, a hash of key - value pairs containing any other data about the user you want Intercom to store.",
-          "required": false
-        },
-        {
-          "name": "lastSeenUserAgent",
-          "type": "String",
-          "info": "The user agent the user last visited your application with.",
-          "required": false
-        },
-        {
-          "name": "companies",
-          "type": "List",
-          "info": "Array of JSON objects of companies.",
-          "required": false,
-          "structure": {
-            "name": "company",
-            "type": "JSON",
-            "info": "Single company"
-          }
-        },
-        {
-          "name": "lastRequestAt",
-          "type": "DateTicker",
-          "info": "The date the user last visited your application",
-          "required": false
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "createUserByEmail",
+			"description": "Create user by email.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
 				},
 				{
-          "name": "signedUpAt",
-          "type": "DatePicker",
-          "info": "The time the user signed up",
-          "required": false
-        },
-        {
-          "name": "updateLastRequestAt",
-					"type": "Select",
-          "options": [
-            "true",
-            "false"
-          ],
-          "info": "If true, instructs Intercom to update the user's last_request_at value.",
-          "required": false
-        },
-        {
-          "name": "newSession",
-					"type": "Select",
-          "options": ["true", "false"],
-          "info": "If true, instructs Intercom to register the request as a session.",
-          "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getUsers",
-      "description": "Fetch a list of users.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "page",
-          "type": "Number",
-          "info": "what page of results to fetch.",
-          "required": false
-        },
-        {
-          "name": "perPage",
-          "type": "Number",
-          "info": "how many results per page.",
-          "required": false
-        },
-        {
-          "name": "order",
-					"type": "Select",
-          "options": [
-            "asc",
-            "desc"
-          ],
-          "info": "Return the users in ascending or descending order. One of: asc, desc.",
-          "required": false
-        },
-        {
-          "name": "sort",
-          "type": "Select",
-          "options": [
-            "created_at",
-            "last_request_at",
-            "signed_up_at",
-            "updated_at"
-          ],
-          "info": "what field to sort the results by. One of: created_at, last_request_at, signed_up_at, updated_at.",
-          "required": false
-        },
-        {
-          "name": "createdSince",
-          "type": "Number",
-          "info": "limit results to users that were created in that last number of days.",
-          "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getUsersByTag",
-      "description": "Fetch segmented users or leads by tag.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "tagId",
-          "type": "String",
-          "info": "The identifier of the tag to filter by.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getUsersBySegment",
-      "description": "Fetch segmented users or leads by segment.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "segmentId",
-          "type": "String",
-          "info": "The identifier of the segment to filter by.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getSingleUser",
-      "description": "User can be obtained by userid, id and email.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "userId",
-          "type": "String",
-          "info": "The user identifier.",
-          "required": true
-        },
-        {
-          "name": "userIdType",
-          "type": "Select",
-          "options": [
-            "intercom_id",
-            "user_id",
-            "email"
-          ],
-          "info": "The user identifier type. One of: intercom_id, user_id, email.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "deleteUser",
-      "description": "Delete user.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "userId",
-          "type": "String",
-          "info": "The user identifier.",
-          "required": true
-        },
-        {
-          "name": "userIdType",
-          "type": "Select",
-          "options": [
-            "intercom_id",
-            "user_id",
-            "email"
-          ],
-          "info": "The user identifier type. One of: intercom_id, user_id, email.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "scrollUsers",
-      "description": "Scroll over all users.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "scrollParam",
-          "type": "String",
-          "info": "Scroll parameter.",
-          "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "createLead",
-      "description": "Create lead.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "name",
-          "type": "String",
-          "info": "The name of the Lead.",
-          "required": false
-        },
-        {
-          "name": "userId",
-          "type": "String",
-          "info": "Identifier for the Lead.",
-          "required": false
-        },
-        {
-          "name": "email",
-          "type": "String",
-          "info": "The email you have defined for the Lead.",
-          "required": false
-        },
-        {
-          "name": "phone",
-          "type": "String",
-          "info": "The phone number you have defined for the lead.",
-          "required": false
-        },
-        {
-          "name": "avatarImageUrl",
-          "type": "File",
-          "info": "An avatar URL for the Lead.",
-          "required": false
-        },
-        {
-          "name": "userAgentData",
-          "type": "String",
-          "info": "Data about the last user agent the Lead was seen using.",
-          "required": false
-        },
-        {
-          "name": "lastSeenIp",
-          "type": "String",
-          "info": "An ip address.",
-          "required": false
-        },
-        {
-          "name": "companies",
-          "type": "List",
-          "info": "Array of JSON objects of companies.",
-          "required": false,
-          "structure": {
-            "name": "company",
-            "type": "JSON",
-            "info": "Single company"
-          }
-        },
-        {
-          "name": "socialProfiles",
-          "type": "List",
-          "info": "Array of JSON objects, of social profiles associated with the Lead.",
-          "required": false,
-          "structure": {
-            "name": "socialProfile",
-            "type": "JSON",
-            "info": "Single socialProfile"
-          }
-        },
-        {
-          "name": "segments",
-          "type": "List",
-          "info": "Array of segments the Lead.",
-          "required": false,
-          "structure": {
-            "name": "segment",
-            "type": "String",
-            "info": "Single segment"
-          }
-        },
-        {
-          "name": "tags",
-          "type": "String",
-          "info": "Array of tags associated with the Lead.",
-          "required": false,
-          "structure": {
-            "name": "tag",
-            "type": "String",
-            "info": "Single tag"
-          }
-        },
-        {
-          "name": "customAttributes",
-          "type": "JSON",
-          "info": "JSON Object. The custom attributes you have set on the Lead.",
-          "required": false
-        },
-        {
-          "name": "locationData",
-          "type": "JSON",
-          "info": "JSON Object, of Location, relating to the Lead.",
-          "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "updateLead",
-      "description": "Update lead.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "userId",
-          "type": "String",
-          "info": "Identifier for the Lead.",
-          "required": true
-        },
-        {
-          "name": "name",
-          "type": "String",
-          "info": "The name of the Lead.",
-          "required": false
-        },
-        {
-          "name": "email",
-          "type": "String",
-          "info": "The email you have defined for the Lead.",
-          "required": false
-        },
-        {
-          "name": "phone",
-          "type": "String",
-          "info": "The phone number you have defined for the lead.",
-          "required": false
-        },
-        {
-          "name": "avatarImageUrl",
-          "type": "File",
-          "info": "An avatar URL for the Lead.",
-          "required": false
-        },
-        {
-          "name": "userAgentData",
-          "type": "String",
-          "info": "Data about the last user agent the Lead was seen using.",
-          "required": false
-        },
-        {
-          "name": "lastSeenIp",
-          "type": "String",
-          "info": "An ip address.",
-          "required": false
-        },
-        {
-          "name": "companies",
-          "type": "List",
-          "info": "Array of JSON objects of companies.",
-          "required": false,
-          "structure": {
-            "name": "company",
-            "type": "JSON",
-            "info": "Single company"
-          }
-        },
-        {
-          "name": "socialProfiles",
-          "type": "List",
-          "info": "Array of JSON objects, of social profiles associated with the Lead.",
-          "required": false,
-          "structure": {
-            "name": "socialProfile",
-            "type": "JSON",
-            "info": "Single socialProfile"
-          }
-        },
-        {
-          "name": "segments",
-          "type": "List",
-          "info": "Array of segments the Lead.",
-          "required": false,
-          "structure": {
-            "name": "segment",
-            "type": "String",
-            "info": "Single segment"
-          }
-        },
-        {
-          "name": "tags",
-          "type": "List",
-          "info": "Array of tags associated with the Lead.",
-          "required": false,
-          "structure": {
-            "name": "tag",
-            "type": "String",
-            "info": "Single tag"
-          }
-        },
-        {
-          "name": "customAttributes",
-          "type": "JSON",
-          "info": "JSON Object. The custom attributes you have set on the Lead.",
-          "required": false
-        },
-        {
-          "name": "locationData",
-          "type": "JSON",
-          "info": "JSON Object, of Location, relating to the Lead.",
-          "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getLeads",
-      "description": "Fetch a list of all leads.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
+					"name": "email",
+					"type": "String",
+					"info": "The user's email address.",
+					"required": true
 				},
 				{
-          "name": "page",
-          "type": "Number",
-          "info": "what page of results to fetch.",
-          "required": false
-        },
-        {
-          "name": "perPage",
-          "type": "Number",
-          "info": "how many results per page.",
-          "required": false
-        },
-        {
-          "name": "order",
+					"name": "userId",
+					"type": "String",
+					"info": "A unique string identifier for the user.",
+					"required": false
+				},
+				{
+					"name": "phone",
+					"type": "String",
+					"info": "The user's phone number.",
+					"required": false
+				},
+				{
+					"name": "name",
+					"type": "String",
+					"info": "The user's full name.",
+					"required": false
+				},
+				{
+					"name": "lastSeenIp",
+					"type": "String",
+					"info": "An ip address.",
+					"required": false
+				},
+				{
+					"name": "customAttributes",
+					"type": "JSON",
+					"info": "JSON Object, a hash of key - value pairs containing any other data about the user you want Intercom to store.",
+					"required": false
+				},
+				{
+					"name": "lastSeenUserAgent",
+					"type": "String",
+					"info": "The user agent the user last visited your application with.",
+					"required": false
+				},
+				{
+					"name": "companies",
+					"type": "List",
+					"info": "Array of JSON objects of companies.",
+					"required": false,
+					"structure": {
+						"name": "company",
+						"type": "JSON",
+						"info": "Single company"
+					}
+				},
+				{
+					"name": "lastRequestAt",
+					"type": "DatePicker",
+					"info": "The date the user last visited your application",
+					"required": false
+				},
+				{
+					"name": "signedUpAt",
+					"type": "DatePicker",
+					"info": "The time the user signed up",
+					"required": false
+				},
+				{
+					"name": "updateLastRequestAt",
 					"type": "Select",
-          "options": [
-            "asc",
-            "desc"
-          ],
-          "info": "Return the users in ascending or descending order. One of: asc, desc.",
-          "required": false
-        },
-        {
-          "name": "sort",
-          "type": "Select",
-          "options": [
-            "created_at",
-            "last_request_at",
-            "signed_up_at",
-            "updated_at"
-          ],
-          "info": "what field to sort the results by. One of: created_at, last_request_at, signed_up_at, updated_at.",
-          "required": false
-        },
-        {
-          "name": "createdSince",
-          "type": "Number",
-          "info": "limit results to users that were created in that last number of days.",
-          "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getLeadsByEmail",
-      "description": "Fetch all Leads with a given email.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "email",
-          "type": "String",
-          "info": "Email for fetch.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getSingleLead",
-      "description": "Fetch single lead.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "userId",
-          "type": "String",
-          "info": "The lead identifier.",
-          "required": true
-        },
-        {
-          "name": "userIdType",
-          "type": "Select",
-          "options": [
-            "intercom_id",
-            "user_id",
-            "email"
-          ],
-          "info": "The lead identifier type. One of: intercom_id, user_id, email.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "deleteLead",
-      "description": "Delete lead.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "userId",
-          "type": "String",
-          "info": "The lead identifier.",
-          "required": true
-        },
-        {
-          "name": "userIdType",
-          "type": "Select",
-          "options": [
-            "intercom_id",
-            "user_id"
-          ],
-          "info": "The lead identifier type. One of: intercom_id, user_id, email.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "convertLeadToUser",
-      "description": "Convert Lead to Users.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "leadId",
-          "type": "String",
-          "info": "The lead identifier.",
-          "required": true
-        },
-        {
-          "name": "leadIdType",
-          "type": "Select",
-          "options": [
-            "intercom_id",
-            "user_id",
-            "email"
-          ],
-          "info": "The user identifier type. One of: intercom_id, user_id, email.",
-          "required": true
-        },
-        {
-          "name": "userId",
-          "type": "String",
-          "info": "Identifier of existing User.",
-          "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "scrollLeads",
-      "description": "Scroll over all Leads.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "scrollParam",
-          "type": "String",
-          "info": "Scroll parameter.",
-          "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "createCompany",
-      "description": "Create company.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "name",
-          "type": "String",
-          "info": "The name of the company.",
-          "required": true
-        },
-        {
-          "name": "companyId",
-          "type": "String",
-          "info": "The company id you have defined for the company.",
-          "required": true
-        },
-        {
-          "name": "monthlySpend",
-          "type": "String",
-          "info": "How much revenue the company generates for your business.",
-          "required": false
-        },
-        {
-          "name": "plan",
-          "type": "String",
-          "info": "The name of the plan you have associated with the company.",
-          "required": false
-        },
-        {
-          "name": "customAttributes",
-          "type": "JSON",
-          "info": "JSON Object, a hash of key - value pairs containing any other data about the company you want Intercom to store.",
-          "required": false
+					"options": [
+						"true",
+						"false"
+					],
+					"info": "If true, instructs Intercom to update the user's last_request_at value.",
+					"required": false
+				},
+				{
+					"name": "newSession",
+					"type": "Select",
+					"options": [
+						"true",
+						"false"
+					],
+					"info": "If true, instructs Intercom to register the request as a session.",
+					"required": false
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "createUserById",
+			"description": "Create user by identifier.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "userId",
+					"type": "String",
+					"info": "A unique string identifier for the user.",
+					"required": true
+				},
+				{
+					"name": "email",
+					"type": "String",
+					"info": "The user's email address.",
+					"required": false
+				},
+				{
+					"name": "phone",
+					"type": "String",
+					"info": "The user's phone number.",
+					"required": false
+				},
+				{
+					"name": "name",
+					"type": "String",
+					"info": "The user's full name.",
+					"required": false
+				},
+				{
+					"name": "lastSeenIp",
+					"type": "String",
+					"info": "An ip address.",
+					"required": false
+				},
+				{
+					"name": "customAttributes",
+					"type": "JSON",
+					"info": "JSON Object, a hash of key - value pairs containing any other data about the user you want Intercom to store.",
+					"required": false
+				},
+				{
+					"name": "lastSeenUserAgent",
+					"type": "String",
+					"info": "The user agent the user last visited your application with.",
+					"required": false
+				},
+				{
+					"name": "companies",
+					"type": "List",
+					"info": "Array of JSON objects of companies.",
+					"required": false,
+					"structure": {
+						"name": "company",
+						"type": "JSON",
+						"info": "Single company"
+					}
+				},
+				{
+					"name": "lastRequestAt",
+					"type": "DatePicker",
+					"info": "The date the user last visited your application",
+					"required": false
+				},
+				{
+					"name": "signedUpAt",
+					"type": "DatePicker",
+					"info": "The time the user signed up",
+					"required": false
+				},
+				{
+					"name": "updateLastRequestAt",
+					"type": "Select",
+					"options": [
+						"true",
+						"false"
+					],
+					"info": "If true, instructs Intercom to update the user's last_request_at value.",
+					"required": false
+				},
+				{
+					"name": "newSession",
+					"type": "Select",
+					"options": [
+						"true",
+						"false"
+					],
+					"info": "If true, instructs Intercom to register the request as a session.",
+					"required": false
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "updateUserByEmail",
+			"description": "Update user by email.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "email",
+					"type": "String",
+					"info": "The user's email address.",
+					"required": true
+				},
+				{
+					"name": "userId",
+					"type": "String",
+					"info": "A unique string identifier for the user.",
+					"required": false
+				},
+				{
+					"name": "phone",
+					"type": "String",
+					"info": "The user's phone number.",
+					"required": false
+				},
+				{
+					"name": "name",
+					"type": "String",
+					"info": "The user's full name.",
+					"required": false
+				},
+				{
+					"name": "lastSeenIp",
+					"type": "String",
+					"info": "An ip address.",
+					"required": false
+				},
+				{
+					"name": "customAttributes",
+					"type": "JSON",
+					"info": "JSON Object, a hash of key - value pairs containing any other data about the user you want Intercom to store.",
+					"required": false
+				},
+				{
+					"name": "lastSeenUserAgent",
+					"type": "String",
+					"info": "The user agent the user last visited your application with.",
+					"required": false
+				},
+				{
+					"name": "companies",
+					"type": "List",
+					"info": "Array of JSON objects of companies.",
+					"required": false,
+					"structure": {
+						"name": "company",
+						"type": "JSON",
+						"info": "Single company"
+					}
+				},
+				{
+					"name": "lastRequestAt",
+					"type": "DatePicker",
+					"info": "The date the user last visited your application",
+					"required": false
+				},
+				{
+					"name": "signedUpAt",
+					"type": "DatePicker",
+					"info": "The time the user signed up",
+					"required": false
+				},
+				{
+					"name": "updateLastRequestAt",
+					"type": "Select",
+					"options": [
+						"true",
+						"false"
+					],
+					"info": "If true, instructs Intercom to update the user's last_request_at value.",
+					"required": false
+				},
+				{
+					"name": "newSession",
+					"type": "Select",
+					"options": [
+						"true",
+						"false"
+					],
+					"info": "If true, instructs Intercom to register the request as a session.",
+					"required": false
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "updateUserById",
+			"description": "Update user by identifier.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "userId",
+					"type": "String",
+					"info": "A unique string identifier for the user.",
+					"required": true
+				},
+				{
+					"name": "email",
+					"type": "String",
+					"info": "The user's email address.",
+					"required": false
+				},
+				{
+					"name": "phone",
+					"type": "String",
+					"info": "The user's phone number.",
+					"required": false
+				},
+				{
+					"name": "name",
+					"type": "String",
+					"info": "The user's full name.",
+					"required": false
+				},
+				{
+					"name": "lastSeenIp",
+					"type": "String",
+					"info": "An ip address.",
+					"required": false
+				},
+				{
+					"name": "customAttributes",
+					"type": "JSON",
+					"info": "JSON Object, a hash of key - value pairs containing any other data about the user you want Intercom to store.",
+					"required": false
+				},
+				{
+					"name": "lastSeenUserAgent",
+					"type": "String",
+					"info": "The user agent the user last visited your application with.",
+					"required": false
+				},
+				{
+					"name": "companies",
+					"type": "List",
+					"info": "Array of JSON objects of companies.",
+					"required": false,
+					"structure": {
+						"name": "company",
+						"type": "JSON",
+						"info": "Single company"
+					}
+				},
+				{
+					"name": "lastRequestAt",
+					"type": "DateTicker",
+					"info": "The date the user last visited your application",
+					"required": false
+				},
+				{
+					"name": "signedUpAt",
+					"type": "DatePicker",
+					"info": "The time the user signed up",
+					"required": false
+				},
+				{
+					"name": "updateLastRequestAt",
+					"type": "Select",
+					"options": [
+						"true",
+						"false"
+					],
+					"info": "If true, instructs Intercom to update the user's last_request_at value.",
+					"required": false
+				},
+				{
+					"name": "newSession",
+					"type": "Select",
+					"options": [
+						"true",
+						"false"
+					],
+					"info": "If true, instructs Intercom to register the request as a session.",
+					"required": false
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getUsers",
+			"description": "Fetch a list of users.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "page",
+					"type": "Number",
+					"info": "what page of results to fetch.",
+					"required": false
+				},
+				{
+					"name": "perPage",
+					"type": "Number",
+					"info": "how many results per page.",
+					"required": false
+				},
+				{
+					"name": "order",
+					"type": "Select",
+					"options": [
+						"asc",
+						"desc"
+					],
+					"info": "Return the users in ascending or descending order. One of: asc, desc.",
+					"required": false
+				},
+				{
+					"name": "sort",
+					"type": "Select",
+					"options": [
+						"created_at",
+						"last_request_at",
+						"signed_up_at",
+						"updated_at"
+					],
+					"info": "what field to sort the results by. One of: created_at, last_request_at, signed_up_at, updated_at.",
+					"required": false
+				},
+				{
+					"name": "createdSince",
+					"type": "Number",
+					"info": "limit results to users that were created in that last number of days.",
+					"required": false
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getUsersByTag",
+			"description": "Fetch segmented users or leads by tag.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "tagId",
+					"type": "String",
+					"info": "The identifier of the tag to filter by.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getUsersBySegment",
+			"description": "Fetch segmented users or leads by segment.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "segmentId",
+					"type": "String",
+					"info": "The identifier of the segment to filter by.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getSingleUser",
+			"description": "User can be obtained by userid, id and email.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "userId",
+					"type": "String",
+					"info": "The user identifier.",
+					"required": true
+				},
+				{
+					"name": "userIdType",
+					"type": "Select",
+					"options": [
+						"intercom_id",
+						"user_id",
+						"email"
+					],
+					"info": "The user identifier type. One of: intercom_id, user_id, email.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "deleteUser",
+			"description": "Delete user.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "userId",
+					"type": "String",
+					"info": "The user identifier.",
+					"required": true
+				},
+				{
+					"name": "userIdType",
+					"type": "Select",
+					"options": [
+						"intercom_id",
+						"user_id",
+						"email"
+					],
+					"info": "The user identifier type. One of: intercom_id, user_id, email.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "scrollUsers",
+			"description": "Scroll over all users.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "scrollParam",
+					"type": "String",
+					"info": "Scroll parameter.",
+					"required": false
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "createLead",
+			"description": "Create lead.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "name",
+					"type": "String",
+					"info": "The name of the Lead.",
+					"required": false
+				},
+				{
+					"name": "userId",
+					"type": "String",
+					"info": "Identifier for the Lead.",
+					"required": false
+				},
+				{
+					"name": "email",
+					"type": "String",
+					"info": "The email you have defined for the Lead.",
+					"required": false
+				},
+				{
+					"name": "phone",
+					"type": "String",
+					"info": "The phone number you have defined for the lead.",
+					"required": false
+				},
+				{
+					"name": "avatarImageUrl",
+					"type": "File",
+					"info": "An avatar URL for the Lead.",
+					"required": false
+				},
+				{
+					"name": "userAgentData",
+					"type": "String",
+					"info": "Data about the last user agent the Lead was seen using.",
+					"required": false
+				},
+				{
+					"name": "lastSeenIp",
+					"type": "String",
+					"info": "An ip address.",
+					"required": false
+				},
+				{
+					"name": "companies",
+					"type": "List",
+					"info": "Array of JSON objects of companies.",
+					"required": false,
+					"structure": {
+						"name": "company",
+						"type": "JSON",
+						"info": "Single company"
+					}
+				},
+				{
+					"name": "socialProfiles",
+					"type": "List",
+					"info": "Array of JSON objects, of social profiles associated with the Lead.",
+					"required": false,
+					"structure": {
+						"name": "socialProfile",
+						"type": "JSON",
+						"info": "Single socialProfile"
+					}
+				},
+				{
+					"name": "segments",
+					"type": "List",
+					"info": "Array of segments the Lead.",
+					"required": false,
+					"structure": {
+						"name": "segment",
+						"type": "String",
+						"info": "Single segment"
+					}
+				},
+				{
+					"name": "tags",
+					"type": "String",
+					"info": "Array of tags associated with the Lead.",
+					"required": false,
+					"structure": {
+						"name": "tag",
+						"type": "String",
+						"info": "Single tag"
+					}
+				},
+				{
+					"name": "customAttributes",
+					"type": "JSON",
+					"info": "JSON Object. The custom attributes you have set on the Lead.",
+					"required": false
+				},
+				{
+					"name": "locationData",
+					"type": "JSON",
+					"info": "JSON Object, of Location, relating to the Lead.",
+					"required": false
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "updateLead",
+			"description": "Update lead.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "userId",
+					"type": "String",
+					"info": "Identifier for the Lead.",
+					"required": true
+				},
+				{
+					"name": "name",
+					"type": "String",
+					"info": "The name of the Lead.",
+					"required": false
+				},
+				{
+					"name": "email",
+					"type": "String",
+					"info": "The email you have defined for the Lead.",
+					"required": false
+				},
+				{
+					"name": "phone",
+					"type": "String",
+					"info": "The phone number you have defined for the lead.",
+					"required": false
+				},
+				{
+					"name": "avatarImageUrl",
+					"type": "File",
+					"info": "An avatar URL for the Lead.",
+					"required": false
+				},
+				{
+					"name": "userAgentData",
+					"type": "String",
+					"info": "Data about the last user agent the Lead was seen using.",
+					"required": false
+				},
+				{
+					"name": "lastSeenIp",
+					"type": "String",
+					"info": "An ip address.",
+					"required": false
+				},
+				{
+					"name": "companies",
+					"type": "List",
+					"info": "Array of JSON objects of companies.",
+					"required": false,
+					"structure": {
+						"name": "company",
+						"type": "JSON",
+						"info": "Single company"
+					}
+				},
+				{
+					"name": "socialProfiles",
+					"type": "List",
+					"info": "Array of JSON objects, of social profiles associated with the Lead.",
+					"required": false,
+					"structure": {
+						"name": "socialProfile",
+						"type": "JSON",
+						"info": "Single socialProfile"
+					}
+				},
+				{
+					"name": "segments",
+					"type": "List",
+					"info": "Array of segments the Lead.",
+					"required": false,
+					"structure": {
+						"name": "segment",
+						"type": "String",
+						"info": "Single segment"
+					}
+				},
+				{
+					"name": "tags",
+					"type": "List",
+					"info": "Array of tags associated with the Lead.",
+					"required": false,
+					"structure": {
+						"name": "tag",
+						"type": "String",
+						"info": "Single tag"
+					}
+				},
+				{
+					"name": "customAttributes",
+					"type": "JSON",
+					"info": "JSON Object. The custom attributes you have set on the Lead.",
+					"required": false
+				},
+				{
+					"name": "locationData",
+					"type": "JSON",
+					"info": "JSON Object, of Location, relating to the Lead.",
+					"required": false
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getLeads",
+			"description": "Fetch a list of all leads.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "page",
+					"type": "Number",
+					"info": "what page of results to fetch.",
+					"required": false
+				},
+				{
+					"name": "perPage",
+					"type": "Number",
+					"info": "how many results per page.",
+					"required": false
+				},
+				{
+					"name": "order",
+					"type": "Select",
+					"options": [
+						"asc",
+						"desc"
+					],
+					"info": "Return the users in ascending or descending order. One of: asc, desc.",
+					"required": false
+				},
+				{
+					"name": "sort",
+					"type": "Select",
+					"options": [
+						"created_at",
+						"last_request_at",
+						"signed_up_at",
+						"updated_at"
+					],
+					"info": "what field to sort the results by. One of: created_at, last_request_at, signed_up_at, updated_at.",
+					"required": false
+				},
+				{
+					"name": "createdSince",
+					"type": "Number",
+					"info": "limit results to users that were created in that last number of days.",
+					"required": false
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getLeadsByEmail",
+			"description": "Fetch all Leads with a given email.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "email",
+					"type": "String",
+					"info": "Email for fetch.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getSingleLead",
+			"description": "Fetch single lead.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "userId",
+					"type": "String",
+					"info": "The lead identifier.",
+					"required": true
+				},
+				{
+					"name": "userIdType",
+					"type": "Select",
+					"options": [
+						"intercom_id",
+						"user_id",
+						"email"
+					],
+					"info": "The lead identifier type. One of: intercom_id, user_id, email.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "deleteLead",
+			"description": "Delete lead.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "userId",
+					"type": "String",
+					"info": "The lead identifier.",
+					"required": true
+				},
+				{
+					"name": "userIdType",
+					"type": "Select",
+					"options": [
+						"intercom_id",
+						"user_id"
+					],
+					"info": "The lead identifier type. One of: intercom_id, user_id, email.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "convertLeadToUser",
+			"description": "Convert Lead to Users.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "leadId",
+					"type": "String",
+					"info": "The lead identifier.",
+					"required": true
+				},
+				{
+					"name": "leadIdType",
+					"type": "Select",
+					"options": [
+						"intercom_id",
+						"user_id",
+						"email"
+					],
+					"info": "The user identifier type. One of: intercom_id, user_id, email.",
+					"required": true
+				},
+				{
+					"name": "userId",
+					"type": "String",
+					"info": "Identifier of existing User.",
+					"required": false
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "scrollLeads",
+			"description": "Scroll over all Leads.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "scrollParam",
+					"type": "String",
+					"info": "Scroll parameter.",
+					"required": false
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "createCompany",
+			"description": "Create company.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "name",
+					"type": "String",
+					"info": "The name of the company.",
+					"required": true
+				},
+				{
+					"name": "companyId",
+					"type": "String",
+					"info": "The company id you have defined for the company.",
+					"required": true
+				},
+				{
+					"name": "monthlySpend",
+					"type": "String",
+					"info": "How much revenue the company generates for your business.",
+					"required": false
+				},
+				{
+					"name": "plan",
+					"type": "String",
+					"info": "The name of the plan you have associated with the company.",
+					"required": false
+				},
+				{
+					"name": "customAttributes",
+					"type": "JSON",
+					"info": "JSON Object, a hash of key - value pairs containing any other data about the company you want Intercom to store.",
+					"required": false
 				},
 				{
 					"name": "size",
@@ -1268,2218 +1279,2229 @@
 					"info": "The industry that the company operates in",
 					"required": false
 				}
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "updateCompany",
-      "description": "Update company.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "companyId",
-          "type": "String",
-          "info": "The company identifier.",
-          "required": true
-        },
-        {
-          "name": "name",
-          "type": "String",
-          "info": "The name of the company.",
-          "required": false
-        },
-        {
-          "name": "monthlySpend",
-          "type": "String",
-          "info": "How much revenue the company generates for your business.",
-          "required": false
-        },
-        {
-          "name": "plan",
-          "type": "String",
-          "info": "The name of the plan you have associated with the company.",
-          "required": false
-        },
-        {
-          "name": "customAttributes",
-          "type": "JSON",
-          "info": "JSON Object, a hash of key - value pairs containing any other data about the company you want Intercom to store.",
-          "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getCompanies",
-      "description": "Fetch a list of companies.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "page",
-          "type": "Number",
-          "info": "What page of results to fetch.",
-          "required": false
-        },
-        {
-          "name": "perPage",
-          "type": "Number",
-          "info": "How many results per page.",
-          "required": false
-        },
-        {
-          "name": "order",
-          "type": "Select",
-          "options": [
-            "asc",
-            "desc"
-          ],
-          "info": "Return the companies in ascending or descending order. One of: asc, desc.",
-          "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getCompaniesByTag",
-      "description": "Fetch tagged companies by tag.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "tagId",
-          "type": "String",
-          "info": "The identifier of the tag to filter by.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getCompaniesBySegment",
-      "description": "Fetch segmented companies by segment.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "segmentId",
-          "type": "String",
-          "info": "The identifier of the segment to filter by.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getSingleCompany",
-      "description": "Fetch single company.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "companyId",
-          "type": "String",
-          "info": "The company identifier, you have given to the company.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getCompanyUsers",
-      "description": "Fetch users that belong to a company.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "companyId",
-          "type": "String",
-          "info": "Your company identifier for the company.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "scrollCompanies",
-      "description": "Scroll over all companies.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "scrollParam",
-          "type": "String",
-          "info": "Scroll parameter.",
-          "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getAdmins",
-      "description": "fetching App's admins.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getCurrentAdmin",
-      "description": "Fetching current admin of app.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getSingleAdmin",
-      "description": "Fetching one admin of app.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "adminId",
-          "type": "String",
-          "info": "Admins identifier.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "createTag",
-      "description": "Create tag.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "name",
-          "type": "String",
-          "info": "The name of the tag.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "updateTag",
-      "description": "Update tag.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "id",
-          "type": "String",
-          "info": "The identifier of tag to updates.",
-          "required": true
-        },
-        {
-          "name": "name",
-          "type": "String",
-          "info": "New name of the tag.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "tagUser",
-      "description": "Add tag to User.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "name",
-          "type": "String",
-          "info": "The name of the tag.",
-          "required": true
-        },
-        {
-          "name": "users",
-          "type": "List",
-          "info": "Array of JSON objects, of users user_id, intercom identifier or email.",
-          "required": true,
-          "structure": {
-            "name": "User",
-            "type": "JSON",
-            "info": "Single user"
-          }
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "untagUsers",
-      "description": "Remove tag from User.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "name",
-          "type": "String",
-          "info": "The name of the tag.",
-          "required": true
-        },
-        {
-          "name": "users",
-          "type": "List",
-          "info": "Array of JSON objects, of users user_id, intercom identifier or email.",
-          "required": true,
-          "structure": {
-            "name": "User",
-            "type": "JSON",
-            "info": "Single user"
-          }
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "tagCompany",
-      "description": "Add tag to Company.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "name",
-          "type": "String",
-          "info": "The name of the tag.",
-          "required": true
-        },
-        {
-          "name": "companies",
-          "type": "List",
-          "info": "Array of JSON objects, of companies company_id or intercom identifier.",
-          "required": true,
-          "structure": {
-            "name": "company",
-            "type": "JSON",
-            "info": "Single company"
-          }
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "untagCompany",
-      "description": "Remove tag from Company.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "name",
-          "type": "String",
-          "info": "The name of the tag.",
-          "required": true
-        },
-        {
-          "name": "companies",
-          "type": "List",
-          "info": "Array of JSON objects, of companies company_id or intercom identifier.",
-          "required": true,
-          "structure": {
-            "name": "company",
-            "type": "JSON",
-            "info": "Single company"
-          }
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "deleteTag",
-      "description": "Delete tag.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "tagId",
-          "type": "String",
-          "info": "Tag identifier.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getAppTags",
-      "description": "Fetch tags of App.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getSegments",
-      "description": "Fetch list the user segments.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getSingleSegment",
-      "description": "Fetch single segments.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "segmentId",
-          "type": "String",
-          "info": "Segment identifier.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "createNote",
-      "description": "Create a Note.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "userId",
-          "type": "String",
-          "info": "User identifier the note is to be created about.",
-          "required": true
-        },
-        {
-          "name": "userIdType",
-          "type": "Select",
-          "options": [
-            "intercom_id",
-            "user_id",
-            "email"
-          ],
-          "info": "The user identifier type. One of: intercom_id, user_id, email.",
-          "required": true
-        },
-        {
-          "name": "body",
-          "type": "String",
-          "info": "The text of the note.",
-          "required": true
-        },
-        {
-          "name": "adminId",
-          "type": "String",
-          "info": "The identifier of the admin creating the note.",
-          "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getUserNotes",
-      "description": "List Notes for a User.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "userId",
-          "type": "String",
-          "info": "The user identifier.",
-          "required": true
-        },
-        {
-          "name": "userIdType",
-          "type": "Select",
-          "options": [
-            "intercom_id",
-            "user_id",
-            "email"
-          ],
-          "info": "The user identifier type. One of: intercom_id, user_id, email.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getSingleNote",
-      "description": "Fetch single Note.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "noteId",
-          "type": "String",
-          "info": "The note identifier.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "submitEvent",
-      "description": "Submitting Events.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "eventName",
-          "type": "String",
-          "info": "The name of the event that occurred.",
-          "required": true
-        },
-        {
-          "name": "userId",
-          "type": "String",
-          "info": "Your identifier for the the user.",
-          "required": true
-        },
-        {
-          "name": "createdAt",
-          "type": "DatePicker",
-          "info": "The time the event occurred",
-          "required": true
-        },
-        {
-          "name": "metadata",
-          "type": "JSON",
-          "info": "JSON Object, metadata about the event.",
-          "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getUserEvents",
-      "description": "The events belonging to a user.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "userId",
-          "type": "String",
-          "info": "The user identifier.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getUserEventsSummaries",
-      "description": "View User Event Summaries.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "userId",
-          "type": "String",
-          "info": "The user identifier.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getAppTotalCounts",
-      "description": "Fetch app total counts.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "type",
-          "type": "Select",
-          "options": ["user", "company", "conversation"],
-          "info": "Type of counts. One of: user, company, conversation.",
-          "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getAppConversationCount",
-      "description": "Fetch app conversation count.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getAdminConversationsCount",
-      "description": "Fetch admin conversations count.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getUserSegmensCount",
-      "description": "Fetch user segmens count.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getUserTagsCount",
-      "description": "Fetch user tags count.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getCompanySegmentsCount",
-      "description": "Fetch company segments count.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getCompanyTagsCount",
-      "description": "Fetch company tags count.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getCompanyUsersCount",
-      "description": "Fetch company users count.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "createAdminMessage",
-      "description": "Create an admin initiated message to a user.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "fromAdminId",
-          "type": "String",
-          "info": "Admin identifier from whom send message.",
-          "required": true
-        },
-        {
-          "name": "receiverType",
-          "type": "Select",
-          "options": [
-            "user",
-            "contact"
-          ],
-          "info": "Receiver type. One of: user, contact.",
-          "required": true
-        },
-        {
-          "name": "receiverId",
-          "type": "String",
-          "info": "The receiver identifier.",
-          "required": true
-        },
-        {
-          "name": "receiverIdType",
-          "type": "Select",
-          "options": [
-            "intercom_id",
-            "user_id",
-            "email"
-          ],
-          "info": "The receiver identifier type. One of: intercom_id, user_id, email.",
-          "required": true
-        },
-        {
-          "name": "messageType",
-          "type": "Select",
-          "options": [
-            "inapp",
-            "email"
-          ],
-          "info": "The kind of message being created. One of: inapp, email.",
-          "required": true
-        },
-        {
-          "name": "subject",
-          "type": "String",
-          "info": "The title of the email.",
-          "required": true
-        },
-        {
-          "name": "body",
-          "type": "String",
-          "info": "The content of the message. Plaintext only, HTML is not supported.",
-          "required": true
-        },
-        {
-          "name": "template",
-          "type": "Select",
-          "options": [
-            "plain",
-            "personal"
-          ],
-          "info": "The style of the outgoing message. Only valid for email messages. One of: plain, personal.",
-          "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "createUserMessage",
-      "description": "Create user message.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "senderId",
-          "type": "String",
-          "info": "The sender identifier.",
-          "required": true
-        },
-        {
-          "name": "senderIdType",
-          "type": "Select",
-          "options": [
-            "intercom_id",
-            "user_id",
-            "email"
-          ],
-          "info": "The sender identifier type. One of: intercom_id, user_id, email.",
-          "required": true
-        },
-        {
-          "name": "body",
-          "type": "String",
-          "info": "The content of the message. Plaintext only, HTML is not supported.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "createContactMessage",
-      "description": "Create contact message.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "senderId",
-          "type": "String",
-          "info": "The sender identifier.",
-          "required": true
-        },
-        {
-          "name": "senderIdType",
-          "type": "Select",
-          "options": [
-            "intercom_id",
-            "user_id"
-          ],
-          "info": "The sender identifier type. One of: intercom_id, user_id.",
-          "required": true
-        },
-        {
-          "name": "body",
-          "type": "String",
-          "info": "The content of the message. Plaintext only, HTML is not supported.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getConversations",
-      "description": "Fetch a list of all conversations.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getSingleAdminConversations",
-      "description": "Fetch conversations for single admin.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "adminId",
-          "type": "String",
-          "info": "Admin identifier.",
-          "required": true
-        },
-        {
-          "name": "open",
-					"type": "Select",
-					"options": ["true", "false"],
-          "info": "when true fetches just open conversations, when false just closed conversations.",
-          "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getSingleUserConversations",
-      "description": "Fetch conversations with single user.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "userId",
-          "type": "String",
-          "info": "The user identifier.",
-          "required": true
-        },
-        {
-          "name": "userIdType",
-          "type": "Select",
-          "options": [
-            "intercom_id",
-            "user_id",
-            "email"
-          ],
-          "info": "The user identifier type. One of: intercom_user_id, user_id, email.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getSingleConversation",
-      "description": "Fetch single conversation.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "conversationId",
-          "type": "String",
-          "info": "Conversation identifier.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "replyToUserComment",
-      "description": "Replying to a Conversation.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "conversationId",
-          "type": "String",
-          "info": "Conversation identifier.",
-          "required": true
-        },
-        {
-          "name": "body",
-          "type": "String",
-          "info": "The text body of the comment.",
-          "required": true
-        },
-        {
-          "name": "userId",
-          "type": "String",
-          "info": "The user identifier.",
-          "required": true
-        },
-        {
-          "name": "userIdType",
-          "type": "Select",
-          "options": [
-            "intercom_id",
-            "user_id",
-            "email"
-          ],
-          "info": "The user identifier type. One of: intercom_user_id, user_id, email.",
-          "required": true
-        },
-        {
-          "name": "attachmentUrls",
-          "type": "List",
-          "info": "Array of Strings of URLs of files that will be added as attachments. You can include up to 5 attachments.",
-          "required": false,
-          "structure": {
-            "name": "attachmentUrl",
-            "type": "String",
-            "info": "Single attachmentUrl"
-          }
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "replyToAdminComment",
-      "description": "Reply to admin comment.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "conversationId",
-          "type": "String",
-          "info": "Conversation identifier.",
-          "required": true
-        },
-        {
-          "name": "adminId",
-          "type": "String",
-          "info": "The identifier of the Admin who is authoring the comment.",
-          "required": true
-        },
-        {
-          "name": "body",
-          "type": "String",
-          "info": "The text body of the comment.",
-          "required": true
-        },
-        {
-          "name": "attachmentUrls",
-          "type": "List",
-          "info": "Array of Strings of URLs of files that will be added as attachments. You can include up to 5 attachments.",
-          "required": false,
-          "structure": {
-            "name": "attachmentUrl",
-            "type": "String",
-            "info": "Single attachmentUrl"
-          }
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "replyToUsersLastConversation",
-      "description": "Reply to users last conversation.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "intercomUserId",
-          "type": "String",
-          "info": "The user identifier.",
-          "required": true
-        },
-        {
-          "name": "adminId",
-          "type": "String",
-          "info": "The identifier of the Admin who is replying.",
-          "required": true
-        },
-        {
-          "name": "body",
-          "type": "String",
-          "info": "The text body of the comment.",
-          "required": true
-        },
-        {
-          "name": "attachmentUrls",
-          "type": "List",
-          "info": "Array of Strings of URLs of files that will be added as attachments. You can include up to 5 attachments.",
-          "required": false,
-          "structure": {
-            "name": "attachmentUrl",
-            "type": "String",
-            "info": "Single attachmentUrl"
-          }
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "markConversationAsRead",
-      "description": "Marking a Conversation as Read.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "conversationId",
-          "type": "String",
-          "info": "Conversation identifier.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "closeConversation",
-      "description": "Closing a conversation.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "conversationId",
-          "type": "String",
-          "info": "Conversation identifier.",
-          "required": true
-        },
-        {
-          "name": "adminId",
-          "type": "String",
-          "info": "Admin identifier.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getSingleVisitor",
-      "description": "Fetch single visitor.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "userId",
-          "type": "String",
-          "info": "Visitor user identifier.",
-          "required": true
-        },
-        {
-          "name": "userIdType",
-          "type": "Select",
-          "options": [
-            "intercom_id",
-            "user_id"
-          ],
-          "info": "Visitor user identifier type. One of: intercom_id, user_id.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "updateVisitor",
-      "description": "Update a Visitor.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "userId",
-          "type": "String",
-          "info": "User identifier for the Visitor.",
-          "required": true
-        },
-        {
-          "name": "name",
-          "type": "String",
-          "info": "The name of the Visitor.",
-          "required": false
-        },
-        {
-          "name": "customAttributes",
-          "type": "JSON",
-          "info": "JSON Object, the custom attributes you have set on the Visitor.",
-          "required": false
-        },
-        {
-          "name": "lastRequestAt",
-          "type": "DatePicker",
-          "info": "The date the lead last visited your application",
-          "required": false
-        },
-        {
-          "name": "avatarImageUrl",
-          "type": "File",
-          "info": "An avatar image URL for the Visitor.",
-          "required": false
-        },
-        {
-          "name": "unsubscribedFromEmails",
-          "type": "Boolean",
-          "info": "Whether the Visitor is unsubscribed from emails.",
-          "required": false
-        },
-        {
-          "name": "locationData",
-          "type": "JSON",
-          "info": "JSON Object. Location relating to the Visitor.",
-          "required": false
-        },
-        {
-          "name": "userAgentData",
-          "type": "String",
-          "info": "Data about the last user agent the Visitor was seen using.",
-          "required": false
-        },
-        {
-          "name": "lastSeenIp",
-          "type": "String",
-          "info": "An ip address.",
-          "required": false
-        },
-        {
-          "name": "socialProfiles",
-          "type": "List",
-          "info": "Array of JSON objects, of social profiles associated with the Visitor.",
-          "required": false,
-          "structure": {
-            "name": "socialProfile",
-            "type": "JSON",
-            "info": "Single socialProfile"
-          }
-        },
-        {
-          "name": "segments",
-          "type": "List",
-          "info": "Array of segments the Visitor.",
-          "required": false,
-          "structure": {
-            "name": "segment",
-            "type": "String",
-            "info": "Single segment"
-          }
-        },
-        {
-          "name": "tags",
-          "type": "List",
-          "info": "Array of tags associated with the Visitor.",
-          "required": false,
-          "structure": {
-            "name": "tag",
-            "type": "String",
-            "info": "Single tag"
-          }
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "deleteVisitor",
-      "description": "Delete a visitor.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "userId",
-          "type": "String",
-          "info": "User identifier for the Visitor.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "convertVisitorToLead",
-      "description": "Convert Visitor to Leads.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "visitorUserId",
-          "type": "String",
-          "info": "User identifier for the Visitor.",
-          "required": true
-        },
-        {
-          "name": "visitorUserIdType",
-          "type": "Select",
-          "options": ["intercom_id", "user_id", "email"],
-          "info": "The Visitor user identifier of type. One of: intercom_id, user_id, email.",
-          "required": true
-        },
-        {
-          "name": "leadId",
-          "type": "String",
-          "info": "User identifier for the Lead to binding.",
-          "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "createSubscription",
-      "description": "Create new subscription.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "url",
-          "type": "String",
-          "info": "The url the event should be sent to.",
-          "required": true
-        },
-        {
-          "name": "topics",
-          "type": "List",
-          "info": "Comma-separated list of topics to subscribe to.",
-          "required": true,
-          "structure": {
-            "name": "topic",
-            "type": "String",
-            "info": "Single topic"
-          }
-        },
-        {
-          "name": "serviceType",
-          "type": "String",
-          "info": "The type of the service being called. Default is web.",
-          "required": false
-        },
-        {
-          "name": "hubSecret",
-          "type": "String",
-          "info": "A key used to sign notifications.",
-          "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getSingleSubscription",
-      "description": "Fetch single subscription.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "subscriptionId",
-          "type": "String",
-          "info": "Subscription identifier.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
 		},
 		{
-      "name": "deleteSubscription",
-      "description": "Fetch single subscription.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "subscriptionId",
-          "type": "String",
-          "info": "Subscription identifier.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getSubscriptions",
-      "description": "Fetch list of subscriptions.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getErrorFeed",
-      "description": "Fetch feed of errors returned by the webhook.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "subscriptionId",
-          "type": "String",
-          "info": "Subscription identifier.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getSentFeed",
-      "description": "Fetch feed of notifications sent.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "subscriptionId",
-          "type": "String",
-          "info": "Subscription identifier.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "pingSubscription",
-      "description": "Ping subscription.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "subscriptionId",
-          "type": "String",
-          "info": "Subscription identifier.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "createEventWebhookSubscription",
-      "description": "Create an Event Webhook Subscription.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "metadataEventNames",
-          "type": "List",
-          "info": "Array of events name to subscribe to.",
-          "required": true,
-          "structure": {
-            "name": "metadataEventName",
-            "type": "String",
-            "info": "Single metadataEventName"
-          }
-        },
-        {
-          "name": "url",
-          "type": "String",
-          "info": "The url the event should be sent to.",
-          "required": true
+			"name": "updateCompany",
+			"description": "Update company.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
 				},
-        {
-          "name": "serviceType",
-          "type": "String",
-          "info": "The type of the service being called. Default is web.",
-          "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "updateEventWebhookSubscription",
-      "description": "Update an Event Webhook Subscription.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "metadataEventNames",
-          "type": "List",
-          "info": "Array of events name to subscribe to.",
-          "required": true,
-          "structure": {
-            "name": "metadataEventName",
-            "type": "String",
-            "info": "Single metadataEventName"
-          }
-        },
-        {
-          "name": "url",
-          "type": "String",
-          "info": "The url the event should be sent to.",
-          "required": true
-        },
-        {
-          "name": "serviceType",
-          "type": "String",
-          "info": "The type of the service being called. Default is web.",
-          "required": false
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "createUserBulkJobs",
-      "description": "Creating bulk jobs for users.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "items",
-          "type": "List",
-          "info": "Array of object, of users tasks.",
-          "required": true,
-          "structure": {
-            "name": "item",
-            "type": "JSON",
-            "info": "Single item"
-          }
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "createBulkLeadJob",
-      "description": "Bulk Lead Posting.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "items",
-          "type": "List",
-          "info": "Array of object, of Leads.",
-          "required": true,
-          "structure": {
-            "name": "item",
-            "type": "JSON",
-            "info": "Single item"
-          }
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "createBulkEventJob",
-      "description": "Bulk Event Posting.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "items",
-          "type": "List",
-          "info": "Array of object, of Events.",
-          "required": true,
-          "structure": {
-            "name": "item",
-            "type": "JSON",
-            "info": "Single item"
-          }
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    },
-    {
-      "name": "getSingleBulkJob",
-      "description": "Fetch single job.",
-      "args": [
-        {
-          "name": "accessToken",
-          "type": "String",
-          "info": "Access token.",
-          "required": true
-        },
-        {
-          "name": "jobId",
-          "type": "String",
-          "info": "Bulk job identifier.",
-          "required": true
-        }
-      ],
-      "callbacks": [
-        {
-          "name": "error",
-          "info": "Error"
-        },
-        {
-          "name": "success",
-          "info": "Success"
-        }
-      ]
-    }
-  ]
+				{
+					"name": "companyId",
+					"type": "String",
+					"info": "The company identifier.",
+					"required": true
+				},
+				{
+					"name": "name",
+					"type": "String",
+					"info": "The name of the company.",
+					"required": false
+				},
+				{
+					"name": "monthlySpend",
+					"type": "String",
+					"info": "How much revenue the company generates for your business.",
+					"required": false
+				},
+				{
+					"name": "plan",
+					"type": "String",
+					"info": "The name of the plan you have associated with the company.",
+					"required": false
+				},
+				{
+					"name": "customAttributes",
+					"type": "JSON",
+					"info": "JSON Object, a hash of key - value pairs containing any other data about the company you want Intercom to store.",
+					"required": false
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getCompanies",
+			"description": "Fetch a list of companies.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "page",
+					"type": "Number",
+					"info": "What page of results to fetch.",
+					"required": false
+				},
+				{
+					"name": "perPage",
+					"type": "Number",
+					"info": "How many results per page.",
+					"required": false
+				},
+				{
+					"name": "order",
+					"type": "Select",
+					"options": [
+						"asc",
+						"desc"
+					],
+					"info": "Return the companies in ascending or descending order. One of: asc, desc.",
+					"required": false
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getCompaniesByTag",
+			"description": "Fetch tagged companies by tag.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "tagId",
+					"type": "String",
+					"info": "The identifier of the tag to filter by.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getCompaniesBySegment",
+			"description": "Fetch segmented companies by segment.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "segmentId",
+					"type": "String",
+					"info": "The identifier of the segment to filter by.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getSingleCompany",
+			"description": "Fetch single company.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "companyId",
+					"type": "String",
+					"info": "The company identifier, you have given to the company.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getCompanyUsers",
+			"description": "Fetch users that belong to a company.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "companyId",
+					"type": "String",
+					"info": "Your company identifier for the company.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "scrollCompanies",
+			"description": "Scroll over all companies.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "scrollParam",
+					"type": "String",
+					"info": "Scroll parameter.",
+					"required": false
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getAdmins",
+			"description": "fetching App's admins.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getCurrentAdmin",
+			"description": "Fetching current admin of app.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getSingleAdmin",
+			"description": "Fetching one admin of app.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "adminId",
+					"type": "String",
+					"info": "Admins identifier.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "createTag",
+			"description": "Create tag.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "name",
+					"type": "String",
+					"info": "The name of the tag.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "updateTag",
+			"description": "Update tag.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "id",
+					"type": "String",
+					"info": "The identifier of tag to updates.",
+					"required": true
+				},
+				{
+					"name": "name",
+					"type": "String",
+					"info": "New name of the tag.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "tagUser",
+			"description": "Add tag to User.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "name",
+					"type": "String",
+					"info": "The name of the tag.",
+					"required": true
+				},
+				{
+					"name": "users",
+					"type": "List",
+					"info": "Array of JSON objects, of users user_id, intercom identifier or email.",
+					"required": true,
+					"structure": {
+						"name": "User",
+						"type": "JSON",
+						"info": "Single user"
+					}
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "untagUsers",
+			"description": "Remove tag from User.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "name",
+					"type": "String",
+					"info": "The name of the tag.",
+					"required": true
+				},
+				{
+					"name": "users",
+					"type": "List",
+					"info": "Array of JSON objects, of users user_id, intercom identifier or email.",
+					"required": true,
+					"structure": {
+						"name": "User",
+						"type": "JSON",
+						"info": "Single user"
+					}
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "tagCompany",
+			"description": "Add tag to Company.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "name",
+					"type": "String",
+					"info": "The name of the tag.",
+					"required": true
+				},
+				{
+					"name": "companies",
+					"type": "List",
+					"info": "Array of JSON objects, of companies company_id or intercom identifier.",
+					"required": true,
+					"structure": {
+						"name": "company",
+						"type": "JSON",
+						"info": "Single company"
+					}
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "untagCompany",
+			"description": "Remove tag from Company.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "name",
+					"type": "String",
+					"info": "The name of the tag.",
+					"required": true
+				},
+				{
+					"name": "companies",
+					"type": "List",
+					"info": "Array of JSON objects, of companies company_id or intercom identifier.",
+					"required": true,
+					"structure": {
+						"name": "company",
+						"type": "JSON",
+						"info": "Single company"
+					}
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "deleteTag",
+			"description": "Delete tag.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "tagId",
+					"type": "String",
+					"info": "Tag identifier.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getAppTags",
+			"description": "Fetch tags of App.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getSegments",
+			"description": "Fetch list the user segments.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getSingleSegment",
+			"description": "Fetch single segments.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "segmentId",
+					"type": "String",
+					"info": "Segment identifier.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "createNote",
+			"description": "Create a Note.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "userId",
+					"type": "String",
+					"info": "User identifier the note is to be created about.",
+					"required": true
+				},
+				{
+					"name": "userIdType",
+					"type": "Select",
+					"options": [
+						"intercom_id",
+						"user_id",
+						"email"
+					],
+					"info": "The user identifier type. One of: intercom_id, user_id, email.",
+					"required": true
+				},
+				{
+					"name": "body",
+					"type": "String",
+					"info": "The text of the note.",
+					"required": true
+				},
+				{
+					"name": "adminId",
+					"type": "String",
+					"info": "The identifier of the admin creating the note.",
+					"required": false
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getUserNotes",
+			"description": "List Notes for a User.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "userId",
+					"type": "String",
+					"info": "The user identifier.",
+					"required": true
+				},
+				{
+					"name": "userIdType",
+					"type": "Select",
+					"options": [
+						"intercom_id",
+						"user_id",
+						"email"
+					],
+					"info": "The user identifier type. One of: intercom_id, user_id, email.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getSingleNote",
+			"description": "Fetch single Note.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "noteId",
+					"type": "String",
+					"info": "The note identifier.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "submitEvent",
+			"description": "Submitting Events.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "eventName",
+					"type": "String",
+					"info": "The name of the event that occurred.",
+					"required": true
+				},
+				{
+					"name": "userId",
+					"type": "String",
+					"info": "Your identifier for the the user.",
+					"required": true
+				},
+				{
+					"name": "createdAt",
+					"type": "DatePicker",
+					"info": "The time the event occurred",
+					"required": true
+				},
+				{
+					"name": "metadata",
+					"type": "JSON",
+					"info": "JSON Object, metadata about the event.",
+					"required": false
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getUserEvents",
+			"description": "The events belonging to a user.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "userId",
+					"type": "String",
+					"info": "The user identifier.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getUserEventsSummaries",
+			"description": "View User Event Summaries.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "userId",
+					"type": "String",
+					"info": "The user identifier.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getAppTotalCounts",
+			"description": "Fetch app total counts.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "type",
+					"type": "Select",
+					"options": [
+						"user",
+						"company",
+						"conversation"
+					],
+					"info": "Type of counts. One of: user, company, conversation.",
+					"required": false
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getAppConversationCount",
+			"description": "Fetch app conversation count.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getAdminConversationsCount",
+			"description": "Fetch admin conversations count.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getUserSegmensCount",
+			"description": "Fetch user segmens count.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getUserTagsCount",
+			"description": "Fetch user tags count.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getCompanySegmentsCount",
+			"description": "Fetch company segments count.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getCompanyTagsCount",
+			"description": "Fetch company tags count.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getCompanyUsersCount",
+			"description": "Fetch company users count.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "createAdminMessage",
+			"description": "Create an admin initiated message to a user.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "fromAdminId",
+					"type": "String",
+					"info": "Admin identifier from whom send message.",
+					"required": true
+				},
+				{
+					"name": "receiverType",
+					"type": "Select",
+					"options": [
+						"user",
+						"contact"
+					],
+					"info": "Receiver type. One of: user, contact.",
+					"required": true
+				},
+				{
+					"name": "receiverId",
+					"type": "String",
+					"info": "The receiver identifier.",
+					"required": true
+				},
+				{
+					"name": "receiverIdType",
+					"type": "Select",
+					"options": [
+						"intercom_id",
+						"user_id",
+						"email"
+					],
+					"info": "The receiver identifier type. One of: intercom_id, user_id, email.",
+					"required": true
+				},
+				{
+					"name": "messageType",
+					"type": "Select",
+					"options": [
+						"inapp",
+						"email"
+					],
+					"info": "The kind of message being created. One of: inapp, email.",
+					"required": true
+				},
+				{
+					"name": "subject",
+					"type": "String",
+					"info": "The title of the email.",
+					"required": true
+				},
+				{
+					"name": "body",
+					"type": "String",
+					"info": "The content of the message. Plaintext only, HTML is not supported.",
+					"required": true
+				},
+				{
+					"name": "template",
+					"type": "Select",
+					"options": [
+						"plain",
+						"personal"
+					],
+					"info": "The style of the outgoing message. Only valid for email messages. One of: plain, personal.",
+					"required": false
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "createUserMessage",
+			"description": "Create user message.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "senderId",
+					"type": "String",
+					"info": "The sender identifier.",
+					"required": true
+				},
+				{
+					"name": "senderIdType",
+					"type": "Select",
+					"options": [
+						"intercom_id",
+						"user_id",
+						"email"
+					],
+					"info": "The sender identifier type. One of: intercom_id, user_id, email.",
+					"required": true
+				},
+				{
+					"name": "body",
+					"type": "String",
+					"info": "The content of the message. Plaintext only, HTML is not supported.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "createContactMessage",
+			"description": "Create contact message.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "senderId",
+					"type": "String",
+					"info": "The sender identifier.",
+					"required": true
+				},
+				{
+					"name": "senderIdType",
+					"type": "Select",
+					"options": [
+						"intercom_id",
+						"user_id"
+					],
+					"info": "The sender identifier type. One of: intercom_id, user_id.",
+					"required": true
+				},
+				{
+					"name": "body",
+					"type": "String",
+					"info": "The content of the message. Plaintext only, HTML is not supported.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getConversations",
+			"description": "Fetch a list of all conversations.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getSingleAdminConversations",
+			"description": "Fetch conversations for single admin.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "adminId",
+					"type": "String",
+					"info": "Admin identifier.",
+					"required": true
+				},
+				{
+					"name": "open",
+					"type": "Select",
+					"options": [
+						"true",
+						"false"
+					],
+					"info": "when true fetches just open conversations, when false just closed conversations.",
+					"required": false
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getSingleUserConversations",
+			"description": "Fetch conversations with single user.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "userId",
+					"type": "String",
+					"info": "The user identifier.",
+					"required": true
+				},
+				{
+					"name": "userIdType",
+					"type": "Select",
+					"options": [
+						"intercom_id",
+						"user_id",
+						"email"
+					],
+					"info": "The user identifier type. One of: intercom_user_id, user_id, email.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getSingleConversation",
+			"description": "Fetch single conversation.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "conversationId",
+					"type": "String",
+					"info": "Conversation identifier.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "replyToUserComment",
+			"description": "Replying to a Conversation.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "conversationId",
+					"type": "String",
+					"info": "Conversation identifier.",
+					"required": true
+				},
+				{
+					"name": "body",
+					"type": "String",
+					"info": "The text body of the comment.",
+					"required": true
+				},
+				{
+					"name": "userId",
+					"type": "String",
+					"info": "The user identifier.",
+					"required": true
+				},
+				{
+					"name": "userIdType",
+					"type": "Select",
+					"options": [
+						"intercom_id",
+						"user_id",
+						"email"
+					],
+					"info": "The user identifier type. One of: intercom_user_id, user_id, email.",
+					"required": true
+				},
+				{
+					"name": "attachmentUrls",
+					"type": "List",
+					"info": "Array of Strings of URLs of files that will be added as attachments. You can include up to 5 attachments.",
+					"required": false,
+					"structure": {
+						"name": "attachmentUrl",
+						"type": "String",
+						"info": "Single attachmentUrl"
+					}
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "replyToAdminComment",
+			"description": "Reply to admin comment.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "conversationId",
+					"type": "String",
+					"info": "Conversation identifier.",
+					"required": true
+				},
+				{
+					"name": "adminId",
+					"type": "String",
+					"info": "The identifier of the Admin who is authoring the comment.",
+					"required": true
+				},
+				{
+					"name": "body",
+					"type": "String",
+					"info": "The text body of the comment.",
+					"required": true
+				},
+				{
+					"name": "attachmentUrls",
+					"type": "List",
+					"info": "Array of Strings of URLs of files that will be added as attachments. You can include up to 5 attachments.",
+					"required": false,
+					"structure": {
+						"name": "attachmentUrl",
+						"type": "String",
+						"info": "Single attachmentUrl"
+					}
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "replyToUsersLastConversation",
+			"description": "Reply to users last conversation.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "intercomUserId",
+					"type": "String",
+					"info": "The user identifier.",
+					"required": true
+				},
+				{
+					"name": "adminId",
+					"type": "String",
+					"info": "The identifier of the Admin who is replying.",
+					"required": true
+				},
+				{
+					"name": "body",
+					"type": "String",
+					"info": "The text body of the comment.",
+					"required": true
+				},
+				{
+					"name": "attachmentUrls",
+					"type": "List",
+					"info": "Array of Strings of URLs of files that will be added as attachments. You can include up to 5 attachments.",
+					"required": false,
+					"structure": {
+						"name": "attachmentUrl",
+						"type": "String",
+						"info": "Single attachmentUrl"
+					}
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "markConversationAsRead",
+			"description": "Marking a Conversation as Read.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "conversationId",
+					"type": "String",
+					"info": "Conversation identifier.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "closeConversation",
+			"description": "Closing a conversation.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "conversationId",
+					"type": "String",
+					"info": "Conversation identifier.",
+					"required": true
+				},
+				{
+					"name": "adminId",
+					"type": "String",
+					"info": "Admin identifier.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getSingleVisitor",
+			"description": "Fetch single visitor.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "userId",
+					"type": "String",
+					"info": "Visitor user identifier.",
+					"required": true
+				},
+				{
+					"name": "userIdType",
+					"type": "Select",
+					"options": [
+						"intercom_id",
+						"user_id"
+					],
+					"info": "Visitor user identifier type. One of: intercom_id, user_id.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "updateVisitor",
+			"description": "Update a Visitor.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "userId",
+					"type": "String",
+					"info": "User identifier for the Visitor.",
+					"required": true
+				},
+				{
+					"name": "name",
+					"type": "String",
+					"info": "The name of the Visitor.",
+					"required": false
+				},
+				{
+					"name": "customAttributes",
+					"type": "JSON",
+					"info": "JSON Object, the custom attributes you have set on the Visitor.",
+					"required": false
+				},
+				{
+					"name": "lastRequestAt",
+					"type": "Number",
+					"info": "The date the lead last visited your application",
+					"required": false
+				},
+				{
+					"name": "avatarImageUrl",
+					"type": "File",
+					"info": "An avatar image URL for the Visitor.",
+					"required": false
+				},
+				{
+					"name": "unsubscribedFromEmails",
+					"type": "Boolean",
+					"info": "Whether the Visitor is unsubscribed from emails.",
+					"required": false
+				},
+				{
+					"name": "locationData",
+					"type": "JSON",
+					"info": "JSON Object. Location relating to the Visitor.",
+					"required": false
+				},
+				{
+					"name": "userAgentData",
+					"type": "String",
+					"info": "Data about the last user agent the Visitor was seen using.",
+					"required": false
+				},
+				{
+					"name": "lastSeenIp",
+					"type": "String",
+					"info": "An ip address.",
+					"required": false
+				},
+				{
+					"name": "socialProfiles",
+					"type": "List",
+					"info": "Array of JSON objects, of social profiles associated with the Visitor.",
+					"required": false,
+					"structure": {
+						"name": "socialProfile",
+						"type": "JSON",
+						"info": "Single socialProfile"
+					}
+				},
+				{
+					"name": "segments",
+					"type": "List",
+					"info": "Array of segments the Visitor.",
+					"required": false,
+					"structure": {
+						"name": "segment",
+						"type": "String",
+						"info": "Single segment"
+					}
+				},
+				{
+					"name": "tags",
+					"type": "List",
+					"info": "Array of tags associated with the Visitor.",
+					"required": false,
+					"structure": {
+						"name": "tag",
+						"type": "String",
+						"info": "Single tag"
+					}
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "deleteVisitor",
+			"description": "Delete a visitor.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "userId",
+					"type": "String",
+					"info": "User identifier for the Visitor.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "convertVisitorToLead",
+			"description": "Convert Visitor to Leads.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "visitorUserId",
+					"type": "String",
+					"info": "User identifier for the Visitor.",
+					"required": true
+				},
+				{
+					"name": "visitorUserIdType",
+					"type": "Select",
+					"options": [
+						"intercom_id",
+						"user_id",
+						"email"
+					],
+					"info": "The Visitor user identifier of type. One of: intercom_id, user_id, email.",
+					"required": true
+				},
+				{
+					"name": "leadId",
+					"type": "String",
+					"info": "User identifier for the Lead to binding.",
+					"required": false
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "createSubscription",
+			"description": "Create new subscription.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "url",
+					"type": "String",
+					"info": "The url the event should be sent to.",
+					"required": true
+				},
+				{
+					"name": "topics",
+					"type": "List",
+					"info": "Comma-separated list of topics to subscribe to.",
+					"required": true,
+					"structure": {
+						"name": "topic",
+						"type": "String",
+						"info": "Single topic"
+					}
+				},
+				{
+					"name": "serviceType",
+					"type": "String",
+					"info": "The type of the service being called. Default is web.",
+					"required": false
+				},
+				{
+					"name": "hubSecret",
+					"type": "String",
+					"info": "A key used to sign notifications.",
+					"required": false
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getSingleSubscription",
+			"description": "Fetch single subscription.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "subscriptionId",
+					"type": "String",
+					"info": "Subscription identifier.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "deleteSubscription",
+			"description": "Fetch single subscription.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "subscriptionId",
+					"type": "String",
+					"info": "Subscription identifier.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getSubscriptions",
+			"description": "Fetch list of subscriptions.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getErrorFeed",
+			"description": "Fetch feed of errors returned by the webhook.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "subscriptionId",
+					"type": "String",
+					"info": "Subscription identifier.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getSentFeed",
+			"description": "Fetch feed of notifications sent.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "subscriptionId",
+					"type": "String",
+					"info": "Subscription identifier.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "pingSubscription",
+			"description": "Ping subscription.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "subscriptionId",
+					"type": "String",
+					"info": "Subscription identifier.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "createEventWebhookSubscription",
+			"description": "Create an Event Webhook Subscription.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "metadataEventNames",
+					"type": "List",
+					"info": "Array of events name to subscribe to.",
+					"required": true,
+					"structure": {
+						"name": "metadataEventName",
+						"type": "String",
+						"info": "Single metadataEventName"
+					}
+				},
+				{
+					"name": "url",
+					"type": "String",
+					"info": "The url the event should be sent to.",
+					"required": true
+				},
+				{
+					"name": "serviceType",
+					"type": "String",
+					"info": "The type of the service being called. Default is web.",
+					"required": false
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "updateEventWebhookSubscription",
+			"description": "Update an Event Webhook Subscription.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "metadataEventNames",
+					"type": "List",
+					"info": "Array of events name to subscribe to.",
+					"required": true,
+					"structure": {
+						"name": "metadataEventName",
+						"type": "String",
+						"info": "Single metadataEventName"
+					}
+				},
+				{
+					"name": "url",
+					"type": "String",
+					"info": "The url the event should be sent to.",
+					"required": true
+				},
+				{
+					"name": "serviceType",
+					"type": "String",
+					"info": "The type of the service being called. Default is web.",
+					"required": false
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "createUserBulkJobs",
+			"description": "Creating bulk jobs for users.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "items",
+					"type": "List",
+					"info": "Array of object, of users tasks.",
+					"required": true,
+					"structure": {
+						"name": "item",
+						"type": "JSON",
+						"info": "Single item"
+					}
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "createBulkLeadJob",
+			"description": "Bulk Lead Posting.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "items",
+					"type": "List",
+					"info": "Array of object, of Leads.",
+					"required": true,
+					"structure": {
+						"name": "item",
+						"type": "JSON",
+						"info": "Single item"
+					}
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "createBulkEventJob",
+			"description": "Bulk Event Posting.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "items",
+					"type": "List",
+					"info": "Array of object, of Events.",
+					"required": true,
+					"structure": {
+						"name": "item",
+						"type": "JSON",
+						"info": "Single item"
+					}
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		},
+		{
+			"name": "getSingleBulkJob",
+			"description": "Fetch single job.",
+			"args": [
+				{
+					"name": "accessToken",
+					"type": "String",
+					"info": "Access token.",
+					"required": true
+				},
+				{
+					"name": "jobId",
+					"type": "String",
+					"info": "Bulk job identifier.",
+					"required": true
+				}
+			],
+			"callbacks": [
+				{
+					"name": "error",
+					"info": "Error"
+				},
+				{
+					"name": "success",
+					"info": "Success"
+				}
+			]
+		}
+	]
 }

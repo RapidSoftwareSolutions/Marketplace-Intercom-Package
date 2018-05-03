@@ -2,9 +2,9 @@
 
 namespace Core;
 
-use SebastianBergmann\Comparator\DateTimeComparator;
-
-if (!defined('RAPID_IN')) exit('No direct script access allowed');
+if (!defined('RAPID_IN')) {
+    exit('No direct script access allowed');
+}
 
 /**
  * Custom Model
@@ -75,12 +75,11 @@ class CustomModel
             $result['tags'] = '';
             $result['tags']['type'] = 'tag.list';
             $result['tags']['tags'] = $itemsObj;
-				}
-				// 'User agent'
-				if (isset($param['userAgentData']) && strlen($param['userAgentData']) > 0) {
-					$result['user_agent_data'] = $result['userAgentData'];
-				}
-
+        }
+        // 'User agent'
+        if (isset($param['userAgentData']) && strlen($param['userAgentData']) > 0) {
+            $result['user_agent_data'] = $result['userAgentData'];
+        }
 
         return $result;
     }
@@ -381,17 +380,17 @@ class CustomModel
 
         // 'topics'
         if (isset($param['event_names']) && strlen($param['event_names']) > 0) {
-            $items =is_array($param['event_names']) ? $param['event_names'] : explode(',', $param['event_names']);
+            $items = is_array($param['event_names']) ? $param['event_names'] : explode(',', $param['event_names']);
             $itemsObj = [];
             foreach ($items as $item) {
                 $itemsObj[] = trim($item);
             }
             unset($result['event_names']);
-						$result['metadata']['event_names'] = $itemsObj;
+            $result['metadata']['event_names'] = $itemsObj;
         }
-				$result['topics'] = ["event.created"];
+        $result['topics'] = ["event.created"];
 
-				return $result;
+        return $result;
     }
 
     public static function updateEventWebhookSubscription($param, &$blockCustom, $vendorUrl, $accessToken)
@@ -400,7 +399,7 @@ class CustomModel
 
         // 'topics'
         if (isset($param['metadata_event_names']) && strlen($param['metadata_event_names']) > 0) {
-            $items =is_array($param['metadata_event_names']) ? $param['metadata_event_names'] : explode(',', $param['metadata_event_names']);
+            $items = is_array($param['metadata_event_names']) ? $param['metadata_event_names'] : explode(',', $param['metadata_event_names']);
             $itemsObj = [];
             foreach ($items as $item) {
                 $itemsObj[] = trim($item);
@@ -415,7 +414,6 @@ class CustomModel
     public static function createUserByEmail($param, &$blockCustom, $vendorUrl, $accessToken)
     {
         $result = $param;
-
 
         // 'topics'
         if (isset($param['last_request_at']) && strlen($param['last_request_at']) > 0) {
@@ -434,7 +432,6 @@ class CustomModel
     {
         $result = $param;
 
-
         // 'topics'
         if (isset($param['last_request_at']) && strlen($param['last_request_at']) > 0) {
             if (is_numeric($param['last_request_at'])) {
@@ -452,7 +449,6 @@ class CustomModel
     {
         $result = $param;
 
-
         // 'topics'
         if (isset($param['last_request_at']) && strlen($param['last_request_at']) > 0) {
             if (is_numeric($param['last_request_at'])) {
@@ -469,7 +465,6 @@ class CustomModel
     public static function updateUserById($param, &$blockCustom, $vendorUrl, $accessToken)
     {
         $result = $param;
-
 
         // 'topics'
         if (isset($param['last_request_at']) && strlen($param['last_request_at']) > 0) {
@@ -500,6 +495,5 @@ class CustomModel
 
         return $result;
     }
-
 
 }
